@@ -16,5 +16,19 @@ public interface PlacesDaoInterface {
 	 */
 	public Realm findPlace(Place place);
 	
+	/**
+	 * Returns the fastest set of Routes going from place1 to place2
+	 * @param place1
+	 * @param place2
+	 * @return
+	 */
+	public ArrayList<Route> getFastestRoute(Place place1, Place place2);
 	
+	/**
+	 * Returns the shortest set of Routes going from place1 to place2
+	 * @param place1
+	 * @param place2
+	 * @return
+	 */
+	public ArrayList<Route> getShortestRoute(Place place1, Place place2);
 }
