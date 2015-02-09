@@ -23,4 +23,9 @@ public class PlacesDao implements PlacesDaoInterface {
 		return null;
 	}
 
+	public boolean insert(Place place) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

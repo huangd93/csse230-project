@@ -31,4 +31,12 @@ public interface PlacesDaoInterface {
 	 * @return
 	 */
 	public ArrayList<Route> getShortestRoute(Place place1, Place place2);
+	
+	/**
+	 * Inserts the given place into the map
+	 * @param place
+	 * @return
+	 */
+	public boolean insert(Place place);
+	
 }
