@@ -5,7 +5,7 @@ public abstract class AbstractPlace {
 	private ArrayList<Connection> neighbors;
 	private Point point;
 	private Integer rating;
-	private Place realm;
+	private Realm realm;
 
 	public String getName() {
 		return this.name;
@@ -39,11 +39,11 @@ public abstract class AbstractPlace {
 		this.rating = newRating;
 	}
 	
-	public Place getRealm(){
+	public Realm getRealm(){
 		return this.realm;
 	}
 	
-	public void setRealm(Place newRealm){
+	public void setRealm(Realm newRealm){
 		this.realm = newRealm;
 	}
 	
