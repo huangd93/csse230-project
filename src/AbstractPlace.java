@@ -1,11 +1,11 @@
 import java.util.ArrayList;
 
 public abstract class AbstractPlace {
-	String name;
-	ArrayList<Connection> neighbors;
-	Point point;
-	Integer rating;
-	Place realm;
+	private String name;
+	private ArrayList<Connection> neighbors;
+	private Point point;
+	private Integer rating;
+	private Place realm;
 
 	public String getName() {
 		return this.name;

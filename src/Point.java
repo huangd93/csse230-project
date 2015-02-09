@@ -1,7 +1,7 @@
 public class Point {
 	
-	public Integer xValue;
-	public Integer yValue;
+	private Integer xValue;
+	private Integer yValue;
 	
 	public Integer getXValue(){
 		return this.xValue;

@@ -2,6 +2,10 @@ import java.util.ArrayList;
 
 
 public class PlacesDao implements PlacesDaoInterface {
+	
+	protected PlacesDao() {
+		
+	}
 
 	public ArrayList<Place> getPlaces() {
 		// TODO Auto-generated method stub

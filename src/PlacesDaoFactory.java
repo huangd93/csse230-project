@@ -1,14 +1,12 @@
 
 public class PlacesDaoFactory {
 	
-	public PlacesDao placesDaoSingleton;
+	private static PlacesDao placesDaoSingleton;
 	
 	public PlacesDao getPlacesDaoSingleton(){
-		return this.placesDaoSingleton;
+		if(placesDaoSingleton == null) {
+			placesDaoSingleton = new PlacesDao();
+		}
+		return PlacesDaoFactory.placesDaoSingleton;
 	}
-	
-	public void setPlacesDaoSingleton(PlacesDao newSingleton){
-		this.placesDaoSingleton = newSingleton;
-	}
-
 }

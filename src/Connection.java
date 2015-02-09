@@ -1,10 +1,10 @@
 
 public class Connection {
 	
-	public Place destination;
-	public Route route;
-	public Integer distance;
-	public Integer time;
+	private Place destination;
+	private Route route;
+	private Integer distance;
+	private Integer time;
 	
 	public Place getDestination(){
 		return this.destination;
