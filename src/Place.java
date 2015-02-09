@@ -1,4 +1,4 @@
 
-public class Place {
-
+public class Place extends AbstractPlace{
+	
 }
