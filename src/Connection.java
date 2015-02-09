@@ -3,8 +3,15 @@ public class Connection {
 	
 	private Place destination;
 	private Route route;
-	private Integer distance;
-	private Integer time;
+	private double distance;
+	private double time;
+	
+	public Connection(Place d, Route r, int speed) {
+		destination = d;
+		route = r;
+		distance = r.getDistance();
+		time = distance / speed;
+	}
 	
 	public Place getDestination(){
 		return this.destination;
@@ -22,7 +29,7 @@ public class Connection {
 		this.route = newRoute;
 	}
 	
-	public Integer getDistance(){
+	public double getDistance(){
 		return this.distance;
 	}
 	
@@ -30,7 +37,7 @@ public class Connection {
 		this.distance = newDistance;
 	}
 	
-	public Integer getTime(){
+	public double getTime(){
 		return this.time;
 	}
 	
