@@ -2,7 +2,8 @@ import java.util.ArrayList;
 
 public abstract class AbstractPlace {
 	private String name;
-	private ArrayList<Connection> neighbors;
+	private ArrayList<Connection> connections;
+	private ArrayList<Place> neighbors;
 	private Point point;
 	private Integer rating;
 	private Realm realm;
@@ -15,12 +16,12 @@ public abstract class AbstractPlace {
 		this.name = newName;
 	}
 	
-	public ArrayList<Connection> getNeighbors(){
-		return this.neighbors;
+	public ArrayList<Connection> getConnections(){
+		return this.connections;
 	}
 	
-	public void setNeighbors(ArrayList<Connection> newNeighbors){
-		this.neighbors = newNeighbors;
+	public void setConnections(ArrayList<Connection> newConnections){
+		this.connections = newConnections;
 	}
 	
 	public Point getPoint(){
@@ -45,6 +46,14 @@ public abstract class AbstractPlace {
 	
 	public void setRealm(Realm newRealm){
 		this.realm = newRealm;
+	}
+
+	public ArrayList<Place> getNeighbors() {
+		return this.neighbors;
+	}
+
+	public void setNeighbors(ArrayList<Place> neighbors) {
+		this.neighbors = neighbors;
 	}
 	
 }
