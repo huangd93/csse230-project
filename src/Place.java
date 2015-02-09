@@ -11,9 +11,11 @@ public class Place extends AbstractPlace{
 		if(this.getRealm() != destination.getRealm()) {
 			
 		}
+		return null;
 	}
 	
 	public ArrayList<Connection> fastestRouteTo(Place destination) {
+		return null;
 		
 	}
 }
