@@ -35,7 +35,9 @@ public class PlacesDao implements PlacesDaoInterface {
 	public boolean insert(Place place, String name, ArrayList<Place> neighbors,
 			Route route, ArrayList<Connection> connections, Point point,
 			Integer rating, Realm realm) {
-		// TODO Auto-generated method stub
+		PlacesTree t = new PlacesTree();
+		Place newPlace = new Place(name, connections, point, rating, realm);
+		t.insert(newPlace);
 		return false;
 	}
 

@@ -44,8 +44,5 @@ public interface PlacesDaoInterface {
 	public boolean insert(Place place, String name, ArrayList<Place> neighbors,
 			Route route, ArrayList<Connection> connections, Point point,
 			Integer rating, Realm realm); 
-	// specify name, set of neighbors, route, connection, point, rating, realm
-	// should we insert these places onto like a map or an environment object?
-	// I sort of feel like
 
 }
