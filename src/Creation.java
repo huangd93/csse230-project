@@ -36,7 +36,7 @@ public class Creation {
 
 		ArrayList<Connection> seaConnect = new ArrayList<Connection>();
 		ArrayList<Place> seaNeighbors = new ArrayList<Place>();
-		Point seaPoint = new Point(30, 20);
+		Point seaPoint = new Point(30, 80);
 
 		Place valhalla = new Place("Valhalla", valhallaConnect,
 				valhallaNeighbors, valhallaPoint, 9, Realm.Asgard);
@@ -80,6 +80,46 @@ public class Creation {
 		seaNeighbors.add(odinsFortress);
 		seaNeighbors.add(asgardMnts);
 		seaOfMarmora.setNeighbors(seaNeighbors);
+		
+	}
+	
+	@Test
+	public void createJotunheim(){
+		
+	}
+	
+	@Test
+	public void createNiflheim(){
+		
+	}
+	
+	@Test
+	public void createVanaheim(){
+		
+	}
+	
+	@Test
+	public void createAlfheim(){
+		
+	}
+	
+	@Test
+	public void createMidgard(){
+		
+	}
+	
+	@Test
+	public void createSvartalfheim(){
+		
+	}
+	
+	@Test
+	public void createNidavellir(){
+		
+	}
+	
+	@Test
+	public void createMuspelheim(){
 		
 	}
 }

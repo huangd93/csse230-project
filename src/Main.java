@@ -8,6 +8,12 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		new MapGUI();
+		
+		
+		
+		//ignore everything below here for now
+		Creation yggdrasil = new Creation();
+		yggdrasil.createAsgard();
 	}
 
 }
