@@ -7,6 +7,10 @@ public abstract class AbstractPlace {
 	private Point point;
 	private Integer rating;
 	private Realm realm;
+	
+	//the next two are only used within the PlacesTree
+	public Place leftChild = null;
+	public Place rightChild = null;
 
 	public String getName() {
 		return this.name;
