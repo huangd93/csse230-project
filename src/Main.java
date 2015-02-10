@@ -7,9 +7,7 @@ public class Main {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		new MapGUI();
-		
-		
+		new StartUpGUI();
 		
 		//ignore everything below here for now
 		Creation yggdrasil = new Creation();
