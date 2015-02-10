@@ -14,9 +14,11 @@ public class StartUpGUI {
      
      /**
      * Constructs the Start up screen.
+     * 
      */
      public StartUpGUI() {
-           this.mainframe = new JFrame("Yggdrasil (The World Tree)");
+           this.mainframe = new JFrame();
+           this.mainframe.setTitle("Yggdrasil (The World Tree)");
            this.mainframe.setSize(1366, 768);
            this.mainframe.setVisible(true);
            this.mainframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -28,9 +30,9 @@ public class StartUpGUI {
            JLabel welcome = new JLabel("Welcome to Yggdrasil");
            JLabel option = new JLabel("Would you like to");
            JButton planButton = new JButton("Plan an adventure");
-           planButton.addActionListener(new ButtonHandler());
+           planButton.addActionListener(new ButtonHandler(this.mainframe));
            JButton directionsButton = new JButton("Get Directions");
-           directionsButton.addActionListener(new ButtonHandler());
+           directionsButton.addActionListener(new ButtonHandler(this.mainframe));
            
            textPanel.setBounds(583, 284, 200, 55);
            buttonPanel.setBounds(533, 384, 300, 50);

@@ -8,19 +8,25 @@ import javax.swing.JPanel;
 
 public class ButtonHandler implements ActionListener {
 	
+	JFrame mainframe;
+	
+	public ButtonHandler(JFrame frame){
+		this.mainframe = frame;
+	}
+	
 	public void actionPerformed(ActionEvent ae) {
 		 String action = ae.getActionCommand();
 	     if(action.equals("Plan an adventure")) {
 	         System.out.println("Plan pressed!");
-	         new PlannerGUI();
+	         new PlannerGUI(this.mainframe);
 	     }
 	     else if(action.equals("Get Directions")) {
 	         System.out.println("Directions pressed!");
-	         new MapGUI();
+	         new MapGUI(this.mainframe);
 	     }
 	     else if(action.equals("Create Adventure")){
 	    	 System.out.println("Create pressed!");
-	    	 new MapGUI();
+	    	 new MapGUI(this.mainframe);
 	     }
      }
 }
