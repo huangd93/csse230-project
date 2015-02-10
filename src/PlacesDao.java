@@ -33,15 +33,13 @@ public class PlacesDao implements PlacesDaoInterface {
 		return false;
 	}
 
-	public boolean insertIntoRatingTree(Place place, String name,
-			ArrayList<Place> neighbors, Route route,
+	public boolean insertIntoRatingTree(Place place, String name, Route route,
 			ArrayList<Connection> connections, Point point, Integer rating,
 			Realm realm) {
 		PlacesTree t = new PlacesTree();
-		Place newPlace = new Place(name, connections, neighbors, point, rating, realm);
+		Place newPlace = new Place(name, connections, point, rating, realm);
 		t.insert(newPlace);
 		return false;
 	}
-
 
 }

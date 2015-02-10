@@ -19,9 +19,8 @@ public class Creation {
 
 		ArrayList<Connection> valhallaConnect = new ArrayList<Connection>();
 		ArrayList<Place> valhallaNeighbors = new ArrayList<Place>();
-		Point valhallaPoint = new Point(50, 40); // to be further define Points
-													// for
-													// real position
+		Point valhallaPoint = new Point(50, 40);
+
 		ArrayList<Connection> odinConnect = new ArrayList<Connection>();
 		ArrayList<Place> odinNeighbors = new ArrayList<Place>();
 		Point odinPoint = new Point(55, 50);
@@ -38,20 +37,20 @@ public class Creation {
 		ArrayList<Place> seaNeighbors = new ArrayList<Place>();
 		Point seaPoint = new Point(30, 80);
 
-		Place valhalla = new Place("Valhalla", valhallaConnect,
-				valhallaNeighbors, valhallaPoint, 9, Realm.Asgard);
+		Place valhalla = new Place("Valhalla", valhallaConnect, valhallaPoint,
+				9, Realm.Asgard);
 
 		Place odinsFortress = new Place("Odin's Fortress", odinConnect,
-				odinNeighbors, odinPoint, 8, Realm.Asgard);
+				odinPoint, 8, Realm.Asgard);
 
 		Place asgardMnts = new Place("Asgard Mountains", mntnConnect,
-				mntnNeighbors, mntnPoint, 5, Realm.Asgard);
+				mntnPoint, 5, Realm.Asgard);
 
-		Place lakeLogur = new Place("Lake Logur", lakeConnect, lakeNeighbors,
-				lakePoint, 5, Realm.Asgard);
+		Place lakeLogur = new Place("Lake Logur", lakeConnect, lakePoint, 5,
+				Realm.Asgard);
 
-		Place seaOfMarmora = new Place("Sea of Marmora", seaConnect,
-				seaNeighbors, seaPoint, 4, Realm.Asgard);
+		Place seaOfMarmora = new Place("Sea of Marmora", seaConnect, seaPoint,
+				4, Realm.Asgard);
 
 		t.insert(valhalla);
 		t.insert(odinsFortress);
@@ -76,50 +75,50 @@ public class Creation {
 
 		lakeNeighbors.add(asgardMnts);
 		lakeLogur.setNeighbors(lakeNeighbors);
-		
+
 		seaNeighbors.add(odinsFortress);
 		seaNeighbors.add(asgardMnts);
 		seaOfMarmora.setNeighbors(seaNeighbors);
-		
+
 	}
-	
+
 	@Test
-	public void createJotunheim(){
-		
+	public void createJotunheim() {
+
 	}
-	
+
 	@Test
-	public void createNiflheim(){
-		
+	public void createNiflheim() {
+
 	}
-	
+
 	@Test
-	public void createVanaheim(){
-		
+	public void createVanaheim() {
+
 	}
-	
+
 	@Test
-	public void createAlfheim(){
-		
+	public void createAlfheim() {
+
 	}
-	
+
 	@Test
-	public void createMidgard(){
-		
+	public void createMidgard() {
+
 	}
-	
+
 	@Test
-	public void createSvartalfheim(){
-		
+	public void createSvartalfheim() {
+
 	}
-	
+
 	@Test
-	public void createNidavellir(){
-		
+	public void createNidavellir() {
+
 	}
-	
+
 	@Test
-	public void createMuspelheim(){
-		
+	public void createMuspelheim() {
+
 	}
 }
