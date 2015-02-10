@@ -1,10 +1,9 @@
 import java.util.ArrayList;
 
-
 public class PlacesDao implements PlacesDaoInterface {
-	
+
 	protected PlacesDao() {
-		
+
 	}
 
 	public ArrayList<Place> getPlaces() {
@@ -27,18 +26,22 @@ public class PlacesDao implements PlacesDaoInterface {
 		return null;
 	}
 
-	public boolean insert(Place place) {
+	public boolean insert(Place place, String name, ArrayList<Place> neighbors,
+			Route route, ArrayList<Connection> connections, Point point,
+			Integer rating, Realm realm) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	public boolean insertIntoRatingTree(Place place, String name, ArrayList<Place> neighbors,
-			Route route, ArrayList<Connection> connections, Point point,
-			Integer rating, Realm realm) {
+	public boolean insertIntoRatingTree(Place place, String name,
+			ArrayList<Place> neighbors, Route route,
+			ArrayList<Connection> connections, Point point, Integer rating,
+			Realm realm) {
 		PlacesTree t = new PlacesTree();
 		Place newPlace = new Place(name, connections, point, rating, realm);
 		t.insert(newPlace);
 		return false;
 	}
+
 
 }

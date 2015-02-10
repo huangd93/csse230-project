@@ -36,7 +36,7 @@ public interface PlacesDaoInterface {
 	public ArrayList<Route> getShortestRoute(Place place1, Place place2);
 
 	/**
-	 * Inserts the given place into the map
+	 * Inserts the given place into the tree
 	 * 
 	 * @param place
 	 * @return
@@ -44,5 +44,6 @@ public interface PlacesDaoInterface {
 	public boolean insertIntoRatingTree(Place place, String name, ArrayList<Place> neighbors,
 			Route route, ArrayList<Connection> connections, Point point,
 			Integer rating, Realm realm); 
+
 
 }
