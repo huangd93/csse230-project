@@ -38,7 +38,7 @@ public class PlacesDao implements PlacesDaoInterface {
 			ArrayList<Connection> connections, Point point, Integer rating,
 			Realm realm) {
 		PlacesTree t = new PlacesTree();
-		Place newPlace = new Place(name, connections, point, rating, realm);
+		Place newPlace = new Place(name, connections, neighbors, point, rating, realm);
 		t.insert(newPlace);
 		return false;
 	}

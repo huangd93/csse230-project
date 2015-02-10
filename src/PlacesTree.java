@@ -1,12 +1,7 @@
 public class PlacesTree {
 
 	Place root = null;
-
 	Integer size = 0;
-
-	// this is going to start off being a BST, will change into something
-	// fancier later.
-	// sorted based on Rating
 
 	public boolean insert(Place place) {
 		if (place == null) {
@@ -52,17 +47,17 @@ public class PlacesTree {
 				return true;
 			}
 		} else if (place.getRating().compareTo(compNode.getRating()) > 0) {
-			if(compNode.leftChild == null){
+			if (compNode.leftChild == null) {
 				compNode.leftChild = place;
 				return true;
-			} else if (compNode.leftChild != null){
+			} else if (compNode.leftChild != null) {
 				positionFurtherDownTree(place, compNode.leftChild);
 			}
 		} else if (place.getRating().compareTo(compNode.getRating()) < 0) {
-			if(compNode.rightChild == null){
+			if (compNode.rightChild == null) {
 				compNode.rightChild = place;
 				return true;
-			} else if (compNode.rightChild != null){
+			} else if (compNode.rightChild != null) {
 				positionFurtherDownTree(place, compNode.rightChild);
 			}
 		}
