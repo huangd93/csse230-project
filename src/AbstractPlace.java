@@ -11,6 +11,15 @@ public abstract class AbstractPlace {
 	//the next two are only used within the PlacesTree
 	public Place leftChild = null;
 	public Place rightChild = null;
+	
+	public static double estimatedDistance(Place x, Place y) {
+		double result = 0;
+		if(x.getRealm() != y.getRealm()) {
+			// TODO: Add in finding realm gate stuff
+		}
+		result += Point.distanceBetween(x.getPoint(), y.getPoint());
+		return result;
+	}
 
 	public String getName() {
 		return this.name;

@@ -1,7 +1,7 @@
 
 public class PlacesDaoFactory {
 	
-	private static PlacesDao placesDaoSingleton;
+	public static PlacesDao placesDaoSingleton;
 	
 	public PlacesDao getPlacesDaoSingleton(){
 		if(placesDaoSingleton == null) {
