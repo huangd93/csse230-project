@@ -6,6 +6,12 @@ public class Connection {
 	private double distance;
 	private double time;
 	
+	/**
+	 * Creates a connection
+	 * @param d The destination Place
+	 * @param r The Route between the points
+	 * @param speed The speed of travel on this connection
+	 */
 	public Connection(Place d, Route r, int speed) {
 		destination = d;
 		route = r;
