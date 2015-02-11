@@ -159,4 +159,9 @@ public class PlacesDao implements PlacesDaoInterface {
 		}
 		
 	}
+
+	public boolean insertIntoRatingTree(Place place) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }
