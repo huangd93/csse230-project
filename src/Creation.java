@@ -13,10 +13,10 @@ import org.junit.Test;
  */
 public class Creation {
 
+	PlacesTree t = new PlacesTree();
+
 	@Test
 	public void createAsgard() {
-		PlacesTree t = new PlacesTree();
-
 		ArrayList<Connection> valhallaConnect = new ArrayList<Connection>();
 		ArrayList<Place> valhallaNeighbors = new ArrayList<Place>();
 		Point valhallaPoint = new Point(50, 40);
@@ -84,6 +84,29 @@ public class Creation {
 
 	@Test
 	public void createJotunheim() {
+		
+		ArrayList<Connection> riverIvingConnect = new ArrayList<Connection>();
+		ArrayList<Place> riverIvingNeighbors = new ArrayList<Place>();
+		Point riverIvingPoint = new Point(40, 20);
+
+		ArrayList<Connection> utgardLokiConnect = new ArrayList<Connection>();
+		ArrayList<Place> utgardLokiNeighbors = new ArrayList<Place>();
+		Point utgardLokiPoint = new Point(50, 40);
+
+		ArrayList<Connection> mimirConnect = new ArrayList<Connection>();
+		ArrayList<Place> mimirNeighbors = new ArrayList<Place>();
+		Point mimirPoint = new Point(80, 40);
+		
+		//continue here
+
+		Place riverIving = new Place("The River Iving", riverIvingConnect,
+				riverIvingPoint, 4, Realm.Jotunheim);
+
+		Place utgardLokisThrone = new Place("Utgard-Loki's Throne",
+				utgardLokiConnect, utgardLokiPoint, 8, Realm.Jotunheim);
+
+		Place mimirsWell = new Place("Mimir's Well", mimirConnect, mimirPoint,
+				7, Realm.Jotunheim);
 
 	}
 

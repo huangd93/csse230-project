@@ -52,13 +52,6 @@ public class PlacesDao implements PlacesDaoInterface {
 		return result;
 	}
 
-	public boolean insert(Place place, String name, ArrayList<Place> neighbors,
-			Route route, ArrayList<Connection> connections, Point point,
-			Integer rating, Realm realm) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
 	public boolean insertIntoRatingTree(Place place, String name, Route route,
 			ArrayList<Connection> connections, Point point, Integer rating,
 			Realm realm) {
