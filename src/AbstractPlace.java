@@ -79,4 +79,19 @@ public abstract class AbstractPlace {
 		return false;
 	}
 	
+	/**
+	 * Returns the time cost of the shortest connection from this Place
+	 * @return -1 if there are no connections, or the shortest time to another Place
+	 */
+	public double getShortestTime() {
+		if(connections == null || connections.size() == 0) return -1;
+		double shortest = connections.get(0).getTime();
+		for(Connection o : connections) {
+			if(o.getTime() < shortest) {
+				shortest = o.getTime();
+			}
+		}
+		return shortest;
+	}
+	
 }

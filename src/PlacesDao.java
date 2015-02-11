@@ -17,12 +17,48 @@ public class PlacesDao implements PlacesDaoInterface {
 		return null;
 	}
 
+	/**
+	 * Returns the shortest path from place1 to place2 sorted by time
+	 * @param place1 The starting point
+	 * @param place2 The ending point
+	 * @return An ArrayList of connections that make up the fastest route
+	 */
 	public ArrayList<Connection> getFastestRoute(Place place1, Place place2) {
-		// TODO Auto-generated method stub
-		// How do we guess time cost? 
-		return null;
+		PriorityQueue<RouteNode> openList = new PriorityQueue<RouteNode>();
+		LinkedList<RouteNode> closedList = new LinkedList<RouteNode>();
+		
+		openList.add(new RouteNode(null, null, place1, 0, Place.estimatedDistance(place1, place2)));
+		RouteNode current = null;
+		while(!openList.isEmpty()) {
+			current = openList.poll();
+			if(current.place.equals(place2)) {
+				break;
+			}
+			closedList.insert(current);
+			for(Connection i : current.place.getConnections()) {
+				RouteNode next = new RouteNode(current, i, i.getDestination(), current.g + i.getDistance(), 
+						i.getDestination().getShortestTime());
+				if(!closedList.contains(next)) openList.add(next);
+			}
+		}
+		ArrayList<Connection> construct = new ArrayList<Connection>();
+		while(current.arrivalConnection != null) {
+			construct.add(current.arrivalConnection);
+			current = current.cameFrom;
+		}
+		ArrayList<Connection> result= new ArrayList<Connection>();
+		for(int i = 0; i < construct.size(); i++) {
+			result.add(construct.get(i));
+		}
+		return result;
 	}
 
+	/**
+	 * Returns the shortest path from place1 to place2 sorted by distance
+	 * @param place1 The starting point
+	 * @param place2 The ending point
+	 * @return An ArrayList of connections that make up the shortest route
+	 */
 	public ArrayList<Connection> getShortestRoute(Place place1, Place place2) {
 		PriorityQueue<RouteNode> openList = new PriorityQueue<RouteNode>();
 		LinkedList<RouteNode> closedList = new LinkedList<RouteNode>();
