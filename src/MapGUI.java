@@ -38,21 +38,21 @@ public class MapGUI {
 	    
 	    String[] realms = {"Asgard", "Utgard","Niflheim","Vanaheim","Alfheim","Midgard","Svartalfheim","Nidavellir","Muspelheim"};
 	    JComboBox realmList = new JComboBox(realms);
-	    String[] startStrings = null;
-	    if(String.valueOf(realmList.getSelectedItem()) == "Asgard"){
-	    	String[] asgardStrings = {"Valhalla","Odin’s Fortress","Lake Logur","Asgard Mountains","Sea of Marmora"};
-	    	startStrings = asgardStrings;
-	    }
-	    else if(String.valueOf(realmList.getSelectedItem()) == "Utgard"){
-	    	String[] utgardStrings = {"The River Iving","Mimir’s Well of Wisdom","Utgard-Loki’s Throne","Griotunagardar","The Mountain Thrymheim"};
-	    	startStrings = utgardStrings;
-	    }
-	    else if(String.valueOf(realmList.getSelectedItem()) == "Niflheim"){
-	    	String[] niflheimStrings = {"The Spring Hvergelmir","The Plains of Ginnungagap","The Rivers Elivagar","Helheim (Hel’s Throne)","Fimbulthul"};
-	    	startStrings = niflheimStrings;
-	    }
-	    realmList.addActionListener(new DropDownHandler(startStrings));
-	    JComboBox startList = new JComboBox(startStrings);
+//	    String[] startStrings = null;
+//	    if(String.valueOf(realmList.getSelectedItem()) == "Asgard"){
+//	    	String[] asgardStrings = {"Valhalla","Odin’s Fortress","Lake Logur","Asgard Mountains","Sea of Marmora"};
+//	    	startStrings = asgardStrings;
+//	    }
+//	    else if(String.valueOf(realmList.getSelectedItem()) == "Utgard"){
+//	    	String[] utgardStrings = {"The River Iving","Mimir’s Well of Wisdom","Utgard-Loki’s Throne","Griotunagardar","The Mountain Thrymheim"};
+//	    	startStrings = utgardStrings;
+//	    }
+//	    else if(String.valueOf(realmList.getSelectedItem()) == "Niflheim"){
+//	    	String[] niflheimStrings = {"The Spring Hvergelmir","The Plains of Ginnungagap","The Rivers Elivagar","Helheim (Hel’s Throne)","Fimbulthul"};
+//	    	startStrings = niflheimStrings;
+//	    }
+//	    JComboBox startList = new JComboBox(startStrings);
+	    realmList.addActionListener(new DropDownHandler(null, null, controlPanel));
 	    
 	    JLabel destinationChoice = new JLabel("Choose your destination: ");
 	    
@@ -63,9 +63,9 @@ public class MapGUI {
 	    createButton.addActionListener(new ButtonHandler(this.mainframe, direcsPanel));
 	    JButton planButton = new JButton("Plan an adventure");
 	    planButton.addActionListener(new ButtonHandler(this.mainframe, mainPanel));
-	    controlPanel.add(realmList);
 	    controlPanel.add(startChoice);
-	    controlPanel.add(startList);
+	    controlPanel.add(realmList);
+//	    controlPanel.add(startList);
 	    controlPanel.add(destinationChoice);
 	    controlPanel.add(destinationList);
 	    controlPanel.add(createButton);
