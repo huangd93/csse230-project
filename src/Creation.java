@@ -58,28 +58,73 @@ public class Creation {
 		t.insert(lakeLogur);
 		t.insert(seaOfMarmora);
 		
+		//connections from valhalla
 		ArrayList<Point> connectPointsVal = new ArrayList<Point>();
 		connectPointsVal.add(odinPoint);
+		connectPointsVal.add(mntnPoint);
 		valhallaConnect.add(new Connection(odinsFortress, new Route(connectPointsVal), 30));
+		valhallaConnect.add(new Connection(asgardMnts, new Route(connectPointsVal), 70));
+		valhalla.setConnections(valhallaConnect);
+		
+		//connections from lake logur
+		ArrayList<Point> connectPointsLakeLogur = new ArrayList<Point>();
+		connectPointsLakeLogur.add(mntnPoint);
+		lakeConnect.add(new Connection(asgardMnts, new Route(connectPointsLakeLogur), 40));
+		lakeLogur.setConnections(lakeConnect);
+		
+		//connections from asgard mountains
+		ArrayList<Point> connectPointsMounts = new ArrayList<Point>();
+		connectPointsMounts.add(lakePoint);
+		connectPointsMounts.add(valhallaPoint);
+		connectPointsMounts.add(odinPoint);
+		connectPointsMounts.add(seaPoint);
+		mntnConnect.add(new Connection(lakeLogur, new Route(connectPointsMounts), 40));
+		mntnConnect.add(new Connection(valhalla, new Route(connectPointsMounts), 50));	
+		mntnConnect.add(new Connection(odinsFortress, new Route(connectPointsMounts), 45));
+		mntnConnect.add(new Connection(seaOfMarmora, new Route(connectPointsMounts), 80));
+		asgardMnts.setConnections(mntnConnect);
+		
+		//connections from Odin's fortress
+		ArrayList<Point> connectPointsOdin = new ArrayList<Point>();
+		connectPointsOdin.add(valhallaPoint);
+		connectPointsOdin.add(mntnPoint);
+		connectPointsOdin.add(seaPoint);
+		odinConnect.add(new Connection(valhalla, new Route(connectPointsOdin), 30));
+		odinConnect.add(new Connection(asgardMnts, new Route(connectPointsOdin), 45));
+		odinConnect.add(new Connection(seaOfMarmora, new Route(connectPointsOdin), 70));
+		odinsFortress.setConnections(odinConnect);
+		
+		//connections from the sea of marmora
+		ArrayList<Point> connectPointsSea = new ArrayList<Point>();
+		connectPointsSea.add(odinPoint);
+		connectPointsSea.add(mntnPoint);
+		seaConnect.add(new Connection(odinsFortress, new Route(connectPointsSea), 70));
+		seaConnect.add(new Connection(asgardMnts, new Route(connectPointsSea), 80));
+		seaOfMarmora.setConnections(seaConnect);
 
+		//valhalla neighbors
 		valhallaNeighbors.add(odinsFortress);
 		valhallaNeighbors.add(asgardMnts);
 		valhalla.setNeighbors(valhallaNeighbors);
 
+		//odins fortress neighbors
 		odinNeighbors.add(valhalla);
 		odinNeighbors.add(asgardMnts);
 		odinNeighbors.add(seaOfMarmora);
 		odinsFortress.setNeighbors(odinNeighbors);
 
+		//asgard mountain neighbors
 		mntnNeighbors.add(lakeLogur);
 		mntnNeighbors.add(valhalla);
 		mntnNeighbors.add(odinsFortress);
 		mntnNeighbors.add(seaOfMarmora);
 		asgardMnts.setNeighbors(mntnNeighbors);
 
+		//lake logur neighbors
 		lakeNeighbors.add(asgardMnts);
 		lakeLogur.setNeighbors(lakeNeighbors);
 
+		//sea of marmora neighbors
 		seaNeighbors.add(odinsFortress);
 		seaNeighbors.add(asgardMnts);
 		seaOfMarmora.setNeighbors(seaNeighbors);
@@ -88,7 +133,6 @@ public class Creation {
 
 	@Test
 	public void createJotunheim() {
-
 		ArrayList<Connection> riverIvingConnect = new ArrayList<Connection>();
 		ArrayList<Place> riverIvingNeighbors = new ArrayList<Place>();
 		Point riverIvingPoint = new Point(40, 20);
@@ -130,25 +174,36 @@ public class Creation {
 		t.insert(griotunagardar);
 		t.insert(mountThrymheim);
 		
+		//river iving connections
+		ArrayList<Point> connectPointsIving = new ArrayList<Point>();
+		connectPointsIving.add(grioPoint);
+		riverIvingConnect.add(new Connection(griotunagardar, new Route(connectPointsIving), 45));
+		riverIving.setConnections(riverIvingConnect);
+		
+		//river iving neighbors
 		riverIvingNeighbors.add(griotunagardar);
 		riverIvingNeighbors.add(utgardLokisThrone);
 		riverIvingNeighbors.add(mimirsWell);
 		riverIving.setNeighbors(riverIvingNeighbors);
 		
+		//utgardlokis neighbors
 		utgardLokiNeighbors.add(riverIving);
 		utgardLokiNeighbors.add(mimirsWell);
 		utgardLokiNeighbors.add(mountThrymheim);
 		utgardLokiNeighbors.add(griotunagardar);
 		utgardLokisThrone.setNeighbors(utgardLokiNeighbors);
 		
+		//mimir's well neighbors
 		mimirNeighbors.add(utgardLokisThrone);
 		mimirNeighbors.add(riverIving);
 		mimirsWell.setNeighbors(mimirNeighbors);
 		
+		//griotunagardar neighbors
 		grioNeighbors.add(utgardLokisThrone);
 		grioNeighbors.add(riverIving);
 		griotunagardar.setNeighbors(grioNeighbors);
 		
+		//thrymheim neighbors
 		mtTNeighbors.add(utgardLokisThrone);
 		mountThrymheim.setNeighbors(mtTNeighbors);
 
