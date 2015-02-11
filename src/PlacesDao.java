@@ -19,6 +19,7 @@ public class PlacesDao implements PlacesDaoInterface {
 
 	public ArrayList<Connection> getFastestRoute(Place place1, Place place2) {
 		// TODO Auto-generated method stub
+		// How do we guess time cost? 
 		return null;
 	}
 

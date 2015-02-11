@@ -1,6 +1,8 @@
+import java.util.Iterator;
+
 // This LinkedList implementation has no remove function since we have no use for it.
 
-public class LinkedList<T>{
+public class LinkedList<T> implements Iterable<T> {
 	Node root;
 	Node tail;
 	
@@ -43,6 +45,29 @@ public class LinkedList<T>{
 	public boolean contains(T e) {
 		if(root == null) return false;
 		return root.contains(e);
+	}
+
+	/**
+	 * Returns an iterator for the LinkedList
+	 */
+	public Iterator<T> iterator() {
+		return new LinkedListIterator();
+	}
+	
+	/**
+	 * Removes the node with the given element
+	 * @param e Element to be removed
+	 * @return True if the node was succeessfully removed from the list
+	 */
+	public boolean remove(T e) {
+		Iterator<T> t = iterator();
+		while(t.hasNext()) {
+			if(t.next().equals(e)) {
+				t.remove();
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	/**
@@ -106,6 +131,43 @@ public class LinkedList<T>{
 			if(element.equals(e)) return true;
 			if(child == null) return false;
 			return child.contains(e);
+		}
+	}
+	
+	/**
+	 * Iterates the Linked List from root to tail
+	 * @author huangd
+	 *
+	 */
+	private class LinkedListIterator implements Iterator<T> {
+		Node parent;
+		Node current;
+		
+		public LinkedListIterator() {
+			parent = null;
+			current = new Node(null, root);
+		}
+
+		public boolean hasNext() {
+			if(current == null) return false;
+			if(current.child != null) return true;
+			return false;
+		}
+
+		public T next() {
+			if(!hasNext()) return null;
+			current = current.child;
+			return current.element;
+		}
+
+		public void remove() {
+			if(parent == null) {
+				root = null;
+				current = null;
+			} else {
+				parent.child = current.child;
+				current = current.child;
+			}
 		}
 	}
 }
