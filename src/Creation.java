@@ -84,7 +84,7 @@ public class Creation {
 
 	@Test
 	public void createJotunheim() {
-		
+
 		ArrayList<Connection> riverIvingConnect = new ArrayList<Connection>();
 		ArrayList<Place> riverIvingNeighbors = new ArrayList<Place>();
 		Point riverIvingPoint = new Point(40, 20);
@@ -96,8 +96,14 @@ public class Creation {
 		ArrayList<Connection> mimirConnect = new ArrayList<Connection>();
 		ArrayList<Place> mimirNeighbors = new ArrayList<Place>();
 		Point mimirPoint = new Point(80, 40);
-		
-		//continue here
+
+		ArrayList<Connection> grioConnect = new ArrayList<Connection>();
+		ArrayList<Place> grioNeighbors = new ArrayList<Place>();
+		Point grioPoint = new Point(20, 50);
+
+		ArrayList<Connection> mtTConnect = new ArrayList<Connection>();
+		ArrayList<Place> mtTNeighbors = new ArrayList<Place>();
+		Point mtTPoint = new Point(50, 80);
 
 		Place riverIving = new Place("The River Iving", riverIvingConnect,
 				riverIvingPoint, 4, Realm.Jotunheim);
@@ -107,6 +113,39 @@ public class Creation {
 
 		Place mimirsWell = new Place("Mimir's Well", mimirConnect, mimirPoint,
 				7, Realm.Jotunheim);
+
+		Place griotunagardar = new Place("Griotunagardar", grioConnect,
+				grioPoint, 5, Realm.Jotunheim);
+
+		Place mountThrymheim = new Place("The Mountain Thrymheim", mtTConnect,
+				mtTPoint, 7, Realm.Jotunheim);
+		
+		t.insert(riverIving);
+		t.insert(utgardLokisThrone);
+		t.insert(mimirsWell);
+		t.insert(griotunagardar);
+		t.insert(mountThrymheim);
+		
+		riverIvingNeighbors.add(griotunagardar);
+		riverIvingNeighbors.add(utgardLokisThrone);
+		riverIvingNeighbors.add(mimirsWell);
+		riverIving.setNeighbors(riverIvingNeighbors);
+		
+		utgardLokiNeighbors.add(riverIving);
+		utgardLokiNeighbors.add(mimirsWell);
+		utgardLokiNeighbors.add(mountThrymheim);
+		utgardLokiNeighbors.add(griotunagardar);
+		utgardLokisThrone.setNeighbors(utgardLokiNeighbors);
+		
+		mimirNeighbors.add(utgardLokisThrone);
+		mimirNeighbors.add(riverIving);
+		mimirsWell.setNeighbors(mimirNeighbors);
+		
+		grioNeighbors.add(utgardLokisThrone);
+		grioNeighbors.add(riverIving);
+		griotunagardar.setNeighbors(grioNeighbors);
+		
+		mtTNeighbors.add(utgardLokisThrone);
 
 	}
 
