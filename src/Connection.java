@@ -6,6 +6,7 @@ public class Connection {
 	private double distance;
 	private double time;
 	
+	//destination, new route object (two points, beginning and end), speed
 	public Connection(Place d, Route r, int speed) {
 		destination = d;
 		route = r;

@@ -57,6 +57,10 @@ public class Creation {
 		t.insert(asgardMnts);
 		t.insert(lakeLogur);
 		t.insert(seaOfMarmora);
+		
+		ArrayList<Point> connectPointsVal = new ArrayList<Point>();
+		connectPointsVal.add(odinPoint);
+		valhallaConnect.add(new Connection(odinsFortress, new Route(connectPointsVal), 30));
 
 		valhallaNeighbors.add(odinsFortress);
 		valhallaNeighbors.add(asgardMnts);
@@ -146,6 +150,7 @@ public class Creation {
 		griotunagardar.setNeighbors(grioNeighbors);
 		
 		mtTNeighbors.add(utgardLokisThrone);
+		mountThrymheim.setNeighbors(mtTNeighbors);
 
 	}
 
