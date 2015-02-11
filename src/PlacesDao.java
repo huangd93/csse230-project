@@ -1,9 +1,8 @@
 import java.util.ArrayList;
 
 public class PlacesDao implements PlacesDaoInterface {
-	
 
-	private PlacesDao() {
+	protected PlacesDao() {
 
 	}
 
