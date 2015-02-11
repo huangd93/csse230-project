@@ -69,4 +69,14 @@ public abstract class AbstractPlace {
 		this.neighbors = neighbors;
 	}
 	
+	/**
+	 * Returns true if the name of the place is the same as this name and it's in the same realm.
+	 * @param o
+	 * @return
+	 */
+	public boolean equals(Place o) {
+		if(name.equals(o.getName()) && realm == o.getRealm()) return true;
+		return false;
+	}
+	
 }

@@ -24,7 +24,7 @@ public interface PlacesDaoInterface {
 	 * @param place2
 	 * @return
 	 */
-	public ArrayList<Route> getFastestRoute(Place place1, Place place2);
+	public ArrayList<Connection> getFastestRoute(Place place1, Place place2);
 
 	/**
 	 * Returns the shortest set of Routes going from place1 to place2
@@ -33,7 +33,7 @@ public interface PlacesDaoInterface {
 	 * @param place2
 	 * @return
 	 */
-	public ArrayList<Route> getShortestRoute(Place place1, Place place2);
+	public ArrayList<Connection> getShortestRoute(Place place1, Place place2);
 
 	/**
 	 * Inserts the given place into the tree

@@ -36,6 +36,16 @@ public class LinkedList<T>{
 	}
 	
 	/**
+	 * Recursively checks if this LinkedList contains a node with the given element
+	 * @param e Element to check for
+	 * @return True if the element is found
+	 */
+	public boolean contains(T e) {
+		if(root == null) return false;
+		return root.contains(e);
+	}
+	
+	/**
 	 * LinkedList node
 	 * @author huangd
 	 *
@@ -85,6 +95,17 @@ public class LinkedList<T>{
 		 */
 		public T getElement() {
 			return element;
+		}
+		
+		/**
+		 * Recursively checks if this LinkedList contains a node with the given element
+		 * @param e Element to check for
+		 * @return True if the element is found
+		 */
+		public boolean contains(T e) {
+			if(element.equals(e)) return true;
+			if(child == null) return false;
+			return child.contains(e);
 		}
 	}
 }
