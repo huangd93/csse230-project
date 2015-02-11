@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 
+@SuppressWarnings("serial")
 public class PriorityQueue<T extends Comparable<T>> extends ArrayList<T>{
 	/**
 	 * Construct an empty PriorityQueue
