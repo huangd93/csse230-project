@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class PlacesDao implements PlacesDaoInterface {
 	
 
-	protected PlacesDao() {
+	private PlacesDao() {
 
 	}
 
@@ -36,6 +36,7 @@ public class PlacesDao implements PlacesDaoInterface {
 			}
 			closedList.insert(current);
 			for(Connection i : current.place.getConnections()) {
+				// The time heuristic used is simply the shortest connection available to the next Place.
 				RouteNode next = new RouteNode(current, i, i.getDestination(), current.g + i.getDistance(), 
 						i.getDestination().getShortestTime());
 				if(!closedList.contains(next)) openList.add(next);
