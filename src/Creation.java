@@ -54,11 +54,12 @@ public class Creation {
 		t.insert(seaOfMarmora);
 		
 		//connections from valhalla
-		ArrayList<Point> connectPointsVal = new ArrayList<Point>();
-		connectPointsVal.add(odinPoint);
-		connectPointsVal.add(mntnPoint);
-		valhallaConnect.add(new Connection(odinsFortress, new Route(connectPointsVal), 30));
-		valhallaConnect.add(new Connection(asgardMnts, new Route(connectPointsVal), 70));
+		ArrayList<Point> connectPointsValToOdin = new ArrayList<Point>();
+		connectPointsValToOdin.add(odinPoint);
+		ArrayList<Point> connectPointsValToMnts = new ArrayList<Point>();
+		connectPointsValToMnts.add(mntnPoint);
+		valhallaConnect.add(new Connection(odinsFortress, new Route(connectPointsValToOdin), 30));
+		valhallaConnect.add(new Connection(asgardMnts, new Route(connectPointsValToMnts), 70));
 		valhalla.setConnections(valhallaConnect);
 		
 		//connections from lake logur
@@ -68,33 +69,39 @@ public class Creation {
 		lakeLogur.setConnections(lakeConnect);
 		
 		//connections from asgard mountains
-		ArrayList<Point> connectPointsMounts = new ArrayList<Point>();
-		connectPointsMounts.add(lakePoint);
-		connectPointsMounts.add(valhallaPoint);
-		connectPointsMounts.add(odinPoint);
-		connectPointsMounts.add(seaPoint);
-		mntnConnect.add(new Connection(lakeLogur, new Route(connectPointsMounts), 40));
-		mntnConnect.add(new Connection(valhalla, new Route(connectPointsMounts), 50));	
-		mntnConnect.add(new Connection(odinsFortress, new Route(connectPointsMounts), 45));
-		mntnConnect.add(new Connection(seaOfMarmora, new Route(connectPointsMounts), 80));
+		ArrayList<Point> connectPointsMountsToLake = new ArrayList<Point>();
+		ArrayList<Point> connectPointsMountsToVal = new ArrayList<Point>();
+		ArrayList<Point> connectPointsMountsToOdin = new ArrayList<Point>();
+		ArrayList<Point> connectPointsMountsToSea = new ArrayList<Point>();
+		connectPointsMountsToLake.add(lakePoint);
+		connectPointsMountsToVal.add(valhallaPoint);
+		connectPointsMountsToOdin.add(odinPoint);
+		connectPointsMountsToSea.add(seaPoint);
+		mntnConnect.add(new Connection(lakeLogur, new Route(connectPointsMountsToLake), 40));
+		mntnConnect.add(new Connection(valhalla, new Route(connectPointsMountsToVal), 50));	
+		mntnConnect.add(new Connection(odinsFortress, new Route(connectPointsMountsToOdin), 45));
+		mntnConnect.add(new Connection(seaOfMarmora, new Route(connectPointsMountsToSea), 80));
 		asgardMnts.setConnections(mntnConnect);
 		
 		//connections from Odin's fortress
-		ArrayList<Point> connectPointsOdin = new ArrayList<Point>();
-		connectPointsOdin.add(valhallaPoint);
-		connectPointsOdin.add(mntnPoint);
-		connectPointsOdin.add(seaPoint);
-		odinConnect.add(new Connection(valhalla, new Route(connectPointsOdin), 30));
-		odinConnect.add(new Connection(asgardMnts, new Route(connectPointsOdin), 45));
-		odinConnect.add(new Connection(seaOfMarmora, new Route(connectPointsOdin), 70));
+		ArrayList<Point> connectPointsOdinToVal = new ArrayList<Point>();
+		ArrayList<Point> connectPointsOdinToMnts = new ArrayList<Point>();
+		ArrayList<Point> connectPointsOdinToSea = new ArrayList<Point>();
+		connectPointsOdinToVal.add(valhallaPoint);
+		connectPointsOdinToMnts.add(mntnPoint);
+		connectPointsOdinToSea.add(seaPoint);
+		odinConnect.add(new Connection(valhalla, new Route(connectPointsOdinToVal), 30));
+		odinConnect.add(new Connection(asgardMnts, new Route(connectPointsOdinToMnts), 45));
+		odinConnect.add(new Connection(seaOfMarmora, new Route(connectPointsOdinToSea), 70));
 		odinsFortress.setConnections(odinConnect);
 		
 		//connections from the sea of marmora
-		ArrayList<Point> connectPointsSea = new ArrayList<Point>();
-		connectPointsSea.add(odinPoint);
-		connectPointsSea.add(mntnPoint);
-		seaConnect.add(new Connection(odinsFortress, new Route(connectPointsSea), 70));
-		seaConnect.add(new Connection(asgardMnts, new Route(connectPointsSea), 80));
+		ArrayList<Point> connectPointsSeaToOdin = new ArrayList<Point>();
+		ArrayList<Point> connectPointsSeaToMntn = new ArrayList<Point>();
+		connectPointsSeaToOdin.add(odinPoint);
+		connectPointsSeaToMntn.add(mntnPoint);
+		seaConnect.add(new Connection(odinsFortress, new Route(connectPointsSeaToOdin), 70));
+		seaConnect.add(new Connection(asgardMnts, new Route(connectPointsSeaToMntn), 80));
 		seaOfMarmora.setConnections(seaConnect);
 
 	}
@@ -138,34 +145,54 @@ public class Creation {
 		t.insert(mountThrymheim);
 		
 		//river iving connections
-		ArrayList<Point> connectPointsIving = new ArrayList<Point>();
-		connectPointsIving.add(grioPoint);
-		riverIvingConnect.add(new Connection(griotunagardar, new Route(connectPointsIving), 45));
+		ArrayList<Point> connectPointsIvingToGrio = new ArrayList<Point>();
+		ArrayList<Point> connectPointsIvingToLoki = new ArrayList<Point>();
+		ArrayList<Point> connectPointsIvingToMimir = new ArrayList<Point>();
+		connectPointsIvingToGrio.add(grioPoint);
+		connectPointsIvingToLoki.add(utgardLokiPoint);
+		connectPointsIvingToMimir.add(mimirPoint);
+		riverIvingConnect.add(new Connection(griotunagardar, new Route(connectPointsIvingToGrio), 45));
+		riverIvingConnect.add(new Connection(utgardLokisThrone, new Route(connectPointsIvingToLoki), 50));
+		riverIvingConnect.add(new Connection(mimirsWell, new Route(connectPointsIvingToMimir), 90));
 		riverIving.setConnections(riverIvingConnect);
 		
 		//griotunagardar connections
-		ArrayList<Point> connectPointsGrio = new ArrayList<Point>();
-		connectPointsGrio.add(utgardLokiPoint);
-		connectPointsGrio.add(riverIvingPoint);
-		grioConnect.add(new Connection(utgardLokisThrone, new Route(connectPointsGrio), 40));
-		grioConnect.add(new Connection(riverIving, new Route(connectPointsGrio), 45));
+		ArrayList<Point> connectPointsGrioToLoki = new ArrayList<Point>();
+		ArrayList<Point> connectPointsGrioToRiver = new ArrayList<Point>();
+		connectPointsGrioToLoki.add(utgardLokiPoint);
+		connectPointsGrioToRiver.add(riverIvingPoint);
+		grioConnect.add(new Connection(utgardLokisThrone, new Route(connectPointsGrioToLoki), 40));
+		grioConnect.add(new Connection(riverIving, new Route(connectPointsGrioToRiver), 45));
 		griotunagardar.setConnections(grioConnect);
 		
 		//utgard-lokis connections
-		ArrayList<Point> connectPointsLoki = new ArrayList<Point>();
-		connectPointsLoki.add(mtTPoint);
-		connectPointsLoki.add(mimirPoint);
-		connectPointsLoki.add(riverIvingPoint);
-		connectPointsLoki.add(grioPoint);
-		utgardLokiConnect.add(new Connection(mountThrymheim, new Route(connectPointsLoki), 55));
-		utgardLokiConnect.add(new Connection(mimirsWell, new Route(connectPointsLoki), 70));
-		utgardLokiConnect.add(new Connection(riverIving, new Route(connectPointsLoki), 50));
-		utgardLokiConnect.add(new Connection(griotunagardar, new Route(connectPointsLoki), 40));
+		ArrayList<Point> connectPointsLokiToThrymheim = new ArrayList<Point>();
+		ArrayList<Point> connectPointsLokiToMimir = new ArrayList<Point>();
+		ArrayList<Point> connectPointsLokiToRiver = new ArrayList<Point>();
+		ArrayList<Point> connectPointsLokiToGrio = new ArrayList<Point>();
+		connectPointsLokiToThrymheim.add(mtTPoint);
+		connectPointsLokiToMimir.add(mimirPoint);
+		connectPointsLokiToRiver.add(riverIvingPoint);
+		connectPointsLokiToGrio.add(grioPoint);
+		utgardLokiConnect.add(new Connection(mountThrymheim, new Route(connectPointsLokiToThrymheim), 55));
+		utgardLokiConnect.add(new Connection(mimirsWell, new Route(connectPointsLokiToMimir), 70));
+		utgardLokiConnect.add(new Connection(riverIving, new Route(connectPointsLokiToRiver), 50));
+		utgardLokiConnect.add(new Connection(griotunagardar, new Route(connectPointsLokiToGrio), 40));
 		utgardLokisThrone.setConnections(utgardLokiConnect);
 		
 		//mimir's well connections
+		ArrayList<Point> connectPointsMimirToLoki = new ArrayList<Point>();
+		ArrayList<Point> connectPointsMimirToRiver = new ArrayList<Point>();
+		connectPointsMimirToLoki.add(utgardLokiPoint);
+		connectPointsMimirToRiver.add(riverIvingPoint);
+		mimirConnect.add(new Connection(utgardLokisThrone, new Route(connectPointsMimirToLoki), 70));
+		mimirConnect.add(new Connection(riverIving, new Route(connectPointsMimirToRiver), 90));
+		mimirsWell.setConnections(mimirConnect);
 		
 		//mountain thrymheim connections
+		ArrayList<Point> connectPointsThrymheim = new ArrayList<Point>();
+		connectPointsThrymheim.add(utgardLokiPoint);
+		utgardLokiConnect.add(new Connection(utgardLokisThrone, new Route(connectPointsThrymheim), 55));
 	}
 
 	@Test
