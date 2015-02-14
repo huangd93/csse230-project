@@ -613,50 +613,66 @@ public class Creation {
 
 		Place aurvangar = new Place("Aurvangar", aurvangarConnect,
 				aurvangarPoint, 5, Realm.Svartalfheim);
-		
-		//malekith connections
+
+		t.insert(malekith);
+		t.insert(unseelieCourt);
+		t.insert(byrgir);
+		t.insert(blackForest);
+		t.insert(aurvangar);
+
+		// malekith connections
 		ArrayList<Point> connectMalekithToUnseelie = new ArrayList<Point>();
 		connectMalekithToUnseelie.add(unseeliePoint);
-		malekithConnect.add(new Connection(unseelieCourt, new Route(connectMalekithToUnseelie), 20));
+		malekithConnect.add(new Connection(unseelieCourt, new Route(
+				connectMalekithToUnseelie), 20));
 		malekith.setConnections(malekithConnect);
-		
-		//unseelie court connections
+
+		// unseelie court connections
 		ArrayList<Point> connectUnseelieToMalekith = new ArrayList<Point>();
 		ArrayList<Point> connectUnseelieToBrygir = new ArrayList<Point>();
 		ArrayList<Point> connectUnseelieToAurvangar = new ArrayList<Point>();
 		connectUnseelieToMalekith.add(malekithPoint);
 		connectUnseelieToBrygir.add(byrgirPoint);
 		connectUnseelieToAurvangar.add(aurvangarPoint);
-		unseelieConnect.add(new Connection(malekith, new Route(connectUnseelieToMalekith), 20));
-		unseelieConnect.add(new Connection(byrgir, new Route(connectUnseelieToBrygir), 70));
-		unseelieConnect.add(new Connection(aurvangar, new Route(connectUnseelieToAurvangar), 50));
+		unseelieConnect.add(new Connection(malekith, new Route(
+				connectUnseelieToMalekith), 20));
+		unseelieConnect.add(new Connection(byrgir, new Route(
+				connectUnseelieToBrygir), 70));
+		unseelieConnect.add(new Connection(aurvangar, new Route(
+				connectUnseelieToAurvangar), 50));
 		unseelieCourt.setConnections(unseelieConnect);
-		
-		//byrgir connections
+
+		// byrgir connections
 		ArrayList<Point> connectByrgirToUnseelie = new ArrayList<Point>();
 		ArrayList<Point> connectByrgirToForest = new ArrayList<Point>();
 		connectByrgirToUnseelie.add(unseeliePoint);
 		connectByrgirToForest.add(blackPoint);
-		byrgirConnect.add(new Connection(unseelieCourt, new Route(connectByrgirToUnseelie), 70));
-		byrgirConnect.add(new Connection(blackForest, new Route(connectByrgirToForest), 50));
+		byrgirConnect.add(new Connection(unseelieCourt, new Route(
+				connectByrgirToUnseelie), 70));
+		byrgirConnect.add(new Connection(blackForest, new Route(
+				connectByrgirToForest), 50));
 		byrgir.setConnections(byrgirConnect);
-		
-		//black forest connections
+
+		// black forest connections
 		ArrayList<Point> connectForestToByrgir = new ArrayList<Point>();
 		ArrayList<Point> connectForestToAurvangar = new ArrayList<Point>();
 		connectForestToByrgir.add(byrgirPoint);
 		connectForestToAurvangar.add(aurvangarPoint);
-		blackConnect.add(new Connection(byrgir, new Route(connectForestToByrgir), 50));
-		blackConnect.add(new Connection(aurvangar, new Route(connectForestToAurvangar), 60));
+		blackConnect.add(new Connection(byrgir,
+				new Route(connectForestToByrgir), 50));
+		blackConnect.add(new Connection(aurvangar, new Route(
+				connectForestToAurvangar), 60));
 		blackForest.setConnections(blackConnect);
-		
-		//aurvangar connections
+
+		// aurvangar connections
 		ArrayList<Point> connectAurvangarToForest = new ArrayList<Point>();
 		ArrayList<Point> connectAurvangarToUnseelie = new ArrayList<Point>();
 		connectAurvangarToForest.add(blackPoint);
 		connectAurvangarToUnseelie.add(unseeliePoint);
-		aurvangarConnect.add(new Connection(blackForest, new Route(connectAurvangarToForest), 60));
-		aurvangarConnect.add(new Connection(unseelieCourt, new Route(connectAurvangarToUnseelie), 50));
+		aurvangarConnect.add(new Connection(blackForest, new Route(
+				connectAurvangarToForest), 60));
+		aurvangarConnect.add(new Connection(unseelieCourt, new Route(
+				connectAurvangarToUnseelie), 50));
 		aurvangar.setConnections(aurvangarConnect);
 
 	}
@@ -664,10 +680,154 @@ public class Creation {
 	@Test
 	public void createNidavellir() {
 
+		ArrayList<Connection> hreidmarConnect = new ArrayList<Connection>();
+		Point hreidmarPoint = new Point(20, 30);
+
+		ArrayList<Connection> durinConnect = new ArrayList<Connection>();
+		Point durinPoint = new Point(70, 50);
+
+		ArrayList<Connection> dvalinConnect = new ArrayList<Connection>();
+		Point dvalinPoint = new Point(70, 60);
+
+		ArrayList<Connection> darkFieldConnect = new ArrayList<Connection>();
+		Point darkFieldPoint = new Point(20, 80);
+
+		ArrayList<Connection> furnaceConnect = new ArrayList<Connection>();
+		Point furnacePoint = new Point(50, 95);
+
+		Place hreidmar = new Place("Hreidmar's Kingdom", hreidmarConnect,
+				hreidmarPoint, 9, Realm.Nidavellir);
+
+		Place durin = new Place("Durin's Hall", durinConnect, durinPoint, 4,
+				Realm.Nidavellir);
+
+		Place dvalin = new Place("Dvalin's Hall", dvalinConnect, dvalinPoint,
+				4, Realm.Nidavellir);
+
+		Place darkFields = new Place("The Dark Fields", darkFieldConnect,
+				darkFieldPoint, 5, Realm.Nidavellir);
+
+		Place furnaces = new Place("The Furnaces of Nidavellir",
+				furnaceConnect, furnacePoint, 10, Realm.Nidavellir);
+
+		t.insert(hreidmar);
+		t.insert(durin);
+		t.insert(dvalin);
+		t.insert(darkFields);
+		t.insert(furnaces);
+
+		// hreidmar connections
+		ArrayList<Point> connectHreidmarToDurin = new ArrayList<Point>();
+		ArrayList<Point> connectHreidmarToFields = new ArrayList<Point>();
+		connectHreidmarToDurin.add(durinPoint);
+		connectHreidmarToFields.add(darkFieldPoint);
+		hreidmarConnect.add(new Connection(durin, new Route(
+				connectHreidmarToDurin), 50));
+		hreidmarConnect.add(new Connection(darkFields, new Route(
+				connectHreidmarToFields), 60));
+		hreidmar.setConnections(hreidmarConnect);
+
+		// durin's connections
+		ArrayList<Point> connectDurinToHreidmar = new ArrayList<Point>();
+		ArrayList<Point> connectDurinToDvalin = new ArrayList<Point>();
+		ArrayList<Point> connectDurinToFields = new ArrayList<Point>();
+		connectDurinToHreidmar.add(hreidmarPoint);
+		connectDurinToDvalin.add(dvalinPoint);
+		connectDurinToFields.add(darkFieldPoint);
+		durinConnect.add(new Connection(hreidmar, new Route(
+				connectDurinToHreidmar), 50));
+		durinConnect.add(new Connection(dvalin,
+				new Route(connectDurinToDvalin), 20));
+		durinConnect.add(new Connection(darkFields, new Route(
+				connectDurinToFields), 60));
+		durin.setConnections(durinConnect);
+
+		// dvalin's connections
+		ArrayList<Point> connectDvalinToDurin = new ArrayList<Point>();
+		ArrayList<Point> connectDvalinToFields = new ArrayList<Point>();
+		connectDvalinToDurin.add(durinPoint);
+		connectDvalinToFields.add(darkFieldPoint);
+		dvalinConnect.add(new Connection(durin,
+				new Route(connectDvalinToDurin), 20));
+		dvalinConnect.add(new Connection(darkFields, new Route(
+				connectDvalinToFields), 50));
+		dvalin.setConnections(dvalinConnect);
+
+		// dark field connections
+		ArrayList<Point> connectFieldsToHreidmar = new ArrayList<Point>();
+		ArrayList<Point> connectFieldsToDurin = new ArrayList<Point>();
+		ArrayList<Point> connectFieldsToDvalin = new ArrayList<Point>();
+		ArrayList<Point> connectFieldsToFurnaces = new ArrayList<Point>();
+		connectFieldsToHreidmar.add(hreidmarPoint);
+		connectFieldsToDurin.add(durinPoint);
+		connectFieldsToDvalin.add(dvalinPoint);
+		connectFieldsToFurnaces.add(furnacePoint);
+		darkFieldConnect.add(new Connection(hreidmar, new Route(
+				connectFieldsToHreidmar), 60));
+		darkFieldConnect.add(new Connection(durin, new Route(
+				connectFieldsToDurin), 60));
+		darkFieldConnect.add(new Connection(dvalin, new Route(
+				connectFieldsToDvalin), 50));
+		darkFieldConnect.add(new Connection(furnaces, new Route(
+				connectFieldsToFurnaces), 55));
+		darkFields.setConnections(darkFieldConnect);
+
+		// furnaces connections
+		ArrayList<Point> connectFurnacesToFields = new ArrayList<Point>();
+		connectFurnacesToFields.add(darkFieldPoint);
+		furnaceConnect.add(new Connection(darkFields, new Route(
+				connectFurnacesToFields), 55));
+		furnaces.setConnections(furnaceConnect);
+
 	}
 
 	@Test
 	public void createMuspelheim() {
+
+		ArrayList<Connection> plainsConnect = new ArrayList<Connection>();
+		Point plainsPoint = new Point(10, 40);
+
+		ArrayList<Connection> surturConnect = new ArrayList<Connection>();
+		Point surturPoint = new Point(50, 50);
+
+		ArrayList<Connection> sinmoreConnect = new ArrayList<Connection>();
+		Point sinmorePoint = new Point(60, 40);
+
+		Place burningPlains = new Place("The Burning Plains of Surt",
+				plainsConnect, plainsPoint, 4, Realm.Muspelheim);
+
+		Place surtursKingdom = new Place("Surtur's Kingdom", surturConnect,
+				surturPoint, 8, Realm.Muspelheim);
+
+		Place sinmoreHall = new Place("Sinmore Hall", sinmoreConnect,
+				sinmorePoint, 6, Realm.Muspelheim);
+		
+		t.insert(burningPlains);
+		t.insert(surtursKingdom);
+		t.insert(sinmoreHall);
+		
+		//burning plains connections
+		ArrayList<Point> connectPlainsToSurtur = new ArrayList<Point>();
+		connectPlainsToSurtur.add(surturPoint);
+		plainsConnect.add(new Connection(surtursKingdom, new Route(
+				connectPlainsToSurtur), 90));
+		burningPlains.setConnections(plainsConnect);
+		
+		//surturs connections
+		ArrayList<Point> connectSurtToPlains = new ArrayList<Point>();
+		ArrayList<Point> connectSurtToSinmore = new ArrayList<Point>();
+		connectSurtToPlains.add(plainsPoint);
+		connectSurtToSinmore.add(sinmorePoint);
+		surturConnect.add(new Connection(burningPlains, new Route(connectSurtToPlains), 90));
+		surturConnect.add(new Connection(sinmoreHall, new Route(connectSurtToSinmore), 30));
+		surtursKingdom.setConnections(surturConnect);
+		
+		//sinmores connections
+		ArrayList<Point> connectSinmoreToSurt = new ArrayList<Point>();
+		connectSinmoreToSurt.add(surturPoint);
+		sinmoreConnect.add(new Connection(surtursKingdom, new Route(connectSinmoreToSurt), 30));
+		sinmoreHall.setConnections(sinmoreConnect);
+		
 
 	}
 }
