@@ -535,7 +535,8 @@ public class Creation {
 		connectNJtoNM.add(antiguoPoint);
 		wheatonConnect.add(new Connection(nyc, new Route(connectNJtoNYC), 20));
 		wheatonConnect.add(new Connection(dc, new Route(connectNJtoDC), 25));
-		wheatonConnect.add(new Connection(antiguo, new Route(connectNJtoNM), 40));
+		wheatonConnect
+				.add(new Connection(antiguo, new Route(connectNJtoNM), 40));
 		wheaton.setConnections(wheatonConnect);
 
 		// dc connections
@@ -550,7 +551,8 @@ public class Creation {
 		dcConnect.add(new Connection(nyc, new Route(connectDCtoNYC), 10));
 		dcConnect.add(new Connection(wheaton, new Route(connectDCtoNJ), 25));
 		dcConnect.add(new Connection(antiguo, new Route(connectDCtoNM), 35));
-		dcConnect.add(new Connection(london, new Route(connectDCtoLondon), 150));
+		dcConnect
+				.add(new Connection(london, new Route(connectDCtoLondon), 150));
 		dc.setConnections(dcConnect);
 
 		// puente antiguo connections
@@ -561,7 +563,8 @@ public class Creation {
 		connectNMtoNJ.add(wheatonPoint);
 		connectNMtoDC.add(dcPoint);
 		antiguoConnect.add(new Connection(nyc, new Route(connectNMtoNYC), 40));
-		antiguoConnect.add(new Connection(wheaton, new Route(connectNMtoNJ), 40));
+		antiguoConnect
+				.add(new Connection(wheaton, new Route(connectNMtoNJ), 40));
 		antiguoConnect.add(new Connection(dc, new Route(connectNMtoDC), 35));
 		antiguo.setConnections(antiguoConnect);
 
@@ -570,14 +573,91 @@ public class Creation {
 		ArrayList<Point> connectLondonToDC = new ArrayList<Point>();
 		connectLondonToNYC.add(nycPoint);
 		connectLondonToDC.add(dcPoint);
-		londonConnect.add(new Connection(nyc, new Route(connectLondonToNYC), 120));
-		londonConnect.add(new Connection(dc, new Route(connectLondonToDC), 150));
+		londonConnect.add(new Connection(nyc, new Route(connectLondonToNYC),
+				120));
+		londonConnect
+				.add(new Connection(dc, new Route(connectLondonToDC), 150));
 		london.setConnections(londonConnect);
 
 	}
 
 	@Test
 	public void createSvartalfheim() {
+
+		ArrayList<Connection> malekithConnect = new ArrayList<Connection>();
+		Point malekithPoint = new Point(20, 10);
+
+		ArrayList<Connection> unseelieConnect = new ArrayList<Connection>();
+		Point unseeliePoint = new Point(10, 30);
+
+		ArrayList<Connection> byrgirConnect = new ArrayList<Connection>();
+		Point byrgirPoint = new Point(80, 40);
+
+		ArrayList<Connection> blackConnect = new ArrayList<Connection>();
+		Point blackPoint = new Point(85, 80);
+
+		ArrayList<Connection> aurvangarConnect = new ArrayList<Connection>();
+		Point aurvangarPoint = new Point(20, 75);
+
+		Place malekith = new Place("The Domain of Malekith", malekithConnect,
+				malekithPoint, 9, Realm.Svartalfheim);
+
+		Place unseelieCourt = new Place("The Unseelie Court", unseelieConnect,
+				unseeliePoint, 4, Realm.Svartalfheim);
+
+		Place byrgir = new Place("Byrgir", byrgirConnect, byrgirPoint, 6,
+				Realm.Svartalfheim);
+
+		Place blackForest = new Place("The Black Forest", blackConnect,
+				blackPoint, 7, Realm.Svartalfheim);
+
+		Place aurvangar = new Place("Aurvangar", aurvangarConnect,
+				aurvangarPoint, 5, Realm.Svartalfheim);
+		
+		//malekith connections
+		ArrayList<Point> connectMalekithToUnseelie = new ArrayList<Point>();
+		connectMalekithToUnseelie.add(unseeliePoint);
+		malekithConnect.add(new Connection(unseelieCourt, new Route(connectMalekithToUnseelie), 20));
+		malekith.setConnections(malekithConnect);
+		
+		//unseelie court connections
+		ArrayList<Point> connectUnseelieToMalekith = new ArrayList<Point>();
+		ArrayList<Point> connectUnseelieToBrygir = new ArrayList<Point>();
+		ArrayList<Point> connectUnseelieToAurvangar = new ArrayList<Point>();
+		connectUnseelieToMalekith.add(malekithPoint);
+		connectUnseelieToBrygir.add(byrgirPoint);
+		connectUnseelieToAurvangar.add(aurvangarPoint);
+		unseelieConnect.add(new Connection(malekith, new Route(connectUnseelieToMalekith), 20));
+		unseelieConnect.add(new Connection(byrgir, new Route(connectUnseelieToBrygir), 70));
+		unseelieConnect.add(new Connection(aurvangar, new Route(connectUnseelieToAurvangar), 50));
+		unseelieCourt.setConnections(unseelieConnect);
+		
+		//byrgir connections
+		ArrayList<Point> connectByrgirToUnseelie = new ArrayList<Point>();
+		ArrayList<Point> connectByrgirToForest = new ArrayList<Point>();
+		connectByrgirToUnseelie.add(unseeliePoint);
+		connectByrgirToForest.add(blackPoint);
+		byrgirConnect.add(new Connection(unseelieCourt, new Route(connectByrgirToUnseelie), 70));
+		byrgirConnect.add(new Connection(blackForest, new Route(connectByrgirToForest), 50));
+		byrgir.setConnections(byrgirConnect);
+		
+		//black forest connections
+		ArrayList<Point> connectForestToByrgir = new ArrayList<Point>();
+		ArrayList<Point> connectForestToAurvangar = new ArrayList<Point>();
+		connectForestToByrgir.add(byrgirPoint);
+		connectForestToAurvangar.add(aurvangarPoint);
+		blackConnect.add(new Connection(byrgir, new Route(connectForestToByrgir), 50));
+		blackConnect.add(new Connection(aurvangar, new Route(connectForestToAurvangar), 60));
+		blackForest.setConnections(blackConnect);
+		
+		//aurvangar connections
+		ArrayList<Point> connectAurvangarToForest = new ArrayList<Point>();
+		ArrayList<Point> connectAurvangarToUnseelie = new ArrayList<Point>();
+		connectAurvangarToForest.add(blackPoint);
+		connectAurvangarToUnseelie.add(unseeliePoint);
+		aurvangarConnect.add(new Connection(blackForest, new Route(connectAurvangarToForest), 60));
+		aurvangarConnect.add(new Connection(unseelieCourt, new Route(connectAurvangarToUnseelie), 50));
+		aurvangar.setConnections(aurvangarConnect);
 
 	}
 
