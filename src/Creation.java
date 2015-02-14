@@ -251,47 +251,328 @@ public class Creation {
 
 		Place helheim = new Place("Helheim (Hel's Throne)", helheimConnect,
 				helheimPoint, 9, Realm.Niflheim);
-		
+
 		t.insert(plainsOfGin);
 		t.insert(fimbulthul);
 		t.insert(riverEliyagar);
 		t.insert(hvergelmir);
 		t.insert(helheim);
-		
-		//plains of ginnungagap connections
+
+		// plains of ginnungagap connections
 		ArrayList<Point> connectPointsGinToRiver = new ArrayList<Point>();
 		ArrayList<Point> connectPointsGinToFimbulthul = new ArrayList<Point>();
 		ArrayList<Point> connectPointsGinToHvergelmir = new ArrayList<Point>();
 		connectPointsGinToRiver.add(riverEliyagarPoint);
 		connectPointsGinToFimbulthul.add(fimbulthulPoint);
 		connectPointsGinToHvergelmir.add(hvergelmirPoint);
-		plainsConnect.add(new Connection(riverEliyagar, new Route(connectPointsGinToRiver), 70));
-		plainsConnect.add(new Connection(fimbulthul, new Route(connectPointsGinToFimbulthul), 80));
-		plainsConnect.add(new Connection(hvergelmir, new Route(connectPointsGinToHvergelmir), 90));
+		plainsConnect.add(new Connection(riverEliyagar, new Route(
+				connectPointsGinToRiver), 70));
+		plainsConnect.add(new Connection(fimbulthul, new Route(
+				connectPointsGinToFimbulthul), 80));
+		plainsConnect.add(new Connection(hvergelmir, new Route(
+				connectPointsGinToHvergelmir), 90));
 		plainsOfGin.setConnections(plainsConnect);
-		
-		//fimbulthul connections
-		
-		//river eliyagar connections
-		
-		//hvergelmir connections
-		
-		//helheim connections
+
+		// fimbulthul connections
+		ArrayList<Point> connectPointsFimbulthulToRiver = new ArrayList<Point>();
+		ArrayList<Point> connectPointsFimbulthulToGin = new ArrayList<Point>();
+		connectPointsFimbulthulToRiver.add(riverEliyagarPoint);
+		connectPointsFimbulthulToGin.add(plainPoint);
+		fimbulthulConnect.add(new Connection(riverEliyagar, new Route(
+				connectPointsFimbulthulToRiver), 60));
+		fimbulthulConnect.add(new Connection(plainsOfGin, new Route(
+				connectPointsFimbulthulToGin), 80));
+		fimbulthul.setConnections(fimbulthulConnect);
+
+		// river eliyagar connections
+		ArrayList<Point> connectPointsRiverToPlains = new ArrayList<Point>();
+		ArrayList<Point> connectPointsRiverToFimbulthul = new ArrayList<Point>();
+		connectPointsRiverToPlains.add(plainPoint);
+		connectPointsRiverToFimbulthul.add(fimbulthulPoint);
+		riverEliyagarConnect.add(new Connection(plainsOfGin, new Route(
+				connectPointsRiverToPlains), 70));
+		riverEliyagarConnect.add(new Connection(fimbulthul, new Route(
+				connectPointsRiverToFimbulthul), 60));
+		riverEliyagar.setConnections(riverEliyagarConnect);
+
+		// hvergelmir connections
+		ArrayList<Point> connectHverToPlains = new ArrayList<Point>();
+		ArrayList<Point> connectHverToHelheim = new ArrayList<Point>();
+		connectHverToPlains.add(plainPoint);
+		connectHverToHelheim.add(helheimPoint);
+		hvergelmirConnect.add(new Connection(plainsOfGin, new Route(
+				connectHverToPlains), 90));
+		hvergelmirConnect.add(new Connection(helheim, new Route(
+				connectHverToHelheim), 60));
+		hvergelmir.setConnections(hvergelmirConnect);
+
+		// helheim connections
+		ArrayList<Point> connectHelheimToHver = new ArrayList<Point>();
+		connectHelheimToHver.add(hvergelmirPoint);
+		helheimConnect.add(new Connection(hvergelmir, new Route(
+				connectHelheimToHver), 60));
+		helheim.setConnections(helheimConnect);
 
 	}
 
 	@Test
 	public void createVanaheim() {
 
+		ArrayList<Connection> njordConnect = new ArrayList<Connection>();
+		Point njordPoint = new Point(70, 20);
+
+		ArrayList<Connection> donRiverConnect = new ArrayList<Connection>();
+		Point donPoint = new Point(20, 40);
+
+		ArrayList<Connection> eigMtnConnect = new ArrayList<Connection>();
+		Point eigMtnPoint = new Point(50, 50);
+
+		ArrayList<Connection> pictishConnect = new ArrayList<Connection>();
+		Point pictishPoint = new Point(55, 70);
+
+		ArrayList<Connection> forestVanirConnect = new ArrayList<Connection>();
+		Point forestPoint = new Point(10, 80);
+
+		Place njord = new Place("The Home Of Njord", njordConnect, njordPoint,
+				7, Realm.Vanaheim);
+
+		Place donRiver = new Place("Don River", donRiverConnect, donPoint, 4,
+				Realm.Vanaheim);
+
+		Place eiglopianMnt = new Place("Eiglopian Mountains", eigMtnConnect,
+				eigMtnPoint, 5, Realm.Vanaheim);
+
+		Place pictishWilderness = new Place("The Pictish Wilderness",
+				pictishConnect, pictishPoint, 6, Realm.Vanaheim);
+
+		Place forestOfVanir = new Place("The Forests of Vanir",
+				forestVanirConnect, forestPoint, 5, Realm.Vanaheim);
+
+		t.insert(njord);
+		t.insert(donRiver);
+		t.insert(eiglopianMnt);
+		t.insert(pictishWilderness);
+		t.insert(forestOfVanir);
+
+		// njord connections
+		ArrayList<Point> connectNjordToDonRiver = new ArrayList<Point>();
+		connectNjordToDonRiver.add(donPoint);
+		njordConnect.add(new Connection(donRiver, new Route(
+				connectNjordToDonRiver), 50));
+		njord.setConnections(njordConnect);
+
+		// don River connections
+		ArrayList<Point> connectRiverToNjord = new ArrayList<Point>();
+		ArrayList<Point> connectRiverToMtn = new ArrayList<Point>();
+		ArrayList<Point> connectRiverToForest = new ArrayList<Point>();
+		connectRiverToNjord.add(njordPoint);
+		connectRiverToMtn.add(eigMtnPoint);
+		connectRiverToForest.add(forestPoint);
+		donRiverConnect.add(new Connection(njord,
+				new Route(connectRiverToNjord), 50));
+		donRiverConnect.add(new Connection(eiglopianMnt, new Route(
+				connectRiverToMtn), 35));
+		donRiverConnect.add(new Connection(forestOfVanir, new Route(
+				connectRiverToForest), 60));
+		donRiver.setConnections(donRiverConnect);
+
+		// eiglopian mountain connections
+		ArrayList<Point> connectMtnToRiver = new ArrayList<Point>();
+		ArrayList<Point> connectMtnToForest = new ArrayList<Point>();
+		ArrayList<Point> connectMtnToPictish = new ArrayList<Point>();
+		connectMtnToRiver.add(donPoint);
+		connectMtnToForest.add(forestPoint);
+		connectMtnToPictish.add(pictishPoint);
+		eigMtnConnect.add(new Connection(donRiver,
+				new Route(connectMtnToRiver), 35));
+		eigMtnConnect.add(new Connection(forestOfVanir, new Route(
+				connectMtnToForest), 55));
+		eigMtnConnect.add(new Connection(pictishWilderness, new Route(
+				connectMtnToPictish), 30));
+		eiglopianMnt.setConnections(eigMtnConnect);
+
+		// pictish wilderness connections
+		ArrayList<Point> connectWildToForest = new ArrayList<Point>();
+		ArrayList<Point> connectWildToMtn = new ArrayList<Point>();
+		connectWildToForest.add(forestPoint);
+		connectWildToMtn.add(eigMtnPoint);
+		pictishConnect.add(new Connection(forestOfVanir, new Route(
+				connectWildToForest), 50));
+		pictishConnect.add(new Connection(eiglopianMnt, new Route(
+				connectWildToMtn), 30));
+		pictishWilderness.setConnections(pictishConnect);
+
+		// forest of vanir connections
+		ArrayList<Point> connectForestToRiver = new ArrayList<Point>();
+		ArrayList<Point> connectForestToMtn = new ArrayList<Point>();
+		ArrayList<Point> connectForestToWild = new ArrayList<Point>();
+		connectForestToRiver.add(donPoint);
+		connectForestToMtn.add(eigMtnPoint);
+		connectForestToWild.add(pictishPoint);
+		forestVanirConnect.add(new Connection(donRiver, new Route(
+				connectForestToRiver), 60));
+		forestVanirConnect.add(new Connection(eiglopianMnt, new Route(
+				connectForestToMtn), 55));
+		forestVanirConnect.add(new Connection(pictishWilderness, new Route(
+				connectForestToWild), 50));
+		forestOfVanir.setConnections(forestVanirConnect);
+
 	}
 
 	@Test
 	public void createAlfheim() {
 
+		ArrayList<Connection> freyrConnect = new ArrayList<Connection>();
+		Point freyrPoint = new Point(50, 50);
+
+		ArrayList<Connection> geffenConnect = new ArrayList<Connection>();
+		Point geffenPoint = new Point(70, 70);
+
+		ArrayList<Connection> canolbarthConnect = new ArrayList<Connection>();
+		Point canolbarthPoint = new Point(20, 80);
+
+		Place freyr = new Place("Freyr's Throne", freyrConnect, freyrPoint, 8,
+				Realm.Alfheim);
+
+		Place geffen = new Place("Geffen", geffenConnect, geffenPoint, 6,
+				Realm.Alfheim);
+
+		Place canolbarth = new Place("Canolbarth Forest", canolbarthConnect,
+				canolbarthPoint, 7, Realm.Alfheim);
+
+		t.insert(freyr);
+		t.insert(geffen);
+		t.insert(canolbarth);
+
+		// freyr connections
+		ArrayList<Point> connectFreyrToGeffen = new ArrayList<Point>();
+		ArrayList<Point> connectFreyrToForest = new ArrayList<Point>();
+		connectFreyrToGeffen.add(geffenPoint);
+		connectFreyrToForest.add(canolbarthPoint);
+		freyrConnect.add(new Connection(geffen,
+				new Route(connectFreyrToGeffen), 50));
+		freyrConnect.add(new Connection(canolbarth, new Route(
+				connectFreyrToForest), 90));
+		freyr.setConnections(freyrConnect);
+
+		// geffen connections
+		ArrayList<Point> connectGeffenToFreyr = new ArrayList<Point>();
+		connectGeffenToFreyr.add(freyrPoint);
+		geffenConnect.add(new Connection(freyr,
+				new Route(connectGeffenToFreyr), 50));
+		geffen.setConnections(geffenConnect);
+
+		// canolbarth connections
+		ArrayList<Point> connectForestToFreyr = new ArrayList<Point>();
+		connectForestToFreyr.add(freyrPoint);
+		canolbarthConnect.add(new Connection(freyr, new Route(
+				connectForestToFreyr), 90));
+		canolbarth.setConnections(canolbarthConnect);
+
 	}
 
 	@Test
 	public void createMidgard() {
+
+		ArrayList<Connection> nycConnect = new ArrayList<Connection>();
+		Point nycPoint = new Point(30, 50);
+
+		ArrayList<Connection> dcConnect = new ArrayList<Connection>();
+		Point dcPoint = new Point(30, 55);
+
+		ArrayList<Connection> wheatonConnect = new ArrayList<Connection>();
+		Point wheatonPoint = new Point(25, 45);
+
+		ArrayList<Connection> antiguoConnect = new ArrayList<Connection>();
+		Point antiguoPoint = new Point(10, 60);
+
+		ArrayList<Connection> londonConnect = new ArrayList<Connection>();
+		Point londonPoint = new Point(90, 10);
+
+		Place nyc = new Place("New York, New York", nycConnect, nycPoint, 9,
+				Realm.Midgard);
+
+		Place dc = new Place("Washington, D.C.", dcConnect, dcPoint, 9,
+				Realm.Midgard);
+
+		Place wheaton = new Place("Wheaton, New Jersey", wheatonConnect,
+				wheatonPoint, 6, Realm.Midgard);
+
+		Place antiguo = new Place("Puente Antiguo, New Mexico", antiguoConnect,
+				antiguoPoint, 7, Realm.Midgard);
+
+		Place london = new Place("London, England", londonConnect, londonPoint,
+				9, Realm.Midgard);
+
+		t.insert(nyc);
+		t.insert(dc);
+		t.insert(wheaton);
+		t.insert(antiguo);
+		t.insert(london);
+
+		// nyc connections
+		ArrayList<Point> connectNYCtoLondon = new ArrayList<Point>();
+		ArrayList<Point> connectNYCtoNJ = new ArrayList<Point>();
+		ArrayList<Point> connectNYCtoDC = new ArrayList<Point>();
+		ArrayList<Point> connectNYCtoNM = new ArrayList<Point>();
+		connectNYCtoLondon.add(londonPoint);
+		connectNYCtoNJ.add(wheatonPoint);
+		connectNYCtoDC.add(dcPoint);
+		connectNYCtoNM.add(antiguoPoint);
+		nycConnect.add(new Connection(london, new Route(connectNYCtoLondon),
+				120));
+		nycConnect.add(new Connection(wheaton, new Route(connectNYCtoNJ), 20));
+		nycConnect.add(new Connection(dc, new Route(connectNYCtoDC), 10));
+		nycConnect.add(new Connection(antiguo, new Route(connectNYCtoNM), 40));
+		nyc.setConnections(nycConnect);
+
+		// wheaton connections
+		ArrayList<Point> connectNJtoNYC = new ArrayList<Point>();
+		ArrayList<Point> connectNJtoDC = new ArrayList<Point>();
+		ArrayList<Point> connectNJtoNM = new ArrayList<Point>();
+		connectNJtoNYC.add(nycPoint);
+		connectNJtoDC.add(dcPoint);
+		connectNJtoNM.add(antiguoPoint);
+		wheatonConnect.add(new Connection(nyc, new Route(connectNJtoNYC), 20));
+		wheatonConnect.add(new Connection(dc, new Route(connectNJtoDC), 25));
+		wheatonConnect.add(new Connection(antiguo, new Route(connectNJtoNM), 40));
+		wheaton.setConnections(wheatonConnect);
+
+		// dc connections
+		ArrayList<Point> connectDCtoNYC = new ArrayList<Point>();
+		ArrayList<Point> connectDCtoNJ = new ArrayList<Point>();
+		ArrayList<Point> connectDCtoNM = new ArrayList<Point>();
+		ArrayList<Point> connectDCtoLondon = new ArrayList<Point>();
+		connectDCtoNYC.add(nycPoint);
+		connectDCtoNJ.add(wheatonPoint);
+		connectDCtoNM.add(wheatonPoint);
+		connectDCtoLondon.add(londonPoint);
+		dcConnect.add(new Connection(nyc, new Route(connectDCtoNYC), 10));
+		dcConnect.add(new Connection(wheaton, new Route(connectDCtoNJ), 25));
+		dcConnect.add(new Connection(antiguo, new Route(connectDCtoNM), 35));
+		dcConnect.add(new Connection(london, new Route(connectDCtoLondon), 150));
+		dc.setConnections(dcConnect);
+
+		// puente antiguo connections
+		ArrayList<Point> connectNMtoNYC = new ArrayList<Point>();
+		ArrayList<Point> connectNMtoNJ = new ArrayList<Point>();
+		ArrayList<Point> connectNMtoDC = new ArrayList<Point>();
+		connectNMtoNYC.add(nycPoint);
+		connectNMtoNJ.add(wheatonPoint);
+		connectNMtoDC.add(dcPoint);
+		antiguoConnect.add(new Connection(nyc, new Route(connectNMtoNYC), 40));
+		antiguoConnect.add(new Connection(wheaton, new Route(connectNMtoNJ), 40));
+		antiguoConnect.add(new Connection(dc, new Route(connectNMtoDC), 35));
+		antiguo.setConnections(antiguoConnect);
+
+		// london connections
+		ArrayList<Point> connectLondonToNYC = new ArrayList<Point>();
+		ArrayList<Point> connectLondonToDC = new ArrayList<Point>();
+		connectLondonToNYC.add(nycPoint);
+		connectLondonToDC.add(dcPoint);
+		londonConnect.add(new Connection(nyc, new Route(connectLondonToNYC), 120));
+		londonConnect.add(new Connection(dc, new Route(connectLondonToDC), 150));
+		london.setConnections(londonConnect);
 
 	}
 
