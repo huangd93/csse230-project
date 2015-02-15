@@ -6,6 +6,7 @@ import java.io.File;
 
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -36,37 +37,32 @@ public class MapGUI {
 	       
 	    JLabel startChoice = new JLabel("Choose your starting point: ");
 	    
-	    String[] realms = {"Asgard", "Utgard","Niflheim","Vanaheim","Alfheim","Midgard","Svartalfheim","Nidavellir","Muspelheim"};
-	    JComboBox realmList = new JComboBox(realms);
-//	    String[] startStrings = null;
-//	    if(String.valueOf(realmList.getSelectedItem()) == "Asgard"){
-//	    	String[] asgardStrings = {"Valhalla","Odin’s Fortress","Lake Logur","Asgard Mountains","Sea of Marmora"};
-//	    	startStrings = asgardStrings;
-//	    }
-//	    else if(String.valueOf(realmList.getSelectedItem()) == "Utgard"){
-//	    	String[] utgardStrings = {"The River Iving","Mimir’s Well of Wisdom","Utgard-Loki’s Throne","Griotunagardar","The Mountain Thrymheim"};
-//	    	startStrings = utgardStrings;
-//	    }
-//	    else if(String.valueOf(realmList.getSelectedItem()) == "Niflheim"){
-//	    	String[] niflheimStrings = {"The Spring Hvergelmir","The Plains of Ginnungagap","The Rivers Elivagar","Helheim (Hel’s Throne)","Fimbulthul"};
-//	    	startStrings = niflheimStrings;
-//	    }
-//	    JComboBox startList = new JComboBox(startStrings);
-	    realmList.addActionListener(new DropDownHandler(null, null, controlPanel));
+	    String[] realms = {"(Choose a Realm)","Asgard","Utgard","Niflheim","Vanaheim","Alfheim","Midgard","Svartalfheim","Nidavellir","Muspelheim"};
+	    JComboBox realmList1 = new JComboBox(realms);
+	    String[] startStrings = {"(Please Choose a Realm)"};
+	    DefaultComboBoxModel startModel = new DefaultComboBoxModel(startStrings);
+
+	    JComboBox startList = new JComboBox();
+	    startList.setModel(startModel);
+	    realmList1.addActionListener(new DropDownHandler(null, startList, controlPanel));
 	    
 	    JLabel destinationChoice = new JLabel("Choose your destination: ");
 	    
-	    String[] destinationStrings = {"Valhalla","Odin’s Fortress","Lake Logur","Asgard Mountains","Sea of Marmora"};
-	    JComboBox destinationList = new JComboBox(destinationStrings);
+	    JComboBox realmList2 = new JComboBox(realms);
+	    JComboBox destinationList = new JComboBox();
+	    DefaultComboBoxModel destModel = new DefaultComboBoxModel(realms);
+	    destinationList.setModel(destModel);
+	    realmList2.addActionListener(new DropDownHandler(null, destinationList, controlPanel));
 	    
 	    JButton createButton = new JButton("Create");
 	    createButton.addActionListener(new ButtonHandler(this.mainframe, direcsPanel));
 	    JButton planButton = new JButton("Plan an adventure");
 	    planButton.addActionListener(new ButtonHandler(this.mainframe, mainPanel));
 	    controlPanel.add(startChoice);
-	    controlPanel.add(realmList);
-//	    controlPanel.add(startList);
+	    controlPanel.add(realmList1);
+	    controlPanel.add(startList);
 	    controlPanel.add(destinationChoice);
+	    controlPanel.add(realmList2);
 	    controlPanel.add(destinationList);
 	    controlPanel.add(createButton);
 	    controlPanel.add(new JLabel(" or "));
