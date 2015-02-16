@@ -1,17 +1,20 @@
 import java.util.ArrayList;
 
 public class PlacesDao implements PlacesDaoInterface {
+	// Places grouped by rating
+	private PlacesHashMap[] places = new PlacesHashMap[5];
 
-	protected PlacesDao() {
-
-	}
+	protected PlacesDao() {}
 
 	public ArrayList<Place> getPlaces() {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Place> result = new ArrayList<Place>();
+		for(PlacesHashMap i : places) {
+			if(i != null) result.addAll(i.toArrayList());
+		}
+		return result;
 	}
 
-	public Realm findPlace(Place place) {
+	public Realm findPlace(String placeName) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -171,6 +174,16 @@ public class PlacesDao implements PlacesDaoInterface {
 	}
 
 	public Place getPlace(String name, String realm) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public ArrayList<Realm> getRealms() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public ArrayList<Place> getPlaceInRealm(Realm realm) {
 		// TODO Auto-generated method stub
 		return null;
 	}

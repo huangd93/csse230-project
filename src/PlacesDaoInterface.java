@@ -10,6 +10,19 @@ public interface PlacesDaoInterface {
 	public ArrayList<Place> getPlaces();
 	
 	/**
+	 * Returns an ArrayList of all Realms
+	 * @return
+	 */
+	public ArrayList<Realm> getRealms();
+	
+	/**
+	 * Returns an ArrayList of all Places within the realm given
+	 * @param realm
+	 * @return
+	 */
+	public ArrayList<Place> getPlaceInRealm(Realm realm);
+	
+	/**
 	 * Returns the place with the specified name and realm
 	 * @param name
 	 * @param realm
@@ -23,7 +36,7 @@ public interface PlacesDaoInterface {
 	 * @param place
 	 * @return Realm
 	 */
-	public Realm findPlace(Place place);
+	public Realm findPlace(String placeName);
 	
 	/**
 	 * Returns an ArrayList of Places that connect to the starting point with
