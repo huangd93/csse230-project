@@ -19,6 +19,11 @@ import net.miginfocom.swing.MigLayout;
 
 public class MapGUI {
 	private JFrame mainframe;
+	
+	public MapGUI(JFrame frame, String start, String startRealm, String dest, String destRealm){
+		
+	}
+	
 	public MapGUI(JFrame frame){
 		this.mainframe = frame;
     	this.mainframe.getContentPane().removeAll();
@@ -70,7 +75,7 @@ public class MapGUI {
 	    controlPanel.add(planButton);
 	    controlPanel.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.gray));
 	    
-	    String imageLoc = "C:/EclipseWorkspaces/csse230/csse230-project/Yggdrasill_Animated_2.jpg";
+	    String imageLoc = "C:/EclipseWorkspaces/csse230/csse230-project/yggdrasil.jpg";
 	    mapPanel.add(new JLabel(new ImageIcon(imageLoc)));
 	    
 	    direcsPanel.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.gray));
