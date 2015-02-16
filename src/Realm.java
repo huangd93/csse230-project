@@ -1,6 +1,6 @@
 
 public enum Realm {
-	Asgard(), Jotunheim, Niflheim, Vanaheim, Alfheim, Midgard, Svartalfheim, Nidavellir, Muspelheim;
+	Asgard, Jotunheim, Niflheim, Vanaheim, Alfheim, Midgard, Svartalfheim, Nidavellir, Muspelheim;
 
 	private Place gate;
 	
@@ -8,11 +8,11 @@ public enum Realm {
 		this.gate = null;
 	}
 	
-	public void setPlace(Place p) {
+	public void setGate(Place p) {
 		this.gate = p;
 	}
 	
-	public Place getPlace() {
+	public Place getGate() {
 		return this.gate;
 	}
 	

@@ -13,13 +13,7 @@ public class PlacesDao implements PlacesDaoInterface {
 		}
 		return result;
 	}
-
-	/**
-	 * Returns the shortest path from place1 to place2 sorted by time
-	 * @param place1 The starting point
-	 * @param place2 The ending point
-	 * @return An ArrayList of connections that make up the fastest route
-	 */
+	
 	public ArrayList<Connection> getFastestRoute(Place place1, Place place2) {
 		PriorityQueue<RouteNode> openList = new PriorityQueue<RouteNode>();
 		LinkedList<RouteNode> closedList = new LinkedList<RouteNode>();
@@ -51,12 +45,6 @@ public class PlacesDao implements PlacesDaoInterface {
 		return result;
 	}
 
-	/**
-	 * Returns the shortest path from place1 to place2 sorted by distance
-	 * @param place1 The starting point
-	 * @param place2 The ending point
-	 * @return An ArrayList of connections that make up the shortest route
-	 */
 	public ArrayList<Connection> getShortestRoute(Place place1, Place place2) {
 		PriorityQueue<RouteNode> openList = new PriorityQueue<RouteNode>();
 		LinkedList<RouteNode> closedList = new LinkedList<RouteNode>();
@@ -158,6 +146,11 @@ public class PlacesDao implements PlacesDaoInterface {
 		
 	}
 
+	public boolean insert(Place place) {
+		// TODO Do this
+		return false;
+	}
+	
 	public boolean insertIntoRatingTree(Place place) {
 		// TODO Auto-generated method stub
 		return false;

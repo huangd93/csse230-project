@@ -59,11 +59,9 @@ public interface PlacesDaoInterface {
 	public ArrayList<Connection> getShortestRoute(Place place1, Place place2);
 
 	/**
-	 * Inserts the given place into the tree
-	 * 
+	 * Inserts the given place into the Dao
 	 * @param place
 	 * @return
 	 */
-	public boolean insertIntoRatingTree(Place place);
-
+	public boolean insert(Place place);
 }
