@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -17,17 +18,23 @@ public class ButtonHandler implements ActionListener {
 	JPanel panel;
 	JTextField distance;
 	JTextField time;
-	JComboBox realmCombo;
-	JComboBox placeCombo;
+	JComboBox startRealmCombo;
+	JComboBox startPlaceCombo;
+	JComboBox endRealmCombo;
+	JComboBox endPlaceCombo;
 	PlacesDaoInterface pdi;
 	
-	public ButtonHandler(JFrame frame, JPanel pan, JTextField distanceInput, JTextField timeInput, JComboBox combo3, JComboBox combo4){
+	public ButtonHandler(JFrame frame, JPanel pan, JTextField distanceInput, 
+			JTextField timeInput, JComboBox startPlaceCombo, JComboBox startRealmCombo,
+			JComboBox endPlaceCombo, JComboBox endRealmCombo){
 		this.mainframe = frame;
 		this.panel = pan;
 		this.distance = distanceInput;
 		this.time = timeInput;
-		this.realmCombo = combo4;
-		this.placeCombo = combo3;
+		this.startRealmCombo = startRealmCombo;
+		this.startPlaceCombo = startPlaceCombo;
+		this.endRealmCombo = endRealmCombo;
+		this.endPlaceCombo = endPlaceCombo;
 		this.pdi = PlacesDaoFactory.getPlacesDaoSingleton();
 	}
 	
@@ -40,15 +47,6 @@ public class ButtonHandler implements ActionListener {
 	         new MapGUI(this.mainframe);
 	     }
 	     else if(action.equals("Get Options")){
-	    	 String realm = (String)this.realmCombo.getSelectedItem();
-	    	 String place = (String)this.placeCombo.getSelectedItem();
-	 	     String dist = this.distance.getText();
-	 	     String time = this.time.getText();
-	 	     double d = Double.parseDouble(dist);
-	 	     double t = Double.parseDouble(time);
-	 	     Place p = this.pdi.getPlace(place, realm);
-	 	     
-	 	     
 	    	 this.panel.removeAll();
 	    	 this.panel.revalidate();
 	    	 this.mainframe.getContentPane().removeAll();
@@ -56,6 +54,23 @@ public class ButtonHandler implements ActionListener {
 	    	 this.mainframe.setBackground(Color.BLACK);
 	    	 this.mainframe.add(this.panel);
 	    	 
+	    	 String realm = (String)this.startRealmCombo.getSelectedItem();
+	    	 String place = (String)this.startPlaceCombo.getSelectedItem();
+	 	     String dist = this.distance.getText();
+	 	     String time = this.time.getText();
+	 	     double d;
+	 	     double t;
+	 	     if(dist == null || time == null){
+	 	    	 // handle this exception
+	 	    	 d = 0;
+	 	    	 t = 0;
+	 	     }else{
+	 	    	 d = Double.parseDouble(dist);
+	 	    	 t = Double.parseDouble(time);	 	    	 
+	 	     }
+	 	     
+	 	     Place p = this.pdi.getPlace(place, realm);
+	 	     
 //			 ArrayList<Place> routeList = this.pdi.getPlacesWithin(p, d, t);
 			 String temp = "Adventure options: ";
 //	    	 for(Place dest : routeList){
@@ -63,15 +78,45 @@ public class ButtonHandler implements ActionListener {
 //	    	 }
 	    	 JLabel options = new JLabel(temp);
 	    	 JButton go = new JButton("Get Directions");
-	    	 go.addActionListener(new ButtonHandler(this.mainframe, this.panel, null, null, null, null));
+	    	 go.addActionListener(new ButtonHandler(this.mainframe, this.panel, null, null, null, null, null, null));
 	    	 this.panel.add(options);
 	    	 this.panel.add(go);
 	     }
 	     else if(action.equals("Create")){
 	    	 this.panel.removeAll();
 	     	 this.panel.revalidate();
-	    	 this.panel.add(new JLabel("Directions will be placed here"));
-	    	 this.mainframe.revalidate();
+	     	 this.mainframe.revalidate();
+	     	 
+	     	 String startRealm = (String)this.startRealmCombo.getSelectedItem();
+	    	 String startPlace = (String)this.startPlaceCombo.getSelectedItem();
+	    	 String endRealm = (String)this.endRealmCombo.getSelectedItem();
+	    	 String endPlace = (String)this.endPlaceCombo.getSelectedItem();
+	    	 
+	    	 Place sp = this.pdi.getPlace(startPlace, startRealm);
+	    	 Place ep = this.pdi.getPlace(endPlace, endRealm);
+	    	 
+	    	 String fastString = "Here is the fastest route: \n";
+//	    	 ArrayList<Connection> fastRoute = this.pdi.getFastestRoute(sp, ep);
+//	    	 for(Connection c : fastRoute){
+//	    		 Route r = c.getRoute();
+//	    		 ArrayList<Point> points = r.getPoints();
+//	    		 for(Point p : points){
+//	    			 // maybe want places as well as points
+//	    		 }
+//	    	 }
+	    	 
+	    	 String shortString = "Here is the shortest route: \n";
+//	    	 ArrayList<Connection> shortRoute = this.pdi.getShortestRoute(sp, ep);
+//	    	 for(Connection c : shortRoute){
+//	    		 Route r = c.getRoute();
+//	    		 ArrayList<Point> points = r.getPoints();
+//	    		 for(Point p : points){
+//	    			 // maybe want places as well as points
+//	    		 }
+//	    	 }
+			 JLabel directions = new JLabel(fastString + shortString );
+	     	 
+			 this.panel.add(directions);
 	     }
      }
 }

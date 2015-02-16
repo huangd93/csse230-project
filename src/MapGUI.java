@@ -55,9 +55,10 @@ public class MapGUI {
 	    realmList2.addActionListener(new DropDownHandler(null, destinationList, controlPanel));
 	    
 	    JButton createButton = new JButton("Create");
-	    createButton.addActionListener(new ButtonHandler(this.mainframe, direcsPanel, null, null, null, null));
+	    createButton.addActionListener(new ButtonHandler(this.mainframe, direcsPanel, null, null, startList, realmList1, destinationList, realmList2));
+	    
 	    JButton planButton = new JButton("Plan an adventure");
-	    planButton.addActionListener(new ButtonHandler(this.mainframe, mainPanel, null, null, null, null));
+	    planButton.addActionListener(new ButtonHandler(this.mainframe, mainPanel, null, null, null, null, null, null));
 	    controlPanel.add(startChoice);
 	    controlPanel.add(realmList1);
 	    controlPanel.add(startList);

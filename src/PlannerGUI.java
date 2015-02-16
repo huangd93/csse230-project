@@ -57,7 +57,7 @@ public class PlannerGUI{
 	     timeInput.setSize(size);
 	     
 	     JButton optionsButton = new JButton("Get Options");
-	     optionsButton.addActionListener(new ButtonHandler(this.mainframe, mainPanel, distanceInput, timeInput, startList, realmList));
+	     optionsButton.addActionListener(new ButtonHandler(this.mainframe, mainPanel, distanceInput, timeInput, startList, realmList, null, null));
 	     
 	     mainPanel.setBounds(433, 115, 500, 550);
 	     
