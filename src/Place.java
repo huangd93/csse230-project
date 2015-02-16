@@ -11,6 +11,15 @@ public class Place {
 	//the next two are only used within the PlacesTree
 	public Place leftChild = null;
 	public Place rightChild = null;
+	
+	/**
+	 * Creates a place with these set parameters
+	 * @param n Name
+	 * @param con ArrayList of Connections to neighboring Places
+	 * @param p Point that this Place is located at
+	 * @param r Rating
+	 * @param re Realm
+	 */
 	public Place(String n, ArrayList<Connection> con, Point p, int r, Realm re) {
 		this.setName(n);
 		this.setConnections(con);
@@ -27,10 +36,18 @@ public class Place {
 	 */
 	public static double estimatedDistance(Place x, Place y) {
 		double result = 0;
-//		if(x.getRealm() != y.getRealm()) {
-//			// TODO: Add in finding realm gate stuff for a better heuristic
-//		}
-		result += Point.distanceBetween(x.getPoint(), y.getPoint());
+		if(x.getRealm() != y.getRealm()) {
+			Place gate1 = x.getRealm().getGate();
+			Place gate2 = y.getRealm().getGate();
+			// Distance to this realm gate
+			result += Point.distanceBetween(x.getPoint(), gate1.getPoint());
+			// Distance between gates
+			result += Point.distanceBetween(gate1.getPoint(), gate2.getPoint());
+			// Distance from destination realm gate to destination
+			result += Point.distanceBetween(gate2.getPoint(), y.getPoint());
+		} else {
+			result += Point.distanceBetween(x.getPoint(), y.getPoint());
+		}
 		return result;
 	}
 
