@@ -20,7 +20,7 @@ public interface PlacesDaoInterface {
 	 * @param realm
 	 * @return
 	 */
-	public ArrayList<Place> getPlaceInRealm(Realm realm);
+	public ArrayList<Place> getPlacesInRealm(Realm realm);
 	
 	/**
 	 * Returns the place with the specified name and realm

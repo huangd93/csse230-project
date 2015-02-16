@@ -80,6 +80,22 @@ public class PlacesHashMap {
 		return result;
 	}
 	
+	protected void print() {
+		for(int i = 0; i < placesArray.length; i++) {
+			System.out.print(i + ": ");
+			if(placesArray[i] == null){
+				System.out.println("null");
+			} else {
+				String list = "";
+				Iterator<Place> t = placesArray[i].iterator();
+				while(t.hasNext()) {
+					list += t.next().getName();
+				}
+				System.out.println(list);
+			}
+		}
+	}
+	
 	/**
 	 * Contains a LinkedList of Places. Used for repeated hashes in the HashMap. Has a max size before asking for a rebalance.
 	 * @author huangd

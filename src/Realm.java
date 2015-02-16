@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 
 public enum Realm {
 	Asgard, Jotunheim, Niflheim, Vanaheim, Alfheim, Midgard, Svartalfheim, Nidavellir, Muspelheim;
@@ -39,5 +41,19 @@ public enum Realm {
 		default:
 			return null;
 		}
+	}
+	
+	public static ArrayList<Realm> toArrayList() {
+		ArrayList<Realm> result = new ArrayList<Realm>(9);
+		result.add(Asgard);
+		result.add(Jotunheim);
+		result.add(Niflheim);
+		result.add(Vanaheim);
+		result.add(Alfheim);
+		result.add(Midgard);
+		result.add(Svartalfheim);
+		result.add(Nidavellir);
+		result.add(Muspelheim);
+		return result;
 	}
 }

@@ -169,12 +169,18 @@ public class PlacesDao implements PlacesDaoInterface {
 	}
 
 	public ArrayList<Realm> getRealms() {
-		// TODO Auto-generated method stub
-		return null;
+		return Realm.toArrayList();
 	}
 
-	public ArrayList<Place> getPlaceInRealm(Realm realm) {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<Place> getPlacesInRealm(Realm realm) {
+		ArrayList<Place> result = new ArrayList<Place>();
+		for(PlacesHashMap i : places) {
+			if(i != null) {
+				for(Place j : i.toArrayList()) {
+					if(j.getRealm() == realm) result.add(j);
+				}
+			}
+		}
+		return result;
 	}
 }
