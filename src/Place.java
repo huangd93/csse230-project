@@ -116,6 +116,14 @@ public class Place {
 		return shortest;
 	}
 	
+	/**
+	 * Recursively finds places within a set distance of the original point.
+	 * @param distance 
+	 * @param time
+	 * @param distanceTraveled
+	 * @param timeUsed
+	 * @return
+	 */
 	public ArrayList<Place> getPlacesWithin(double distance, double time, 
 			double distanceTraveled, double timeUsed) {
 		ArrayList<Place> result = new ArrayList<Place>();
