@@ -11,6 +11,15 @@ public class Place {
 	//the next two are only used within the PlacesTree
 	public Place leftChild = null;
 	public Place rightChild = null;
+	
+	/**
+	 * Creates a place with these set parameters
+	 * @param n Name
+	 * @param con ArrayList of Connections to neighboring Places
+	 * @param p Point that this Place is located at
+	 * @param r Rating
+	 * @param re Realm
+	 */
 	public Place(String n, ArrayList<Connection> con, Point p, int r, Realm re) {
 		this.setName(n);
 		this.setConnections(con);
