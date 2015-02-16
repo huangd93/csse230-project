@@ -164,10 +164,12 @@ public class LinkedList<T> implements Iterable<T> {
 			if(parent == null) {
 				root = null;
 				current = null;
+				tail = null;
 			} else {
 				parent.child = current.child;
 				current = current.child;
 			}
+			if(current == tail) tail = parent;
 		}
 	}
 }

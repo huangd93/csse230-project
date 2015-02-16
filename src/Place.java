@@ -98,4 +98,18 @@ public class Place {
 		}
 		return shortest;
 	}
+	
+	public ArrayList<Place> getPlacesWithin(double distance, double time, 
+			double distanceTraveled, double timeUsed) {
+		ArrayList<Place> result = new ArrayList<Place>();
+		for(Connection i : connections) {
+			double connectionDistance = i.getDistance() + distanceTraveled; 
+			double connectionTime = i.getTime() + timeUsed;
+			if(connectionDistance < distance && connectionTime < time) {
+				result.add(i.getDestination());
+				result.addAll(i.getDestination().getPlacesWithin(distance, time, connectionDistance, connectionTime));
+			}
+		}
+		return result;
+	}
 }

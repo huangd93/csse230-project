@@ -164,4 +164,14 @@ public class PlacesDao implements PlacesDaoInterface {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	public ArrayList<Place> getPlacesWithin(Place start, double distance,
+			double time) {
+		return start.getPlacesWithin(distance, time, 0, 0);
+	}
+
+	public Place getPlace(String name, String realm) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
