@@ -36,7 +36,7 @@ public class Creation {
 				9, Realm.Asgard);
 
 		Place odinsFortress = new Place("Odin's Fortress", odinConnect,
-				odinPoint, 8, Realm.Asgard);
+				odinPoint, 8, Realm.Asgard); // this is where the realms connect to Asgard
 
 		Place asgardMnts = new Place("Asgard Mountains", mntnConnect,
 				mntnPoint, 5, Realm.Asgard);
@@ -142,7 +142,7 @@ public class Creation {
 				utgardLokiConnect, utgardLokiPoint, 8, Realm.Jotunheim);
 
 		Place mimirsWell = new Place("Mimir's Well", mimirConnect, mimirPoint,
-				7, Realm.Jotunheim);
+				7, Realm.Jotunheim); //this is where the realms connect to Utgard
 
 		Place griotunagardar = new Place("Griotunagardar", grioConnect,
 				grioPoint, 5, Realm.Jotunheim);
@@ -246,7 +246,7 @@ public class Creation {
 		Place riverEliyagar = new Place("The River Eliyagar",
 				riverEliyagarConnect, riverEliyagarPoint, 4, Realm.Niflheim);
 
-		Place hvergelmir = new Place("The Spring Hvergelmir",
+		Place hvergelmir = new Place("The Spring Hvergelmir", // this is where the realms connect to Niflheim
 				hvergelmirConnect, hvergelmirPoint, 8, Realm.Niflheim);
 
 		Place helheim = new Place("Helheim (Hel's Throne)", helheimConnect,
@@ -337,7 +337,7 @@ public class Creation {
 				7, Realm.Vanaheim);
 
 		Place donRiver = new Place("Don River", donRiverConnect, donPoint, 4,
-				Realm.Vanaheim);
+				Realm.Vanaheim);  // this is where the realms connect to Vanaheim
 
 		Place eiglopianMnt = new Place("Eiglopian Mountains", eigMtnConnect,
 				eigMtnPoint, 5, Realm.Vanaheim);
@@ -438,7 +438,7 @@ public class Creation {
 				Realm.Alfheim);
 
 		Place canolbarth = new Place("Canolbarth Forest", canolbarthConnect,
-				canolbarthPoint, 7, Realm.Alfheim);
+				canolbarthPoint, 7, Realm.Alfheim); // this is where the realms connect to Alfheim
 
 		t.insert(freyr);
 		t.insert(geffen);
@@ -502,7 +502,7 @@ public class Creation {
 				antiguoPoint, 7, Realm.Midgard);
 
 		Place london = new Place("London, England", londonConnect, londonPoint,
-				9, Realm.Midgard);
+				9, Realm.Midgard);  // this is where the realms connect to Midgard
 
 		t.insert(nyc);
 		t.insert(dc);
@@ -609,7 +609,7 @@ public class Creation {
 				Realm.Svartalfheim);
 
 		Place blackForest = new Place("The Black Forest", blackConnect,
-				blackPoint, 7, Realm.Svartalfheim);
+				blackPoint, 7, Realm.Svartalfheim);  // this is where the realms connect to Svartalfheim
 
 		Place aurvangar = new Place("Aurvangar", aurvangarConnect,
 				aurvangarPoint, 5, Realm.Svartalfheim);
@@ -696,7 +696,7 @@ public class Creation {
 		Point furnacePoint = new Point(50, 95);
 
 		Place hreidmar = new Place("Hreidmar's Kingdom", hreidmarConnect,
-				hreidmarPoint, 9, Realm.Nidavellir);
+				hreidmarPoint, 9, Realm.Nidavellir); // this is where the realms connect to Nidavellir
 
 		Place durin = new Place("Durin's Hall", durinConnect, durinPoint, 4,
 				Realm.Nidavellir);
@@ -797,7 +797,7 @@ public class Creation {
 				plainsConnect, plainsPoint, 4, Realm.Muspelheim);
 
 		Place surtursKingdom = new Place("Surtur's Kingdom", surturConnect,
-				surturPoint, 8, Realm.Muspelheim);
+				surturPoint, 8, Realm.Muspelheim); // this is where the realms connect to Muspelheim
 
 		Place sinmoreHall = new Place("Sinmore Hall", sinmoreConnect,
 				sinmorePoint, 6, Realm.Muspelheim);
