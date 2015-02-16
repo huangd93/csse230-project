@@ -9,7 +9,6 @@ public class Main {
 	 * 
 	 */
 	public static void main(String[] args) {
-		new StartUpGUI();
 
 		// begin creation
 		Creation yggdrasil = new Creation();
@@ -26,6 +25,7 @@ public class Main {
 		// rating, and then through all that goodness you can pick information
 		// out of the places
 
+		new StartUpGUI();
 	}
 
 }
