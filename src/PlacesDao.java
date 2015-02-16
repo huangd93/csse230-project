@@ -14,11 +14,6 @@ public class PlacesDao implements PlacesDaoInterface {
 		return result;
 	}
 
-	public Realm findPlace(String placeName) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	/**
 	 * Returns the shortest path from place1 to place2 sorted by time
 	 * @param place1 The starting point

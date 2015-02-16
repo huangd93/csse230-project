@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 
 
 public class PlacesHashMap {
@@ -26,6 +27,18 @@ public class PlacesHashMap {
 		if(placesArray[hash] == null) placesArray[hash] = new PlacesList();
 		placesArray[hash].insert(p);
 		return true;
+	}
+	
+	public boolean containsName(String name) {
+		int hash = hash(name, placesArray.length);
+		if(placesArray[hash] != null && placesArray[hash].containsName(name)) return true;
+		return false;
+	}
+	
+	public Place getPlace(String name, String realm) {
+		if(!containsName(name)) return null;
+		int hash = hash(name, placesArray.length);
+		return placesArray[hash].getPlace(name, realm);
 	}
 	
 	/**
@@ -72,13 +85,13 @@ public class PlacesHashMap {
 	 * @author huangd
 	 *
 	 */
-	private class PlacesList {
+	private class PlacesList implements Iterable<Place> {
 		private LinkedList<Place> places;
 		private int size;
 		private int maxSize;
 		
 		/**
-		 * Creates a LinkedList of Places with a max length of 8
+		 * Creates a LinkedList of Places with a max length of 8 before considering rebalancing.
 		 */
 		public PlacesList() {
 			places = new LinkedList<Place>();
@@ -86,15 +99,46 @@ public class PlacesHashMap {
 			maxSize = 8;
 		}
 		
+		/**
+		 * Returns the place with the given name and realm
+		 * @param name
+		 * @param realm
+		 * @return
+		 */
+		public Place getPlace(String name, String realm) {
+			Iterator<Place> t = iterator();
+			while(t.hasNext()) {
+				Place n = t.next();
+				if(n.getName().equals(name) && n.getRealm().toString().equals(realm)) return n;
+			}
+			return null;
+		}
+
+		/**
+		 * Insert the given place into places
+		 * @param p
+		 */
 		public void insert(Place p) {
 			places.insert(p);
 			size++;
 			if(size > maxSize) {
-				if(!sameName()) rebalance();
+				if(size > maxSize + 1) {
+					if(p.getName().equals(places.root.getElement().getName())) rebalance();
+				} else {
+					if(!sameName()) rebalance();
+				}
 			}
 		}
 		
-		public boolean sameName() {
+		public boolean containsName(String name) {
+			Iterator<Place> t = iterator();
+			while(t.hasNext()) {
+				if(t.next().getName().equals(name)) return true;
+			}
+			return false;
+		}
+		
+		private boolean sameName() {
 			String name = places.root.getElement().getName();
 			for(Place p : places) {
 				if(!name.equals(p.getName())) return false;
@@ -108,6 +152,10 @@ public class PlacesHashMap {
 		
 		public LinkedList<Place> getPlaces() {
 			return places;
+		}
+
+		public Iterator<Place> iterator() {
+			return places.iterator();
 		}
 	}
 }

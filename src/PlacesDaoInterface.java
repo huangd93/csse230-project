@@ -29,14 +29,6 @@ public interface PlacesDaoInterface {
 	 * @return
 	 */
 	public Place getPlace(String name, String realm);
-
-	/**
-	 * Finds what realm the input place belongs in
-	 * 
-	 * @param place
-	 * @return Realm
-	 */
-	public Realm findPlace(String placeName);
 	
 	/**
 	 * Returns an ArrayList of Places that connect to the starting point with
