@@ -65,29 +65,4 @@ public class PlannerGUI implements PlacesDaoInterface{
 	     this.mainframe.setLayout(null);
 	     this.mainframe.add(mainPanel);
      }
-
-	public ArrayList<Place> getPlaces() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Realm findPlace(Place place) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public ArrayList<Connection> getFastestRoute(Place place1, Place place2) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public ArrayList<Connection> getShortestRoute(Place place1, Place place2) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public boolean insertIntoRatingTree(Place place) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 }

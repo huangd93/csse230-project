@@ -32,14 +32,12 @@ public class DropDownHandler implements ActionListener {
 	    	 DefaultComboBoxModel model = new DefaultComboBoxModel(asgardStrings);
 	    	 this.list.setModel(model);
 	    	 this.controlPanel.revalidate();
-	         System.out.println("You're in Asgard!");
 	     }
 	     else if(current.equals("Utgard")){
 	    	String[] utgardStrings = {"The River Iving","Mimir’s Well of Wisdom","Utgard-Loki’s Throne","Griotunagardar","The Mountain Thrymheim"};
 	    	DefaultComboBoxModel model = new DefaultComboBoxModel(utgardStrings);
 	    	this.list.setModel(model);
 	    	this.controlPanel.revalidate();
-	    	System.out.println("You're in Utgard!");
 	     }
 	     else if(current.equals("Niflheim")){
 	    	String[] niflheimStrings = {"The Spring Hvergelmir","The Plains of Ginnungagap","The Rivers Elivagar","Helheim (Hel’s Throne)","Fimbulthul"};
