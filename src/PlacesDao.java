@@ -147,13 +147,9 @@ public class PlacesDao implements PlacesDaoInterface {
 	}
 
 	public boolean insert(Place place) {
-		// TODO Do this
-		return false;
-	}
-	
-	public boolean insertIntoRatingTree(Place place) {
-		// TODO Auto-generated method stub
-		return false;
+		int rating = place.getRating();
+		if(places[rating] == null) places[rating] = new PlacesHashMap();
+		return places[rating].insert(place);
 	}
 
 	public ArrayList<Place> getPlacesWithin(Place start, double distance,
@@ -162,7 +158,13 @@ public class PlacesDao implements PlacesDaoInterface {
 	}
 
 	public Place getPlace(String name, String realm) {
-		// TODO Auto-generated method stub
+		Place result = null;
+		for(PlacesHashMap i : places) {
+			if(i != null && i.containsName(name)) {
+				result = i.getPlace(name, realm);
+				if(result != null) return result;
+			}
+		}
 		return null;
 	}
 

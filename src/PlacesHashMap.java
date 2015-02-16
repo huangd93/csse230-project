@@ -146,10 +146,6 @@ public class PlacesHashMap {
 			return true;
 		}
 		
-		public int getSize() {
-			return size;
-		}
-		
 		public LinkedList<Place> getPlaces() {
 			return places;
 		}

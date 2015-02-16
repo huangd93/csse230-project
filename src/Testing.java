@@ -16,6 +16,6 @@ public class Testing {
 	public void testInsertGet() {
 		PlacesDaoInterface p = PlacesDaoFactory.getPlacesDaoSingleton();
 		Place place = new Place(null, null, null, 0, null);
-		p.insertIntoRatingTree(place);
+		p.insert(place);
 	}
 }
