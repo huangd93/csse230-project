@@ -22,7 +22,7 @@ public class DropDownHandler implements ActionListener {
 		JComboBox combo = (JComboBox)e.getSource();
 	    String current = (String)combo.getSelectedItem();
 	    if(current.equals("(Choose a Realm)")){
-	    	String[] defaultString = {"(Please Choose a Realm)"};
+	    	 String[] defaultString = {"(Please Choose a Realm)"};
 	    	 DefaultComboBoxModel model = new DefaultComboBoxModel(defaultString);
 	    	 this.list.setModel(model);
 	    	 this.controlPanel.revalidate();

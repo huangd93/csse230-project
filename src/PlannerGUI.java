@@ -1,13 +1,16 @@
 import java.awt.Color;
+import java.awt.Dimension;
 import java.util.ArrayList;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
-public class PlannerGUI implements PlacesDaoInterface{
+public class PlannerGUI{
 	/**
      * Mainframe.
      */
@@ -26,40 +29,47 @@ public class PlannerGUI implements PlacesDaoInterface{
 	     JPanel mainPanel = new JPanel();
 	     
 	     JLabel startChoice = new JLabel("Where is your starting location?");
-	     String[] startStrings = {"Valhalla","Odin’s Fortress","Lake Logur","Asgard Mountains","Sea of Marmora",
-	    		 "The River Iving","Mimir’s Well of Wisdom","Utgard-Loki’s Throne","Griotunagardar","The Mountain Thrymheim",
-	    		 "The Spring Hvergelmir","The Plains of Ginnungagap","The Rivers Elivagar","Helheim (Hel’s Throne)","Fimbulthul",
-	    		 "The Forests of the Vanir","Don River","The Home of Njord","Eiglopian Mountains","Pictish Wilderness",
-	    		 "Freyr’s Throne","Geffen","Canolbarth Forest",
-	    		 "New York City","Washington D.C.","Puente Antiguo, New Mexico","London, England","Wheaton, New Jersey",
-	    		 "The Domain of Malekith","The Black Forest","The Unseelie Court","Aurvangar","Byrgir",
-	    		 "Hreidmar’s Kingdom","The Dark Fields","The Furnaces of Nidavellir","Durin’s Hall","Dvalin’s Hall",
-	    		 "The Burning Plains of Surt","Sinmore Hall","Surtur’s Kingdom"};
-	     JComboBox startList = new JComboBox(startStrings);
+	     String[] realms = {"(Choose a Realm)","Asgard","Utgard","Niflheim","Vanaheim","Alfheim","Midgard","Svartalfheim","Nidavellir","Muspelheim"};
+		 JComboBox realmList = new JComboBox(realms);
+		 String[] startStrings = {"(Please Choose a Realm)"};
+		 DefaultComboBoxModel startModel = new DefaultComboBoxModel(startStrings);
+	     JComboBox startList = new JComboBox();
+	     startList.setModel(startModel);
+	     realmList.addActionListener(new DropDownHandler(null, startList, mainPanel));
 	       
-	     JLabel distanceChoice = new JLabel("How far would you like to travel?");
-	     String[] distanceStrings = {"Less than 100 miles","Between 100 and 200 miles","Between 200 and 300 miles",
-	       "Between 300 and 400 miles","Greater than 400 miles",
-	     };
-	     JComboBox distanceList = new JComboBox(distanceStrings);
+	     JLabel distanceChoice = new JLabel("What is the max distance you would like to travel?");
+//	     String[] distanceStrings = {"100 miles","200 miles","300 miles",
+//	       "400 miles","500 miles"};
+//	     JComboBox distanceList = new JComboBox(distanceStrings);
+	     JTextField distanceInput = new JTextField();
+	     Dimension size = new Dimension(100, 20);
+		 distanceInput.setMinimumSize(size);
+		 distanceInput.setPreferredSize(size);
+		 distanceInput.setSize(size);
 	     
-	     JLabel timeChoice = new JLabel("How long would you like your adventure to be?");
-	     String[] timeStrings = {"Less than 1 hour","Between 1 and 2 hours","Between 2 and 3 hours",
-	       "Between 3 and 4 hours","Greater than 4 hours",
-	     };
-	     JComboBox timeList = new JComboBox(timeStrings);
+	     JLabel timeChoice = new JLabel("What is the max time you would like your adventure to be?");
+//	     String[] timeStrings = {"1 hour","2 hours","3 hours",
+//	       "4 hours","5 hours"};
+//	     JComboBox timeList = new JComboBox(timeStrings);
+	     JTextField timeInput = new JTextField();
+	     timeInput.setMaximumSize(size);
+	     timeInput.setPreferredSize(size);
+	     timeInput.setSize(size);
 	     
 	     JButton optionsButton = new JButton("Get Options");
-	     optionsButton.addActionListener(new ButtonHandler(this.mainframe, mainPanel, distanceList, timeList, startList));
+	     optionsButton.addActionListener(new ButtonHandler(this.mainframe, mainPanel, distanceInput, timeInput, startList, realmList));
 	     
 	     mainPanel.setBounds(433, 115, 500, 550);
 	     
 	     mainPanel.add(startChoice);
+	     mainPanel.add(realmList);
 	     mainPanel.add(startList);
 	     mainPanel.add(distanceChoice);
-	     mainPanel.add(distanceList);
+	     mainPanel.add(distanceInput);
+//	     mainPanel.add(distanceList);
 	     mainPanel.add(timeChoice);
-	     mainPanel.add(timeList);
+	     mainPanel.add(timeInput);
+//	     mainPanel.add(timeList);
 	     mainPanel.add(optionsButton);
 	      
 	     this.mainframe.setLayout(null);
