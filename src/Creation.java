@@ -35,8 +35,7 @@ public class Creation {
 				9, Realm.Asgard);
 
 		Place odinsFortress = new Place("Odin's Fortress", odinConnect,
-				odinPoint, 8, Realm.Asgard); // this is where the realms connect
-												// to Asgard
+				odinPoint, 8, Realm.Asgard); // this is where the realms connect to Asgard
 
 		Place asgardMnts = new Place("Asgard Mountains", mntnConnect,
 				mntnPoint, 5, Realm.Asgard);
@@ -46,6 +45,8 @@ public class Creation {
 
 		Place seaOfMarmora = new Place("Sea of Marmora", seaConnect, seaPoint,
 				4, Realm.Asgard);
+		
+		Realm.Asgard.setGate(odinsFortress);
 
 		t.insert(valhalla);
 		t.insert(odinsFortress);
@@ -118,6 +119,7 @@ public class Creation {
 
 	}
 
+	
 	public void createJotunheim() {
 		ArrayList<Connection> riverIvingConnect = new ArrayList<Connection>();
 		Point riverIvingPoint = new Point(40, 20);
@@ -141,14 +143,15 @@ public class Creation {
 				utgardLokiConnect, utgardLokiPoint, 8, Realm.Jotunheim);
 
 		Place mimirsWell = new Place("Mimir's Well", mimirConnect, mimirPoint,
-				7, Realm.Jotunheim); // this is where the realms connect to
-										// Utgard
+				7, Realm.Jotunheim); //this is where the realms connect to Utgard
 
 		Place griotunagardar = new Place("Griotunagardar", grioConnect,
 				grioPoint, 5, Realm.Jotunheim);
 
 		Place mountThrymheim = new Place("The Mountain Thrymheim", mtTConnect,
 				mtTPoint, 7, Realm.Jotunheim);
+		
+		Realm.Jotunheim.setGate(mimirsWell);
 
 		t.insert(riverIving);
 		t.insert(utgardLokisThrone);
@@ -219,6 +222,7 @@ public class Creation {
 				connectPointsThrymheim), 55));
 	}
 
+	
 	public void createNiflheim() {
 
 		ArrayList<Connection> plainsConnect = new ArrayList<Connection>();
@@ -245,14 +249,13 @@ public class Creation {
 		Place riverEliyagar = new Place("The River Eliyagar",
 				riverEliyagarConnect, riverEliyagarPoint, 4, Realm.Niflheim);
 
-		Place hvergelmir = new Place("The Spring Hvergelmir", // this is where
-																// the realms
-																// connect to
-																// Niflheim
+		Place hvergelmir = new Place("The Spring Hvergelmir", // this is where the realms connect to Niflheim
 				hvergelmirConnect, hvergelmirPoint, 8, Realm.Niflheim);
 
 		Place helheim = new Place("Helheim (Hel's Throne)", helheimConnect,
 				helheimPoint, 9, Realm.Niflheim);
+		
+		Realm.Niflheim.setGate(hvergelmir);
 
 		t.insert(plainsOfGin);
 		t.insert(fimbulthul);
@@ -317,6 +320,7 @@ public class Creation {
 
 	}
 
+	
 	public void createVanaheim() {
 
 		ArrayList<Connection> njordConnect = new ArrayList<Connection>();
@@ -338,7 +342,7 @@ public class Creation {
 				7, Realm.Vanaheim);
 
 		Place donRiver = new Place("Don River", donRiverConnect, donPoint, 4,
-				Realm.Vanaheim); // this is where the realms connect to Vanaheim
+				Realm.Vanaheim);  // this is where the realms connect to Vanaheim
 
 		Place eiglopianMnt = new Place("Eiglopian Mountains", eigMtnConnect,
 				eigMtnPoint, 5, Realm.Vanaheim);
@@ -348,6 +352,8 @@ public class Creation {
 
 		Place forestOfVanir = new Place("The Forests of Vanir",
 				forestVanirConnect, forestPoint, 5, Realm.Vanaheim);
+		
+		Realm.Vanaheim.setGate(donRiver);
 
 		t.insert(njord);
 		t.insert(donRiver);
@@ -420,6 +426,7 @@ public class Creation {
 
 	}
 
+	
 	public void createAlfheim() {
 
 		ArrayList<Connection> freyrConnect = new ArrayList<Connection>();
@@ -438,8 +445,9 @@ public class Creation {
 				Realm.Alfheim);
 
 		Place canolbarth = new Place("Canolbarth Forest", canolbarthConnect,
-				canolbarthPoint, 7, Realm.Alfheim); // this is where the realms
-													// connect to Alfheim
+				canolbarthPoint, 7, Realm.Alfheim); // this is where the realms connect to Alfheim
+		
+		Realm.Alfheim.setGate(canolbarth);
 
 		t.insert(freyr);
 		t.insert(geffen);
@@ -472,6 +480,7 @@ public class Creation {
 
 	}
 
+	
 	public void createMidgard() {
 
 		ArrayList<Connection> nycConnect = new ArrayList<Connection>();
@@ -502,14 +511,15 @@ public class Creation {
 				antiguoPoint, 7, Realm.Midgard);
 
 		Place london = new Place("London, England", londonConnect, londonPoint,
-				9, Realm.Midgard); // this is where the realms connect to
-									// Midgard
+				9, Realm.Midgard);  // this is where the realms connect to Midgard
 
 		t.insert(nyc);
 		t.insert(dc);
 		t.insert(wheaton);
 		t.insert(antiguo);
 		t.insert(london);
+		
+		Realm.Midgard.setGate(london);
 
 		// nyc connections
 		ArrayList<Point> connectNYCtoLondon = new ArrayList<Point>();
@@ -582,6 +592,7 @@ public class Creation {
 
 	}
 
+	
 	public void createSvartalfheim() {
 
 		ArrayList<Connection> malekithConnect = new ArrayList<Connection>();
@@ -609,11 +620,12 @@ public class Creation {
 				Realm.Svartalfheim);
 
 		Place blackForest = new Place("The Black Forest", blackConnect,
-				blackPoint, 7, Realm.Svartalfheim); // this is where the realms
-													// connect to Svartalfheim
+				blackPoint, 7, Realm.Svartalfheim);  // this is where the realms connect to Svartalfheim
 
 		Place aurvangar = new Place("Aurvangar", aurvangarConnect,
 				aurvangarPoint, 5, Realm.Svartalfheim);
+		
+		Realm.Svartalfheim.setGate(blackForest);
 
 		t.insert(malekith);
 		t.insert(unseelieCourt);
@@ -678,6 +690,7 @@ public class Creation {
 
 	}
 
+	
 	public void createNidavellir() {
 
 		ArrayList<Connection> hreidmarConnect = new ArrayList<Connection>();
@@ -696,8 +709,7 @@ public class Creation {
 		Point furnacePoint = new Point(50, 95);
 
 		Place hreidmar = new Place("Hreidmar's Kingdom", hreidmarConnect,
-				hreidmarPoint, 9, Realm.Nidavellir); // this is where the realms
-														// connect to Nidavellir
+				hreidmarPoint, 9, Realm.Nidavellir); // this is where the realms connect to Nidavellir
 
 		Place durin = new Place("Durin's Hall", durinConnect, durinPoint, 4,
 				Realm.Nidavellir);
@@ -710,6 +722,8 @@ public class Creation {
 
 		Place furnaces = new Place("The Furnaces of Nidavellir",
 				furnaceConnect, furnacePoint, 10, Realm.Nidavellir);
+		
+		Realm.Nidavellir.setGate(hreidmar);
 
 		t.insert(hreidmar);
 		t.insert(durin);
@@ -782,6 +796,7 @@ public class Creation {
 
 	}
 
+	
 	public void createMuspelheim() {
 
 		ArrayList<Connection> plainsConnect = new ArrayList<Connection>();
@@ -797,40 +812,39 @@ public class Creation {
 				plainsConnect, plainsPoint, 4, Realm.Muspelheim);
 
 		Place surtursKingdom = new Place("Surtur's Kingdom", surturConnect,
-				surturPoint, 8, Realm.Muspelheim); // this is where the realms
-													// connect to Muspelheim
+				surturPoint, 8, Realm.Muspelheim); // this is where the realms connect to Muspelheim
 
 		Place sinmoreHall = new Place("Sinmore Hall", sinmoreConnect,
 				sinmorePoint, 6, Realm.Muspelheim);
-
+		
+		Realm.Muspelheim.setGate(surtursKingdom);
+		
 		t.insert(burningPlains);
 		t.insert(surtursKingdom);
 		t.insert(sinmoreHall);
-
-		// burning plains connections
+		
+		//burning plains connections
 		ArrayList<Point> connectPlainsToSurtur = new ArrayList<Point>();
 		connectPlainsToSurtur.add(surturPoint);
 		plainsConnect.add(new Connection(surtursKingdom, new Route(
 				connectPlainsToSurtur), 90));
 		burningPlains.setConnections(plainsConnect);
-
-		// surturs connections
+		
+		//surturs connections
 		ArrayList<Point> connectSurtToPlains = new ArrayList<Point>();
 		ArrayList<Point> connectSurtToSinmore = new ArrayList<Point>();
 		connectSurtToPlains.add(plainsPoint);
 		connectSurtToSinmore.add(sinmorePoint);
-		surturConnect.add(new Connection(burningPlains, new Route(
-				connectSurtToPlains), 90));
-		surturConnect.add(new Connection(sinmoreHall, new Route(
-				connectSurtToSinmore), 30));
+		surturConnect.add(new Connection(burningPlains, new Route(connectSurtToPlains), 90));
+		surturConnect.add(new Connection(sinmoreHall, new Route(connectSurtToSinmore), 30));
 		surtursKingdom.setConnections(surturConnect);
-
-		// sinmores connections
+		
+		//sinmores connections
 		ArrayList<Point> connectSinmoreToSurt = new ArrayList<Point>();
 		connectSinmoreToSurt.add(surturPoint);
-		sinmoreConnect.add(new Connection(surtursKingdom, new Route(
-				connectSinmoreToSurt), 30));
+		sinmoreConnect.add(new Connection(surtursKingdom, new Route(connectSinmoreToSurt), 30));
 		sinmoreHall.setConnections(sinmoreConnect);
+		
 
 	}
 }
