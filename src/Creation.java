@@ -1,11 +1,8 @@
 import java.util.ArrayList;
 
-import org.junit.Test;
-
 /**
  * 
- * This will actually create Yggdrasil and waypoints. If we don't need this at
- * the moment, the code will be useful later
+ * This will create Yggdrasil and waypoints, etc.
  * 
  * 
  * @author richarel
@@ -14,6 +11,15 @@ import org.junit.Test;
 public class Creation {
 
 	PlacesTree t = new PlacesTree();
+	ArrayList<Place> asgardPlaces = new ArrayList<Place>();
+	ArrayList<Place> jotunheimPlaces = new ArrayList<Place>();
+	ArrayList<Place> niflheimPlaces = new ArrayList<Place>();
+	ArrayList<Place> vanaheimPlaces = new ArrayList<Place>();
+	ArrayList<Place> alfheimPlaces = new ArrayList<Place>();
+	ArrayList<Place> midgardPlaces = new ArrayList<Place>();
+	ArrayList<Place> svartalfheimPlaces = new ArrayList<Place>();
+	ArrayList<Place> nidavellirPlaces = new ArrayList<Place>();
+	ArrayList<Place> muspelheimPlaces = new ArrayList<Place>();
 
 	public void createAsgard() {
 		ArrayList<Connection> valhallaConnect = new ArrayList<Connection>();
@@ -47,6 +53,12 @@ public class Creation {
 				4, Realm.Asgard);
 		
 		Realm.Asgard.setGate(odinsFortress);
+		
+		asgardPlaces.add(valhalla);
+		asgardPlaces.add(seaOfMarmora);
+		asgardPlaces.add(lakeLogur);
+		asgardPlaces.add(asgardMnts);
+		asgardPlaces.add(odinsFortress);
 
 		t.insert(valhalla);
 		t.insert(odinsFortress);
@@ -152,6 +164,12 @@ public class Creation {
 				mtTPoint, 7, Realm.Jotunheim);
 		
 		Realm.Jotunheim.setGate(mimirsWell);
+		
+		jotunheimPlaces.add(riverIving);
+		jotunheimPlaces.add(utgardLokisThrone);
+		jotunheimPlaces.add(mountThrymheim);
+		jotunheimPlaces.add(mimirsWell);
+		jotunheimPlaces.add(griotunagardar);
 
 		t.insert(riverIving);
 		t.insert(utgardLokisThrone);
@@ -256,6 +274,12 @@ public class Creation {
 				helheimPoint, 9, Realm.Niflheim);
 		
 		Realm.Niflheim.setGate(hvergelmir);
+		
+		niflheimPlaces.add(plainsOfGin);
+		niflheimPlaces.add(fimbulthul);
+		niflheimPlaces.add(riverEliyagar);
+		niflheimPlaces.add(hvergelmir);
+		niflheimPlaces.add(helheim);
 
 		t.insert(plainsOfGin);
 		t.insert(fimbulthul);
@@ -354,6 +378,12 @@ public class Creation {
 				forestVanirConnect, forestPoint, 5, Realm.Vanaheim);
 		
 		Realm.Vanaheim.setGate(donRiver);
+		
+		vanaheimPlaces.add(njord);
+		vanaheimPlaces.add(donRiver);
+		vanaheimPlaces.add(eiglopianMnt);
+		vanaheimPlaces.add(pictishWilderness);
+		vanaheimPlaces.add(forestOfVanir);
 
 		t.insert(njord);
 		t.insert(donRiver);
@@ -448,6 +478,10 @@ public class Creation {
 				canolbarthPoint, 7, Realm.Alfheim); // this is where the realms connect to Alfheim
 		
 		Realm.Alfheim.setGate(canolbarth);
+		
+		alfheimPlaces.add(freyr);
+		alfheimPlaces.add(geffen);
+		alfheimPlaces.add(canolbarth);
 
 		t.insert(freyr);
 		t.insert(geffen);
@@ -518,6 +552,12 @@ public class Creation {
 		t.insert(wheaton);
 		t.insert(antiguo);
 		t.insert(london);
+		
+		midgardPlaces.add(nyc);
+		midgardPlaces.add(dc);
+		midgardPlaces.add(wheaton);
+		midgardPlaces.add(antiguo);
+		midgardPlaces.add(london);
 		
 		Realm.Midgard.setGate(london);
 
@@ -632,6 +672,12 @@ public class Creation {
 		t.insert(byrgir);
 		t.insert(blackForest);
 		t.insert(aurvangar);
+		
+		svartalfheimPlaces.add(malekith);
+		svartalfheimPlaces.add(unseelieCourt);
+		svartalfheimPlaces.add(blackForest);
+		svartalfheimPlaces.add(byrgir);
+		svartalfheimPlaces.add(aurvangar);
 
 		// malekith connections
 		ArrayList<Point> connectMalekithToUnseelie = new ArrayList<Point>();
@@ -730,6 +776,12 @@ public class Creation {
 		t.insert(dvalin);
 		t.insert(darkFields);
 		t.insert(furnaces);
+		
+		nidavellirPlaces.add(hreidmar);
+		nidavellirPlaces.add(durin);
+		nidavellirPlaces.add(dvalin);
+		nidavellirPlaces.add(darkFields);
+		nidavellirPlaces.add(furnaces);
 
 		// hreidmar connections
 		ArrayList<Point> connectHreidmarToDurin = new ArrayList<Point>();
@@ -818,6 +870,10 @@ public class Creation {
 				sinmorePoint, 6, Realm.Muspelheim);
 		
 		Realm.Muspelheim.setGate(surtursKingdom);
+		
+		muspelheimPlaces.add(burningPlains);
+		muspelheimPlaces.add(surtursKingdom);
+		muspelheimPlaces.add(sinmoreHall);
 		
 		t.insert(burningPlains);
 		t.insert(surtursKingdom);
