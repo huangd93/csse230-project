@@ -7,6 +7,12 @@ public class Connection {
 	private double time;
 	
 	//destination, new route object (two points, beginning and end), speed
+	/**
+	 * Creates a connection with the specified values
+	 * @param d Destination Place
+	 * @param r Route that this follows
+	 * @param speed The speed of travel, used to calculate time.
+	 */
 	public Connection(Place d, Route r, int speed) {
 		destination = d;
 		route = r;

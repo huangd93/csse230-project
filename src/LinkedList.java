@@ -143,23 +143,35 @@ public class LinkedList<T> implements Iterable<T> {
 		Node parent;
 		Node current;
 		
+		/**
+		 * Creates a LinkedListIterator
+		 */
 		public LinkedListIterator() {
 			parent = null;
 			current = new Node(null, root);
 		}
 
+		/**
+		 * Returns true if there is a next
+		 */
 		public boolean hasNext() {
 			if(current == null) return false;
 			if(current.child != null) return true;
 			return false;
 		}
 
+		/**
+		 * Moves to the next node and returns its element
+		 */
 		public T next() {
 			if(!hasNext()) return null;
 			current = current.child;
 			return current.element;
 		}
 
+		/**
+		 * Removes the current node.
+		 */
 		public void remove() {
 			if(parent == null) {
 				root = null;
