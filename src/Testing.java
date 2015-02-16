@@ -1,4 +1,6 @@
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+
+import java.util.ArrayList;
 
 import org.junit.Test;
 
@@ -15,7 +17,13 @@ public class Testing {
 	@Test
 	public void testInsertGet() {
 		PlacesDaoInterface p = PlacesDaoFactory.getPlacesDaoSingleton();
-		Place place = new Place(null, null, null, 0, null);
+		ArrayList<Connection> place1C = new ArrayList<Connection>(); 
+		Place place = new Place("Place1", place1C, new Point(10, 10), 5, Realm.Asgard);
 		p.insert(place);
+	}
+	
+	@Test
+	public void testStuff() {
+		
 	}
 }

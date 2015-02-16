@@ -36,10 +36,18 @@ public class Place {
 	 */
 	public static double estimatedDistance(Place x, Place y) {
 		double result = 0;
-//		if(x.getRealm() != y.getRealm()) {
-//			// TODO: Add in finding realm gate stuff for a better heuristic
-//		}
-		result += Point.distanceBetween(x.getPoint(), y.getPoint());
+		if(x.getRealm() != y.getRealm()) {
+			Place gate1 = x.getRealm().getGate();
+			Place gate2 = y.getRealm().getGate();
+			// Distance to this realm gate
+			result += Point.distanceBetween(x.getPoint(), gate1.getPoint());
+			// Distance between gates
+			result += Point.distanceBetween(gate1.getPoint(), gate2.getPoint());
+			// Distance from destination realm gate to destination
+			result += Point.distanceBetween(gate2.getPoint(), y.getPoint());
+		} else {
+			result += Point.distanceBetween(x.getPoint(), y.getPoint());
+		}
 		return result;
 	}
 
