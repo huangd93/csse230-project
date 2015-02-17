@@ -3,12 +3,16 @@ import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Enumeration;
 
+import javax.swing.AbstractButton;
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 
@@ -23,6 +27,7 @@ public class ButtonHandler implements ActionListener {
 	JComboBox endRealmCombo;
 	JComboBox endPlaceCombo;
 	PlacesDaoInterface pdi;
+	ButtonGroup group;
 	
 	private String s;
 	private String d;
@@ -31,7 +36,7 @@ public class ButtonHandler implements ActionListener {
 	
 	public ButtonHandler(JFrame frame, JPanel pan, JTextField distanceInput, 
 			JTextField timeInput, JComboBox startPlaceCombo, JComboBox startRealmCombo,
-			JComboBox endPlaceCombo, JComboBox endRealmCombo){
+			JComboBox endPlaceCombo, JComboBox endRealmCombo, ButtonGroup buttonGroup){
 		this.mainframe = frame;
 		this.panel = pan;
 		this.distance = distanceInput;
@@ -41,16 +46,42 @@ public class ButtonHandler implements ActionListener {
 		this.endRealmCombo = endRealmCombo;
 		this.endPlaceCombo = endPlaceCombo;
 		this.pdi = PlacesDaoFactory.getPlacesDaoSingleton();
+		this.group = buttonGroup;
 	}
 	
 	public void actionPerformed(ActionEvent ae) {
 		 String action = ae.getActionCommand();
+		 
 	     if(action.equals("Plan an adventure")) {
 	         new PlannerGUI(this.mainframe);
 	     }
+	     
+	     
 	     else if(action.equals("Get Directions")) {
 	         new MapGUI(this.mainframe);
 	     }
+	     
+	     
+	     else if(action.equals("Get Your Directions")) {
+	    	 String startRealm = (String)this.startRealmCombo.getSelectedItem();
+	    	 String startPlace = (String)this.startPlaceCombo.getSelectedItem();
+	    	 String endPlace = "";
+	    	 String endRealm = "";
+	    	 String temp = "";
+	    	 this.group.getElements();
+	    	 for (Enumeration<AbstractButton> buttons = this.group.getElements(); buttons.hasMoreElements();) {
+	             AbstractButton button = buttons.nextElement();
+	             if (button.isSelected()) {
+	                  temp = button.getText();
+	             }
+	         }
+	    	 String[] tempArr = temp.split(", ");
+	    	 endPlace = tempArr[0];
+	    	 endRealm = tempArr[1];
+			 new MapGUI(this.mainframe, startPlace, startRealm, endPlace, endRealm);
+	     }
+	     
+	     
 	     else if(action.equals("Get Options")){
 	    	 this.panel.removeAll();
 	    	 this.panel.revalidate();
@@ -78,19 +109,23 @@ public class ButtonHandler implements ActionListener {
 	 	     Place p = this.pdi.getPlace(place, realm);
 	 	     
 			 ArrayList<Place> routeList = this.pdi.getPlacesWithin(p, d, t);
-			 for(Place i : routeList){
-				 System.out.println(i.getName());
-			 }
+			 
 			 String temp = "Adventure options: ";
+			 JLabel text = new JLabel(temp);
+			 this.panel.add(text);
+			 
+			 ButtonGroup group = new ButtonGroup();
 	    	 for(Place dest : routeList){
-	    		 temp += "Travel from " + place + " to " + dest.getName();
+	    		 JRadioButton r = new JRadioButton(dest.getName() + ", " + dest.getRealm().toString());
+	    		 group.add(r);
+	    		 this.panel.add(r);
 	    	 }
-	    	 JLabel options = new JLabel(temp);
-	    	 JButton get = new JButton("Get Directions");
-	    	 get.addActionListener(new ButtonHandler(this.mainframe, this.panel, null, null, null, null, null, null));
-	    	 this.panel.add(options);
+	    	 JButton get = new JButton("Get Your Directions");
+	    	 get.addActionListener(new ButtonHandler(this.mainframe, this.panel, null, null, this.startPlaceCombo, this.startRealmCombo, null, null, group));
 	    	 this.panel.add(get);
 	     }
+	     
+	     
 	     else if(action.equals("Create")){
 	    	 this.panel.removeAll();
 	     	 this.panel.revalidate();

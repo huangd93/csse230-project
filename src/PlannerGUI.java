@@ -29,7 +29,7 @@ public class PlannerGUI{
 	     JPanel mainPanel = new JPanel();
 	     
 	     JLabel startChoice = new JLabel("Where is your starting location?");
-	     String[] realms = {"(Choose a Realm)","Asgard","Utgard","Niflheim","Vanaheim","Alfheim","Midgard","Svartalfheim","Nidavellir","Muspelheim"};
+	     String[] realms = {"(Choose a Realm)","Asgard","Jotunheim","Niflheim","Vanaheim","Alfheim","Midgard","Svartalfheim","Nidavellir","Muspelheim"};
 		 JComboBox realmList = new JComboBox(realms);
 		 String[] startStrings = {"(Please Choose a Realm)"};
 		 DefaultComboBoxModel startModel = new DefaultComboBoxModel(startStrings);
@@ -57,7 +57,7 @@ public class PlannerGUI{
 	     timeInput.setSize(size);
 	     
 	     JButton optionsButton = new JButton("Get Options");
-	     optionsButton.addActionListener(new ButtonHandler(this.mainframe, mainPanel, distanceInput, timeInput, startList, realmList, null, null));
+	     optionsButton.addActionListener(new ButtonHandler(this.mainframe, mainPanel, distanceInput, timeInput, startList, realmList, null, null, null));
 	     
 	     mainPanel.setBounds(433, 115, 500, 550);
 	     

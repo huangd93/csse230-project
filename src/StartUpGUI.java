@@ -23,15 +23,20 @@ public class StartUpGUI {
            this.mainframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
            this.mainframe.setResizable(false);
            
+           String temp = "Hello, Bye";
+           String[] result = temp.split(", ");
+           System.out.println(result[0]);
+           System.out.println(result[1]);
+           
            JPanel textPanel = new JPanel();
            JPanel buttonPanel = new JPanel();
            
            JLabel welcome = new JLabel("Welcome to Yggdrasil");
            JLabel option = new JLabel("Would you like to");
            JButton planButton = new JButton("Plan an adventure");
-           planButton.addActionListener(new ButtonHandler(this.mainframe, null, null, null, null, null, null, null));
+           planButton.addActionListener(new ButtonHandler(this.mainframe, null, null, null, null, null, null, null, null));
            JButton directionsButton = new JButton("Get Directions");
-           directionsButton.addActionListener(new ButtonHandler(this.mainframe, null, null, null, null, null, null, null));
+           directionsButton.addActionListener(new ButtonHandler(this.mainframe, null, null, null, null, null, null, null, null));
            
            textPanel.setBounds(583, 284, 200, 55);
            buttonPanel.setBounds(533, 384, 300, 50);

@@ -33,7 +33,7 @@ public class DropDownHandler implements ActionListener {
 	    	 this.list.setModel(model);
 	    	 this.controlPanel.revalidate();
 	     }
-	     else if(current.equals("Utgard")){
+	     else if(current.equals("Jotunheim")){
 	    	String[] utgardStrings = {"The River Iving","Mimir’s Well of Wisdom","Utgard-Loki’s Throne","Griotunagardar","The Mountain Thrymheim"};
 	    	DefaultComboBoxModel model = new DefaultComboBoxModel(utgardStrings);
 	    	this.list.setModel(model);
