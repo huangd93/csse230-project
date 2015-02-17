@@ -68,8 +68,10 @@ public class Creation {
 
 		// connections from valhalla
 		ArrayList<Point> connectPointsValToOdin = new ArrayList<Point>();
+		connectPointsValToOdin.add(valhallaPoint);
 		connectPointsValToOdin.add(odinPoint);
 		ArrayList<Point> connectPointsValToMnts = new ArrayList<Point>();
+		connectPointsValToMnts.add(valhallaPoint);
 		connectPointsValToMnts.add(mntnPoint);
 		valhallaConnect.add(new Connection(odinsFortress, new Route(
 				connectPointsValToOdin), 30));
@@ -79,6 +81,7 @@ public class Creation {
 
 		// connections from lake logur
 		ArrayList<Point> connectPointsLakeLogur = new ArrayList<Point>();
+		connectPointsLakeLogur.add(lakePoint);
 		connectPointsLakeLogur.add(mntnPoint);
 		lakeConnect.add(new Connection(asgardMnts, new Route(
 				connectPointsLakeLogur), 40));
@@ -89,6 +92,10 @@ public class Creation {
 		ArrayList<Point> connectPointsMountsToVal = new ArrayList<Point>();
 		ArrayList<Point> connectPointsMountsToOdin = new ArrayList<Point>();
 		ArrayList<Point> connectPointsMountsToSea = new ArrayList<Point>();
+		connectPointsMountsToLake.add(mntnPoint);
+		connectPointsMountsToVal.add(mntnPoint);
+		connectPointsMountsToOdin.add(mntnPoint);
+		connectPointsMountsToSea.add(mntnPoint);
 		connectPointsMountsToLake.add(lakePoint);
 		connectPointsMountsToVal.add(valhallaPoint);
 		connectPointsMountsToOdin.add(odinPoint);
@@ -107,6 +114,9 @@ public class Creation {
 		ArrayList<Point> connectPointsOdinToVal = new ArrayList<Point>();
 		ArrayList<Point> connectPointsOdinToMnts = new ArrayList<Point>();
 		ArrayList<Point> connectPointsOdinToSea = new ArrayList<Point>();
+		connectPointsOdinToVal.add(odinPoint);
+		connectPointsOdinToMnts.add(odinPoint);
+		connectPointsOdinToSea.add(odinPoint);
 		connectPointsOdinToVal.add(valhallaPoint);
 		connectPointsOdinToMnts.add(mntnPoint);
 		connectPointsOdinToSea.add(seaPoint);
@@ -121,6 +131,8 @@ public class Creation {
 		// connections from the sea of marmora
 		ArrayList<Point> connectPointsSeaToOdin = new ArrayList<Point>();
 		ArrayList<Point> connectPointsSeaToMntn = new ArrayList<Point>();
+		connectPointsSeaToOdin.add(seaPoint);
+		connectPointsSeaToMntn.add(seaPoint);
 		connectPointsSeaToOdin.add(odinPoint);
 		connectPointsSeaToMntn.add(mntnPoint);
 		seaConnect.add(new Connection(odinsFortress, new Route(

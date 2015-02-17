@@ -17,7 +17,7 @@ public class Route {
 		double result =0;
 		Point last = pointsArray.get(0);
 		for(Point o: pointsArray) {
-			result += o.distanceTo(last);
+			result += Point.distanceBetween(o, last);
 		}
 		return result;
 	}

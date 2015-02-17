@@ -153,7 +153,8 @@ public class PlacesDao implements PlacesDaoInterface {
 	}
 
 	public ArrayList<Place> getPlacesWithin(Place start, double distance,
-			double time) {
+			double time) throws IllegalArgumentException{
+		if(start == null) throw new IllegalArgumentException();
 		return start.getPlacesWithin(distance, time, 0, 0);
 	}
 	
