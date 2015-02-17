@@ -1,5 +1,6 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
@@ -11,16 +12,26 @@ public class DropDownHandler implements ActionListener {
 
 	String[] startStrings;
 	JComboBox list;
+	PlacesDaoInterface pdi;
 	private JPanel controlPanel;
 	
 	public DropDownHandler(String[] list, JComboBox combo, JPanel pan){
 		this.list = combo;
 		this.controlPanel = pan;
+		this.pdi = PlacesDaoFactory.getPlacesDaoSingleton();
 	}
 	
 	public void actionPerformed(ActionEvent e) {
 		JComboBox combo = (JComboBox)e.getSource();
 	    String current = (String)combo.getSelectedItem();
+	    Realm realm = Realm.stringToRealm(current);
+	    ArrayList<Place> placesArray = this.pdi.getPlacesInRealm(realm);
+	    
+	    ArrayList<String> placesStringArray = new ArrayList<String>();
+	    for(int i = 0; i < placesArray.size(); i++){
+	    	placesStringArray.add(i, placesArray.get(i).getName());
+	    }
+	    Object[] asgardStrings = placesStringArray.toArray();
 	    if(current.equals("(Choose a Realm)")){
 	    	 String[] defaultString = {"(Please Choose a Realm)"};
 	    	 DefaultComboBoxModel model = new DefaultComboBoxModel(defaultString);
@@ -28,7 +39,6 @@ public class DropDownHandler implements ActionListener {
 	    	 this.controlPanel.revalidate();
 	    }
 	    else if(current.equals("Asgard")) {
-	    	 String[] asgardStrings = {"Valhalla","Odin’s Fortress","Lake Logur","Asgard Mountains","Sea of Marmora"};
 	    	 DefaultComboBoxModel model = new DefaultComboBoxModel(asgardStrings);
 	    	 this.list.setModel(model);
 	    	 this.controlPanel.revalidate();

@@ -146,6 +146,7 @@ public class ButtonHandler implements ActionListener {
 	    		 ArrayList<Point> points = r.getPoints();
 	    		 for(Point p : points){
 	    			 // maybe want places as well as points
+	    			 System.out.println("In loop");
 	    		 }
 	    	 }
 	    	 
@@ -156,6 +157,7 @@ public class ButtonHandler implements ActionListener {
 	    		 ArrayList<Point> points = r.getPoints();
 	    		 for(Point p : points){
 	    			 // maybe want places as well as points
+	    			 System.out.println("In loop");
 	    		 }
 	    	 }
 			 JLabel directions = new JLabel(fastString + shortString );
