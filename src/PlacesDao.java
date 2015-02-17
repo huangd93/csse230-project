@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Stack;
 
 public class PlacesDao implements PlacesDaoInterface {
 	// Places grouped by rating
@@ -155,13 +156,39 @@ public class PlacesDao implements PlacesDaoInterface {
 	public ArrayList<Place> getPlacesWithin(Place start, double distance,
 			double time) throws IllegalArgumentException{
 		if(start == null) throw new IllegalArgumentException();
-		return start.getPlacesWithin(distance, time, 0, 0);
+		return removeDuplicates(start.getPlacesWithin(distance, time, 0, 0));
 	}
 	
 	public ArrayList<Place> getPlacesWithin(String name, String realm, double distance, double time) {
 		return getPlacesWithin(getPlace(name, realm), distance, time);
 	}
+	
+//	public ArrayList<Place> getPlacesWithin(String name, String realm, double distance, double time) {
+//		Stack<Place> openList = new Stack<Place>();
+//		openList.add(getPlace(name, realm));
+//		ArrayList<Place> result = new ArrayList<Place>();
+//		Place current;
+//		while(!openList.isEmpty()) {
+//			current = openList.pop();
+//			for(Connection i : current.getConnections()) {
+//				if(i.getDistance())openList.push(i.getDestination());
+//			}
+//		}
+//	}
 
+	private ArrayList<Place> removeDuplicates(ArrayList<Place> p) {
+		for(int i = 0; i < p.size(); i++) {
+			Place initial = p.get(i);
+			for(int j = i + 1; j < p.size(); j++) {
+				if(p.get(j).equals(initial)) {
+					p.remove(j);
+					j--;
+				}
+			}
+		}
+		return p;
+	}
+	
 	public Place getPlace(String name, String realm) {
 		Place result = null;
 		for(PlacesHashMap i : places) {
