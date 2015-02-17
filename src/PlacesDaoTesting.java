@@ -5,7 +5,7 @@ public class PlacesDaoTesting {
 	
 	@Test
 	private void getPlacesTest(){
-		
+
 	}
 	
 	@Test
