@@ -3,6 +3,7 @@ import java.util.ArrayList;
 public class PlacesDao implements PlacesDaoInterface {
 	// Places grouped by rating
 	private PlacesHashMap[] places = new PlacesHashMap[10];
+	PlacesTree t = new PlacesTree();
 
 	protected PlacesDao() {}
 
@@ -78,7 +79,6 @@ public class PlacesDao implements PlacesDaoInterface {
 	public boolean insertIntoRatingTree(Place place, String name, Route route,
 			ArrayList<Connection> connections, Point point, Integer rating,
 			Realm realm) {
-		PlacesTree t = new PlacesTree();
 		Place newPlace = new Place(name, connections, point, rating, realm);
 		t.insert(newPlace);
 		

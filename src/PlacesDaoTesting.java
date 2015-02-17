@@ -36,12 +36,14 @@ public class PlacesDaoTesting {
 						yggdrasil.t.getPlace("Valhalla", "Asgard"),
 						yggdrasil.t.getPlace("Sea Of Marmora", "Asgard"))
 						.size());
-//		assertEquals(
-//				4,
-//				yggdrasil.t.getFastestRoute(
-//						yggdrasil.t.getPlace("Valhalla", "Asgard"),
-//						yggdrasil.t.getPlace("The Mountain Thrymheim",
-//								"Jotunheim")).size());
+		
+		//null pointer exception...
+		assertEquals(
+				4,
+				yggdrasil.t.getFastestRoute(
+						yggdrasil.t.getPlace("Valhalla", "Asgard"),
+						yggdrasil.t.getPlace("The Mountain Thrymheim",
+								"Jotunheim")).size());
 
 	}
 
@@ -53,17 +55,22 @@ public class PlacesDaoTesting {
 						yggdrasil.t.getPlace("Valhalla", "Asgard"),
 						yggdrasil.t.getPlace("Odin's Fortress", "Asgard"))
 						.size());
-//		assertEquals(
-//				4,
-//				yggdrasil.t.getFastestRoute(
-//						yggdrasil.t.getPlace("Valhalla", "Asgard"),
-//						yggdrasil.t.getPlace("The Mountain Thrymheim",
-//								"Jotunheim")).size());
+		
+		//This gives us an infinite loop
+		assertEquals(
+				4,
+				yggdrasil.t.getFastestRoute(
+						yggdrasil.t.getPlace("Valhalla", "Asgard"),
+						yggdrasil.t.getPlace("The Mountain Thrymheim",
+								"Jotunheim")).size());
 
 	}
 
 	@Test
 	public void insertIntoRatingTreeTest() {
+		// finish by creating a new place and then see if the tree grew by one
+//		yggdrasil.t.insert(new Place("Random New Place", riverIvingConnect,
+//				riverIvingPoint, 4, Realm.Jotunheim))yggdrasil;
 
 	}
 
