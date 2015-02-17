@@ -1,7 +1,13 @@
 import java.util.ArrayList;
 import java.util.Iterator;
 
-
+/**
+ * Hashmap of places. Has a default load factor of 0.75 and initial size of 16
+ * Stores duplicate hashes in a LinkedList in the bucket. If any LinkedList gets too deep
+ * and the items have different names, it will also expand the Hashmap and rebalance it.
+ * @author huangd
+ *
+ */
 public class PlacesHashMap {
 	private PlacesList[] placesArray;
 	private double loadFactor;
@@ -29,12 +35,23 @@ public class PlacesHashMap {
 		return true;
 	}
 	
+	/**
+	 * Returns true if this PlacesHashMap has an item with the input name
+	 * @param name Name to check for
+	 * @return True if contains that name
+	 */
 	public boolean containsName(String name) {
 		int hash = hash(name, placesArray.length);
 		if(placesArray[hash] != null && placesArray[hash].containsName(name)) return true;
 		return false;
 	}
 	
+	/**
+	 * Returns the Place asked for.
+	 * @param name Name of place to retrieve
+	 * @param realm Name of realm the place is located
+	 * @return Place or null if invalid
+	 */
 	public Place getPlace(String name, String realm) {
 		if(!containsName(name)) return null;
 		int hash = hash(name, placesArray.length);

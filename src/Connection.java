@@ -1,4 +1,10 @@
 
+/**
+ * A connection is the object used to connect Places. It stores a point by point route in between the two Places, 
+ * as well as the distance and travel time between them. Finally, it stores its destination. 
+ * @author huangd
+ *
+ */
 public class Connection {
 	
 	private Place destination;

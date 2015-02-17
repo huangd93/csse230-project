@@ -1,6 +1,10 @@
 import java.util.ArrayList;
 
-
+/**
+ * Realm enum containing all nine realms. Each realm also stores a gate Place that connects it to other realms.
+ * @author huangd
+ *
+ */
 public enum Realm {
 	Asgard, Jotunheim, Niflheim, Vanaheim, Alfheim, Midgard, Svartalfheim, Nidavellir, Muspelheim;
 

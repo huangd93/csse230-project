@@ -1,7 +1,11 @@
 import java.util.Iterator;
 
-// This LinkedList implementation has no remove function since we have no use for it.
-
+/**
+ * Generic LinkedList implementation
+ * @author huangd
+ *
+ * @param <T>
+ */
 public class LinkedList<T> implements Iterable<T> {
 	Node root;
 	Node tail;

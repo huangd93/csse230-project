@@ -1,6 +1,11 @@
 import java.util.ArrayList;
 
-
+/**
+ * Place is an object intended for storing primary locations. It stores its own name, coordinates, rating, realm, and
+ * an ArrayList of Connections to its neighbors. 
+ * @author huangd
+ *
+ */
 public class Place {
 	private String name;
 	private ArrayList<Connection> connections;

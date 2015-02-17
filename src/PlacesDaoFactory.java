@@ -5,6 +5,12 @@ public class PlacesDaoFactory {
 	
 	private PlacesDaoFactory() {}
 	
+	/**
+	 * A singleton factory pattern for PlacesDao.
+	 * Use like:
+	 * PlacesDaoInterface o = PlacesDaoFactory.getPlacesDaoSingleton();
+	 * @return
+	 */
 	public static PlacesDao getPlacesDaoSingleton(){
 		if(placesDaoSingleton == null) {
 			placesDaoSingleton = new PlacesDao();
