@@ -9,7 +9,8 @@ public class Route {
 		pointsArray = new ArrayList<Point>();
 	}
 	
-	public Route(ArrayList<Point> input) {
+	public Route(ArrayList<Point> input) throws IllegalArgumentException {
+		if(input == null || input.size() < 2) throw new IllegalArgumentException();
 		pointsArray = input;
 	}
 	
