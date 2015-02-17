@@ -25,8 +25,6 @@ public class StartUpGUI {
            
            String temp = "Hello, Bye";
            String[] result = temp.split(", ");
-           System.out.println(result[0]);
-           System.out.println(result[1]);
            
            JPanel textPanel = new JPanel();
            JPanel buttonPanel = new JPanel();
