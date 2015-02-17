@@ -30,25 +30,32 @@ public class MapGUI {
 		//  differencess
 		Place sp = this.pdi.getPlace(start, startRealm);
 		Place ep = this.pdi.getPlace(dest, destRealm);
-		String fastString = "Here is the fastest route: \n";
-		ArrayList<Connection> fastRoute = this.pdi.getFastestRoute(sp, ep);
-		for(Connection c : fastRoute){
-			Route r = c.getRoute();
-			ArrayList<Point> points = r.getPoints();
-			for(Point p : points){
-				// maybe want places as well as points
-			}
-		}
-		
-		String shortString = "Here is the shortest route: \n";
-		ArrayList<Connection> shortRoute = this.pdi.getShortestRoute(sp, ep);
-		for(Connection c : shortRoute){
-			Route r = c.getRoute();
-			ArrayList<Point> points = r.getPoints();
-			for(Point p : points){
-				// maybe want places as well as points
-			}
-		}
+		String fastString = "<html>";
+	   	fastString += "Here is the fastest route: "+"<br/>";
+	   	ArrayList<Connection> fastRoute = this.pdi.getFastestRoute(sp, ep);
+	   	for(Connection c : fastRoute){
+	   		 Route r = c.getRoute();
+	   		 double distance = r.getDistance();
+	   		 fastString += ". Travel from ";
+	   		 ArrayList<Point> points = r.getPoints();
+	   		 for(Point p : points){
+	   			 fastString += p.getXValue() + ", " + p.getYValue() + " to ";
+	   		 }
+	   		 fastString += "<br/>";
+	   	}
+	   	 
+	   	String shortString = "Here is the shortest route: "+"<br/>";
+	   	ArrayList<Connection> shortRoute = this.pdi.getShortestRoute(sp, ep);
+	   	for(Connection c : shortRoute){
+	   		 Route r = c.getRoute();
+	   		 shortString += ". Travel from ";
+	   		 ArrayList<Point> points = r.getPoints();
+	   		 for(Point p : points){
+	   			 shortString += p.getXValue() + ", " + p.getYValue() + " to ";
+	   		 }
+	   		 shortString += "<br/>";
+	   	}
+	   	shortString += "</html>";
 		JLabel direcsLabel = new JLabel(fastString + shortString);
 		direcsPanel.add(direcsLabel);
 		///////////////////////////////////////////////////////////////////////////////////
@@ -76,7 +83,6 @@ public class MapGUI {
     	mainPanel.setSize(1366, 768);
     	
     	JPanel controlPanel = new JPanel();
-//    	JPanel direcsPanel = new JPanel();
     	JPanel mapPanel = new JPanel();
 	       
 	    JLabel startChoice = new JLabel("Choose your starting point: ");

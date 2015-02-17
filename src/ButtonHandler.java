@@ -139,27 +139,33 @@ public class ButtonHandler implements ActionListener {
 	    	 Place sp = this.pdi.getPlace(startPlace, startRealm);
 	    	 Place ep = this.pdi.getPlace(endPlace, endRealm);
 	    	 
-	    	 String fastString = "Here is the fastest route: \n";
+	    	 String fastString = "<html>";
+	    	 fastString += "Here is the fastest route: "+"<br/>";
 	    	 ArrayList<Connection> fastRoute = this.pdi.getFastestRoute(sp, ep);
 	    	 for(Connection c : fastRoute){
 	    		 Route r = c.getRoute();
+	    		 double distance = r.getDistance();
+	    		 fastString += ". Travel from ";
 	    		 ArrayList<Point> points = r.getPoints();
 	    		 for(Point p : points){
-	    			 // maybe want places as well as points
-	    			 System.out.println("In loop");
+	    			 fastString += p.getXValue() + ", " + p.getYValue() + " to ";
 	    		 }
+	    		 fastString += "<br/>";
 	    	 }
 	    	 
-	    	 String shortString = "Here is the shortest route: \n";
+	    	 String shortString = "Here is the shortest route: "+"<br/>";
 	    	 ArrayList<Connection> shortRoute = this.pdi.getShortestRoute(sp, ep);
 	    	 for(Connection c : shortRoute){
 	    		 Route r = c.getRoute();
+	    		 shortString += ". Travel from ";
 	    		 ArrayList<Point> points = r.getPoints();
 	    		 for(Point p : points){
-	    			 // maybe want places as well as points
-	    			 System.out.println("In loop");
+	    			 shortString += p.getXValue() + ", " + p.getYValue() + " to ";
 	    		 }
+	    		 shortString += "<br/>";
 	    	 }
+	    	 shortString += "</html>";
+	    	 
 			 JLabel directions = new JLabel(fastString + shortString );
 	     	 
 			 this.panel.add(directions);

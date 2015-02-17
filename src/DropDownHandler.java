@@ -31,7 +31,7 @@ public class DropDownHandler implements ActionListener {
 	    for(int i = 0; i < placesArray.size(); i++){
 	    	placesStringArray.add(i, placesArray.get(i).getName());
 	    }
-	    Object[] asgardStrings = placesStringArray.toArray();
+	    Object[] placesStrings = placesStringArray.toArray();
 	    if(current.equals("(Choose a Realm)")){
 	    	 String[] defaultString = {"(Please Choose a Realm)"};
 	    	 DefaultComboBoxModel model = new DefaultComboBoxModel(defaultString);
@@ -39,55 +39,55 @@ public class DropDownHandler implements ActionListener {
 	    	 this.controlPanel.revalidate();
 	    }
 	    else if(current.equals("Asgard")) {
-	    	 DefaultComboBoxModel model = new DefaultComboBoxModel(asgardStrings);
+	    	 DefaultComboBoxModel model = new DefaultComboBoxModel(placesStrings);
 	    	 this.list.setModel(model);
 	    	 this.controlPanel.revalidate();
 	     }
 	     else if(current.equals("Jotunheim")){
-	    	String[] utgardStrings = {"The River Iving","Mimir’s Well of Wisdom","Utgard-Loki’s Throne","Griotunagardar","The Mountain Thrymheim"};
-	    	DefaultComboBoxModel model = new DefaultComboBoxModel(utgardStrings);
+//	    	String[] utgardStrings = {"The River Iving","Mimir’s Well of Wisdom","Utgard-Loki’s Throne","Griotunagardar","The Mountain Thrymheim"};
+	    	DefaultComboBoxModel model = new DefaultComboBoxModel(placesStrings);
 	    	this.list.setModel(model);
 	    	this.controlPanel.revalidate();
 	     }
 	     else if(current.equals("Niflheim")){
-	    	String[] niflheimStrings = {"The Spring Hvergelmir","The Plains of Ginnungagap","The Rivers Elivagar","Helheim (Hel’s Throne)","Fimbulthul"};
-	    	DefaultComboBoxModel model = new DefaultComboBoxModel(niflheimStrings);
+//	    	String[] niflheimStrings = {"The Spring Hvergelmir","The Plains of Ginnungagap","The Rivers Elivagar","Helheim (Hel’s Throne)","Fimbulthul"};
+	    	DefaultComboBoxModel model = new DefaultComboBoxModel(placesStrings);
 	    	this.list.setModel(model);
 	    	this.controlPanel.revalidate();
 	     }
 	     else if(current.equals("Vanaheim")){
-	    	String[] vanaheimStrings = {"The Forests of the Vanir","Don River","The Home of Njord","Eiglopian Mountains","Pictish Wilderness"};
-	    	DefaultComboBoxModel model = new DefaultComboBoxModel(vanaheimStrings);
+//	    	String[] vanaheimStrings = {"The Forests of the Vanir","Don River","The Home of Njord","Eiglopian Mountains","Pictish Wilderness"};
+	    	DefaultComboBoxModel model = new DefaultComboBoxModel(placesStrings);
 	    	this.list.setModel(model);
 	    	this.controlPanel.revalidate();
 	     }
 	     else if(current.equals("Alfheim")){
-	    	String[] vanaheimStrings = {"Freyr’s Throne","Geffen","Canolbarth Forest"};
-	    	DefaultComboBoxModel model = new DefaultComboBoxModel(vanaheimStrings);
+//	    	String[] vanaheimStrings = {"Freyr’s Throne","Geffen","Canolbarth Forest"};
+	    	DefaultComboBoxModel model = new DefaultComboBoxModel(placesStrings);
 	    	this.list.setModel(model);
 	    	this.controlPanel.revalidate();
 		 }
 	     else if(current.equals("Midgard")){
-	    	String[] midgardStrings = {"New York City","Washington D.C.","Puente Antiguo, New Mexico","London, England","Wheaton, New Jersey"};
-	    	DefaultComboBoxModel model = new DefaultComboBoxModel(midgardStrings);
+//	    	String[] midgardStrings = {"New York City","Washington D.C.","Puente Antiguo, New Mexico","London, England","Wheaton, New Jersey"};
+	    	DefaultComboBoxModel model = new DefaultComboBoxModel(placesStrings);
 	    	this.list.setModel(model);
 	    	this.controlPanel.revalidate();
 		 }
 	     else if(current.equals("Svartalfheim")){
-	    	String[] svartalfheimStrings = {"The Domain of Malekith","The Black Forest","The Unseelie Court","Aurvangar","Byrgir"};
-	    	DefaultComboBoxModel model = new DefaultComboBoxModel(svartalfheimStrings);
+//	    	String[] svartalfheimStrings = {"The Domain of Malekith","The Black Forest","The Unseelie Court","Aurvangar","Byrgir"};
+	    	DefaultComboBoxModel model = new DefaultComboBoxModel(placesStrings);
 	    	this.list.setModel(model);
 	    	this.controlPanel.revalidate();
 		 }
 	     else if(current.equals("Nidavellir")){
-	    	String[] nidavellirStrings = {"Hreidmar’s Kingdom","The Dark Fields","The Furnaces of Nidavellir","Durin’s Hall","Dvalin’s Hall"};
-	    	DefaultComboBoxModel model = new DefaultComboBoxModel(nidavellirStrings);
+//	    	String[] nidavellirStrings = {"Hreidmar’s Kingdom","The Dark Fields","The Furnaces of Nidavellir","Durin’s Hall","Dvalin’s Hall"};
+	    	DefaultComboBoxModel model = new DefaultComboBoxModel(placesStrings);
 	    	this.list.setModel(model);
 	    	this.controlPanel.revalidate();
 		 }
 	     else if(current.equals("Muspelheim")){
-	    	String[] muspelheimStrings = {"The Burning Plains of Surt","Sinmore Hall","Surtur’s Kingdom"};
-	    	DefaultComboBoxModel model = new DefaultComboBoxModel(muspelheimStrings);
+//	    	String[] muspelheimStrings = {"The Burning Plains of Surt","Sinmore Hall","Surtur’s Kingdom"};
+	    	DefaultComboBoxModel model = new DefaultComboBoxModel(placesStrings);
 	    	this.list.setModel(model);
 	    	this.controlPanel.revalidate();
 		 }
