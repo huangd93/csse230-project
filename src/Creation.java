@@ -439,6 +439,7 @@ public class Creation {
 		ArrayList<Point> connectRiverToForest = new ArrayList<Point>();
 		connectRiverToNjord.add(donPoint);
 		connectRiverToMtn.add(donPoint);
+		connectRiverToForest.add(donPoint);
 		connectRiverToNjord.add(njordPoint);
 		connectRiverToMtn.add(eigMtnPoint);
 		connectRiverToForest.add(forestPoint);
@@ -535,6 +536,8 @@ public class Creation {
 		// freyr connections
 		ArrayList<Point> connectFreyrToGeffen = new ArrayList<Point>();
 		ArrayList<Point> connectFreyrToForest = new ArrayList<Point>();
+		connectFreyrToGeffen.add(freyrPoint);
+		connectFreyrToForest.add(freyrPoint);
 		connectFreyrToGeffen.add(geffenPoint);
 		connectFreyrToForest.add(canolbarthPoint);
 		freyrConnect.add(new Connection(geffen,
@@ -545,6 +548,7 @@ public class Creation {
 
 		// geffen connections
 		ArrayList<Point> connectGeffenToFreyr = new ArrayList<Point>();
+		connectGeffenToFreyr.add(geffenPoint);
 		connectGeffenToFreyr.add(freyrPoint);
 		geffenConnect.add(new Connection(freyr,
 				new Route(connectGeffenToFreyr), 50));
@@ -552,6 +556,7 @@ public class Creation {
 
 		// canolbarth connections
 		ArrayList<Point> connectForestToFreyr = new ArrayList<Point>();
+		connectForestToFreyr.add(canolbarthPoint);
 		connectForestToFreyr.add(freyrPoint);
 		canolbarthConnect.add(new Connection(freyr, new Route(
 				connectForestToFreyr), 90));
@@ -611,6 +616,10 @@ public class Creation {
 		ArrayList<Point> connectNYCtoNJ = new ArrayList<Point>();
 		ArrayList<Point> connectNYCtoDC = new ArrayList<Point>();
 		ArrayList<Point> connectNYCtoNM = new ArrayList<Point>();
+		connectNYCtoLondon.add(nycPoint);
+		connectNYCtoNJ.add(nycPoint);
+		connectNYCtoDC.add(nycPoint);
+		connectNYCtoNM.add(nycPoint);
 		connectNYCtoLondon.add(londonPoint);
 		connectNYCtoNJ.add(wheatonPoint);
 		connectNYCtoDC.add(dcPoint);
@@ -626,6 +635,9 @@ public class Creation {
 		ArrayList<Point> connectNJtoNYC = new ArrayList<Point>();
 		ArrayList<Point> connectNJtoDC = new ArrayList<Point>();
 		ArrayList<Point> connectNJtoNM = new ArrayList<Point>();
+		connectNJtoNYC.add(wheatonPoint);
+		connectNJtoDC.add(wheatonPoint);
+		connectNJtoNM.add(wheatonPoint);
 		connectNJtoNYC.add(nycPoint);
 		connectNJtoDC.add(dcPoint);
 		connectNJtoNM.add(antiguoPoint);
@@ -640,9 +652,13 @@ public class Creation {
 		ArrayList<Point> connectDCtoNJ = new ArrayList<Point>();
 		ArrayList<Point> connectDCtoNM = new ArrayList<Point>();
 		ArrayList<Point> connectDCtoLondon = new ArrayList<Point>();
+		connectDCtoNYC.add(dcPoint);
+		connectDCtoNJ.add(dcPoint);
+		connectDCtoNM.add(dcPoint);
+		connectDCtoLondon.add(dcPoint);
 		connectDCtoNYC.add(nycPoint);
 		connectDCtoNJ.add(wheatonPoint);
-		connectDCtoNM.add(wheatonPoint);
+		connectDCtoNM.add(antiguoPoint);
 		connectDCtoLondon.add(londonPoint);
 		dcConnect.add(new Connection(nyc, new Route(connectDCtoNYC), 10));
 		dcConnect.add(new Connection(wheaton, new Route(connectDCtoNJ), 25));
@@ -655,6 +671,9 @@ public class Creation {
 		ArrayList<Point> connectNMtoNYC = new ArrayList<Point>();
 		ArrayList<Point> connectNMtoNJ = new ArrayList<Point>();
 		ArrayList<Point> connectNMtoDC = new ArrayList<Point>();
+		connectNMtoNYC.add(antiguoPoint);
+		connectNMtoNJ.add(antiguoPoint);
+		connectNMtoDC.add(antiguoPoint);
 		connectNMtoNYC.add(nycPoint);
 		connectNMtoNJ.add(wheatonPoint);
 		connectNMtoDC.add(dcPoint);
@@ -667,6 +686,8 @@ public class Creation {
 		// london connections
 		ArrayList<Point> connectLondonToNYC = new ArrayList<Point>();
 		ArrayList<Point> connectLondonToDC = new ArrayList<Point>();
+		connectLondonToNYC.add(londonPoint);
+		connectLondonToDC.add(londonPoint);
 		connectLondonToNYC.add(nycPoint);
 		connectLondonToDC.add(dcPoint);
 		londonConnect.add(new Connection(nyc, new Route(connectLondonToNYC),
@@ -726,6 +747,7 @@ public class Creation {
 
 		// malekith connections
 		ArrayList<Point> connectMalekithToUnseelie = new ArrayList<Point>();
+		connectMalekithToUnseelie.add(malekithPoint);
 		connectMalekithToUnseelie.add(unseeliePoint);
 		malekithConnect.add(new Connection(unseelieCourt, new Route(
 				connectMalekithToUnseelie), 20));
@@ -735,6 +757,9 @@ public class Creation {
 		ArrayList<Point> connectUnseelieToMalekith = new ArrayList<Point>();
 		ArrayList<Point> connectUnseelieToBrygir = new ArrayList<Point>();
 		ArrayList<Point> connectUnseelieToAurvangar = new ArrayList<Point>();
+		connectUnseelieToMalekith.add(unseeliePoint);
+		connectUnseelieToBrygir.add(unseeliePoint);
+		connectUnseelieToAurvangar.add(unseeliePoint);
 		connectUnseelieToMalekith.add(malekithPoint);
 		connectUnseelieToBrygir.add(byrgirPoint);
 		connectUnseelieToAurvangar.add(aurvangarPoint);
@@ -749,6 +774,8 @@ public class Creation {
 		// byrgir connections
 		ArrayList<Point> connectByrgirToUnseelie = new ArrayList<Point>();
 		ArrayList<Point> connectByrgirToForest = new ArrayList<Point>();
+		connectByrgirToUnseelie.add(byrgirPoint);
+		connectByrgirToForest.add(byrgirPoint);
 		connectByrgirToUnseelie.add(unseeliePoint);
 		connectByrgirToForest.add(blackPoint);
 		byrgirConnect.add(new Connection(unseelieCourt, new Route(
@@ -760,6 +787,8 @@ public class Creation {
 		// black forest connections
 		ArrayList<Point> connectForestToByrgir = new ArrayList<Point>();
 		ArrayList<Point> connectForestToAurvangar = new ArrayList<Point>();
+		connectForestToByrgir.add(blackPoint);
+		connectForestToAurvangar.add(blackPoint);
 		connectForestToByrgir.add(byrgirPoint);
 		connectForestToAurvangar.add(aurvangarPoint);
 		blackConnect.add(new Connection(byrgir,
@@ -771,6 +800,8 @@ public class Creation {
 		// aurvangar connections
 		ArrayList<Point> connectAurvangarToForest = new ArrayList<Point>();
 		ArrayList<Point> connectAurvangarToUnseelie = new ArrayList<Point>();
+		connectAurvangarToForest.add(aurvangarPoint);
+		connectAurvangarToUnseelie.add(aurvangarPoint);
 		connectAurvangarToForest.add(blackPoint);
 		connectAurvangarToUnseelie.add(unseeliePoint);
 		aurvangarConnect.add(new Connection(blackForest, new Route(
@@ -831,6 +862,8 @@ public class Creation {
 		// hreidmar connections
 		ArrayList<Point> connectHreidmarToDurin = new ArrayList<Point>();
 		ArrayList<Point> connectHreidmarToFields = new ArrayList<Point>();
+		connectHreidmarToDurin.add(hreidmarPoint);
+		connectHreidmarToFields.add(hreidmarPoint);
 		connectHreidmarToDurin.add(durinPoint);
 		connectHreidmarToFields.add(darkFieldPoint);
 		hreidmarConnect.add(new Connection(durin, new Route(
@@ -843,6 +876,9 @@ public class Creation {
 		ArrayList<Point> connectDurinToHreidmar = new ArrayList<Point>();
 		ArrayList<Point> connectDurinToDvalin = new ArrayList<Point>();
 		ArrayList<Point> connectDurinToFields = new ArrayList<Point>();
+		connectDurinToHreidmar.add(durinPoint);
+		connectDurinToDvalin.add(durinPoint);
+		connectDurinToFields.add(durinPoint);
 		connectDurinToHreidmar.add(hreidmarPoint);
 		connectDurinToDvalin.add(dvalinPoint);
 		connectDurinToFields.add(darkFieldPoint);
@@ -857,6 +893,8 @@ public class Creation {
 		// dvalin's connections
 		ArrayList<Point> connectDvalinToDurin = new ArrayList<Point>();
 		ArrayList<Point> connectDvalinToFields = new ArrayList<Point>();
+		connectDvalinToDurin.add(dvalinPoint);
+		connectDvalinToFields.add(dvalinPoint);
 		connectDvalinToDurin.add(durinPoint);
 		connectDvalinToFields.add(darkFieldPoint);
 		dvalinConnect.add(new Connection(durin,
@@ -870,6 +908,10 @@ public class Creation {
 		ArrayList<Point> connectFieldsToDurin = new ArrayList<Point>();
 		ArrayList<Point> connectFieldsToDvalin = new ArrayList<Point>();
 		ArrayList<Point> connectFieldsToFurnaces = new ArrayList<Point>();
+		connectFieldsToHreidmar.add(darkFieldPoint);
+		connectFieldsToDurin.add(darkFieldPoint);
+		connectFieldsToDvalin.add(darkFieldPoint);
+		connectFieldsToFurnaces.add(darkFieldPoint);
 		connectFieldsToHreidmar.add(hreidmarPoint);
 		connectFieldsToDurin.add(durinPoint);
 		connectFieldsToDvalin.add(dvalinPoint);
@@ -886,6 +928,7 @@ public class Creation {
 
 		// furnaces connections
 		ArrayList<Point> connectFurnacesToFields = new ArrayList<Point>();
+		connectFurnacesToFields.add(furnacePoint);
 		connectFurnacesToFields.add(darkFieldPoint);
 		furnaceConnect.add(new Connection(darkFields, new Route(
 				connectFurnacesToFields), 55));
@@ -926,6 +969,7 @@ public class Creation {
 		
 		//burning plains connections
 		ArrayList<Point> connectPlainsToSurtur = new ArrayList<Point>();
+		connectPlainsToSurtur.add(plainsPoint);
 		connectPlainsToSurtur.add(surturPoint);
 		plainsConnect.add(new Connection(surtursKingdom, new Route(
 				connectPlainsToSurtur), 90));
@@ -934,6 +978,8 @@ public class Creation {
 		//surturs connections
 		ArrayList<Point> connectSurtToPlains = new ArrayList<Point>();
 		ArrayList<Point> connectSurtToSinmore = new ArrayList<Point>();
+		connectSurtToPlains.add(surturPoint);
+		connectSurtToSinmore.add(surturPoint);
 		connectSurtToPlains.add(plainsPoint);
 		connectSurtToSinmore.add(sinmorePoint);
 		surturConnect.add(new Connection(burningPlains, new Route(connectSurtToPlains), 90));
@@ -942,6 +988,7 @@ public class Creation {
 		
 		//sinmores connections
 		ArrayList<Point> connectSinmoreToSurt = new ArrayList<Point>();
+		connectSinmoreToSurt.add(sinmorePoint);
 		connectSinmoreToSurt.add(surturPoint);
 		sinmoreConnect.add(new Connection(surtursKingdom, new Route(connectSinmoreToSurt), 30));
 		sinmoreHall.setConnections(sinmoreConnect);
