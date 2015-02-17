@@ -48,7 +48,7 @@ public class PlacesHashMap {
 	 * @return Index to insert into the array
 	 */
 	public int hash(String s, int length) {
-		return s.hashCode() % length;
+		return Math.abs(s.hashCode() % length);
 	}
 	
 	/**

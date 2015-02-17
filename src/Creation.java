@@ -10,7 +10,7 @@ import java.util.ArrayList;
  */
 public class Creation {
 
-	PlacesTree t = new PlacesTree();
+	PlacesDaoInterface t = PlacesDaoFactory.getPlacesDaoSingleton();
 	ArrayList<Place> asgardPlaces = new ArrayList<Place>();
 	ArrayList<Place> jotunheimPlaces = new ArrayList<Place>();
 	ArrayList<Place> niflheimPlaces = new ArrayList<Place>();

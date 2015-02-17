@@ -39,6 +39,18 @@ public interface PlacesDaoInterface {
 	 * @return
 	 */
 	public ArrayList<Place> getPlacesWithin(Place start, double distance, double time);
+	
+	/**
+	 * Returns an ArrayList of Places that connect to the starting point with
+	 * a distance less than the input distance and a time less than the input time. 
+	 * Looks up the starting Place by name and realm
+	 * @param name Name of starting Place
+	 * @param realm Realm of starting Place
+	 * @param distance Max Distance to travel
+	 * @param time Max Time to travel
+	 * @return
+	 */
+	public ArrayList<Place> getPlacesWithin(String name, String realm, double distance, double time);
 
 	/**
 	 * Returns the fastest set of Routes going from place1 to place2

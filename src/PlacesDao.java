@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class PlacesDao implements PlacesDaoInterface {
 	// Places grouped by rating
-	private PlacesHashMap[] places = new PlacesHashMap[5];
+	private PlacesHashMap[] places = new PlacesHashMap[10];
 
 	protected PlacesDao() {}
 
@@ -148,13 +148,17 @@ public class PlacesDao implements PlacesDaoInterface {
 
 	public boolean insert(Place place) {
 		int rating = place.getRating();
-		if(places[rating] == null) places[rating] = new PlacesHashMap();
-		return places[rating].insert(place);
+		if(places[rating-1] == null) places[rating-1] = new PlacesHashMap();
+		return places[rating-1].insert(place);
 	}
 
 	public ArrayList<Place> getPlacesWithin(Place start, double distance,
 			double time) {
 		return start.getPlacesWithin(distance, time, 0, 0);
+	}
+	
+	public ArrayList<Place> getPlacesWithin(String name, String realm, double distance, double time) {
+		return getPlacesWithin(getPlace(name, realm), distance, time);
 	}
 
 	public Place getPlace(String name, String realm) {
