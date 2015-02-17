@@ -10,14 +10,27 @@ public enum Realm {
 		this.gate = null;
 	}
 	
+	/**
+	 * Sets the gate for the realm
+	 * @param p
+	 */
 	public void setGate(Place p) {
 		this.gate = p;
 	}
 	
+	/**
+	 * Gets the gate for the realm
+	 * @return
+	 */
 	public Place getGate() {
 		return this.gate;
 	}
 	
+	/**
+	 * Converts a string to the equivalent realm. Returns null if not valid
+	 * @param n Name of realm
+	 * @return Realm or null if invalid
+	 */
 	public static Realm stringToRealm(String n) {
 		switch (n) {
 		case "Asgard":
@@ -43,6 +56,10 @@ public enum Realm {
 		}
 	}
 	
+	/**
+	 * Returns an arrayList of all the realms
+	 * @return ArrayList of all Realms
+	 */
 	public static ArrayList<Realm> toArrayList() {
 		ArrayList<Realm> result = new ArrayList<Realm>(9);
 		result.add(Asgard);

@@ -13,7 +13,6 @@ public class Point {
 	}
 	
 	public static double distanceBetween(Point x, Point y) {
-		// TODO: Implement Realm detection for better estimate?
 		double xSquared = Math.pow(x.getXValue() - y.getXValue(),2);
 		double ySquared = Math.pow(x.getYValue() - y.getYValue(),2);
 		return Math.sqrt(xSquared + ySquared);
