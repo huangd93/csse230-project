@@ -195,6 +195,19 @@ public class PlacesDao implements PlacesDaoInterface {
 		return p;
 	}
 	
+	private ArrayList<Place> removeByRating(ArrayList<Place> p, int rating) {
+		for(int i = 0; i < p.size(); i++) {
+			Place initial = p.get(i);
+			for(int j = i + 1; j < p.size(); j++) {
+				if(p.get(j).getRating() < rating) {
+					p.remove(j);
+					j--;
+				}
+			}
+		}
+		return p;
+	}
+	
 	public Place getPlace(String name, String realm) {
 		Place result = null;
 		for(PlacesHashMap i : places) {
@@ -220,6 +233,19 @@ public class PlacesDao implements PlacesDaoInterface {
 			}
 		}
 		return result;
+	}
+
+	@Override
+	public ArrayList<Place> getPlacesWithin(Place start, double distance,
+			double time, int rating) throws IllegalArgumentException{
+			if(start == null) throw new IllegalArgumentException();
+			return removeByRating(getPlacesWithin(start, distance, time), rating);
+	}
+
+	@Override
+	public ArrayList<Place> getPlacesWithin(String name, String realm,
+			double distance, double time, int rating) {
+			return getPlacesWithin(getPlace(name, realm), distance, time, rating);
 	}
 
 }
