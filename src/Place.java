@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * @author huangd
  *
  */
-public class Place implements Comparable<Place> {
+public class Place {
 	private String name;
 	private ArrayList<Connection> connections;
 	private Point point;
@@ -122,36 +122,27 @@ public class Place implements Comparable<Place> {
 		return shortest;
 	}
 	
-	/**
-	 * Recursively finds places within a set distance of the original point.
-	 * @param distance 
-	 * @param time
-	 * @param distanceTraveled
-	 * @param timeUsed
-	 * @return
-	 */
-	public ArrayList<Place> getPlacesWithin(double distance, double time, 
-			double distanceTraveled, double timeUsed) {
-		ArrayList<Place> result = new ArrayList<Place>();
-		for(Connection i : connections) {
-			double connectionDistance = i.getDistance() + distanceTraveled; 
-			double connectionTime = i.getTime() + timeUsed;
-			if(connectionDistance < distance && connectionTime < time) {
-				result.add(i.getDestination());
-				result.addAll(i.getDestination().getPlacesWithin(distance, time, connectionDistance, connectionTime));
-			}
-		}
-		return result;
-	}
-
-	/**
-	 * Returns 0 if it is the same Place based on name and realm, -1 if not. 
-	 */
-	@Override
-	public int compareTo(Place o) {
-		if(this.name.equals(o.name) && this.realm == o.realm) return 0;
-		return -1;
-	}
+//	/**
+//	 * Recursively finds places within a set distance of the original point.
+//	 * @param distance 
+//	 * @param time
+//	 * @param distanceTraveled
+//	 * @param timeUsed
+//	 * @return
+//	 */
+//	public ArrayList<Place> getPlacesWithin(double distance, double time, 
+//			double distanceTraveled, double timeUsed) {
+//		ArrayList<Place> result = new ArrayList<Place>();
+//		for(Connection i : connections) {
+//			double connectionDistance = i.getDistance() + distanceTraveled; 
+//			double connectionTime = i.getTime() + timeUsed;
+//			if(connectionDistance < distance && connectionTime < time) {
+//				result.add(i.getDestination());
+//				result.addAll(i.getDestination().getPlacesWithin(distance, time, connectionDistance, connectionTime));
+//			}
+//		}
+//		return result;
+//	}
 	
 	/**
 	 * Adds the given connection to the connection array
