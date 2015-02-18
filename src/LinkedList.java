@@ -6,7 +6,7 @@ import java.util.Iterator;
  *
  * @param <T>
  */
-public class LinkedList<T> implements Iterable<T> {
+public class LinkedList<T extends Comparable<T>> implements Iterable<T> {
 	Node root;
 	Node tail;
 	
