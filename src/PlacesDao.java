@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Stack;
 
 public class PlacesDao implements PlacesDaoInterface {
 	// Places grouped by rating
@@ -19,7 +18,7 @@ public class PlacesDao implements PlacesDaoInterface {
 	public ArrayList<Connection> getFastestRoute(Place place1, Place place2) throws IllegalArgumentException {
 		if(place1 == null || place2 == null) throw new IllegalArgumentException();
 		PriorityQueue<RouteNode> openList = new PriorityQueue<RouteNode>();
-		LinkedList<RouteNode> closedList = new LinkedList<RouteNode>();
+		PlacesHashMap closedList = new PlacesHashMap();
 		
 		openList.add(new RouteNode(null, null, place1, 0, Place.estimatedDistance(place1, place2)));
 		RouteNode current = null;
@@ -28,12 +27,12 @@ public class PlacesDao implements PlacesDaoInterface {
 			if(current.place.equals(place2)) {
 				break;
 			}
-			closedList.insert(current);
+			closedList.insert(current.getPlace());
 			for(Connection i : current.place.getConnections()) {
 				// The time heuristic used is simply the shortest connection available to the next Place.
 				RouteNode next = new RouteNode(current, i, i.getDestination(), current.g + i.getDistance(), 
 						i.getDestination().getShortestTime());
-				if(!closedList.contains(next)) openList.add(next);
+				if(!closedList.contains(next.getPlace())) openList.add(next);
 			}
 		}
 		ArrayList<Connection> construct = new ArrayList<Connection>();
@@ -50,7 +49,7 @@ public class PlacesDao implements PlacesDaoInterface {
 
 	public ArrayList<Connection> getShortestRoute(Place place1, Place place2) {
 		PriorityQueue<RouteNode> openList = new PriorityQueue<RouteNode>();
-		LinkedList<RouteNode> closedList = new LinkedList<RouteNode>();
+		PlacesHashMap closedList = new PlacesHashMap();
 		
 		openList.add(new RouteNode(null, null, place1, 0, Place.estimatedDistance(place1, place2)));
 		RouteNode current = null;
@@ -59,11 +58,11 @@ public class PlacesDao implements PlacesDaoInterface {
 			if(current.place.equals(place2)) {
 				break;
 			}
-			closedList.insert(current);
+			closedList.insert(current.getPlace());
 			for(Connection i : current.place.getConnections()) {
 				RouteNode next = new RouteNode(current, i, i.getDestination(), current.g + i.getDistance(), 
 						Place.estimatedDistance(i.getDestination(), place2));
-				if(!closedList.contains(next)) openList.add(next);
+				if(!closedList.contains(next.getPlace())) openList.add(next);
 			}
 		}
 		ArrayList<Connection> construct = new ArrayList<Connection>();
@@ -86,7 +85,6 @@ public class PlacesDao implements PlacesDaoInterface {
 	}
 	
 	public int getSize() {
-		// TODO Auto-generated method stub
 		return size;
 	}
 	
