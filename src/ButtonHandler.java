@@ -3,6 +3,7 @@ import java.awt.Component;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.Enumeration;
 
@@ -145,12 +146,12 @@ public class ButtonHandler implements ActionListener {
 			fastString += "Here is the fastest route: " + "\n" + "Travel from "
 					+ startPlace + " to ";
 			ArrayList<Connection> fastRoute = this.pdi.getFastestRoute(sp, ep);
-			for (Connection c : fastRoute) {
-				Route r = c.getRoute();
-				Place nextPlace = c.getDestination();
+			for (int i = fastRoute.size() - 1; i > -1; i--) {
+				Route r = fastRoute.get(i).getRoute();
+				Place nextPlace = fastRoute.get(i).getDestination();
 				double distance = r.getDistance();
 				String nextPlaceName = nextPlace.getName();
-				if (fastRoute.get(fastRoute.size() - 1).equals(c)) {
+				if (fastRoute.get(0).equals(fastRoute.get(i))) {
 					fastString += nextPlaceName + " for "
 							+ Math.floor(distance) + " miles.\n\n";
 				} else {
@@ -168,12 +169,12 @@ public class ButtonHandler implements ActionListener {
 					+ "Travel from " + startPlace + " to ";
 			ArrayList<Connection> shortRoute = this.pdi
 					.getShortestRoute(sp, ep);
-			for (Connection c : shortRoute) {
-				Route r = c.getRoute();
+			for (int i = shortRoute.size() - 1; i > -1; i--) {
+				Route r = shortRoute.get(i).getRoute();
 				double distance = r.getDistance();
-				Place nextPlace = c.getDestination();
+				Place nextPlace = shortRoute.get(i).getDestination();
 				String nextPlaceName = nextPlace.getName();
-				if (shortRoute.get(shortRoute.size() - 1).equals(c)) {
+				if (shortRoute.get(0).equals(shortRoute.get(i))) {
 					shortString += nextPlaceName + " for "
 							+ Math.floor(distance) + " miles.\n";
 				} else {
@@ -182,8 +183,9 @@ public class ButtonHandler implements ActionListener {
 				}
 				ArrayList<Point> points = r.getPoints();
 				for (Point p : points) {
-					p.getXValue();
-					p.getYValue();
+					Integer x = p.getXValue();
+					Integer y = p.getYValue();
+//					Point2D p = new Point2D();
 				}
 			}
 
