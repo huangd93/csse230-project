@@ -21,9 +21,7 @@ public class Main {
 		yggdrasil.createNiflheim();
 		yggdrasil.createSvartalfheim();
 		yggdrasil.createVanaheim();
-		// Now, yggdrasil.t will get you the tree in which the places are sorted by
-		// rating, and then through all that goodness you can pick information
-		// out of the places
+		
 
 		new StartUpGUI();
 	}
