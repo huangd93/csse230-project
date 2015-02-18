@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * @author huangd
  *
  */
-public class Place {
+public class Place implements Comparable<Place> {
 	private String name;
 	private ArrayList<Connection> connections;
 	private Point point;
@@ -42,18 +42,18 @@ public class Place {
 	public static double estimatedDistance(Place x, Place y) throws IllegalArgumentException {
 		if(x == null || y == null) throw new IllegalArgumentException();
 		double result = 0;
-		if(x.getRealm() != y.getRealm()) {
-			Place gate1 = x.getRealm().getGate();
-			Place gate2 = y.getRealm().getGate();
-			// Distance to this realm gate
-			result += Point.distanceBetween(x.getPoint(), gate1.getPoint());
-			// Distance between gates
-			result += Point.distanceBetween(gate1.getPoint(), gate2.getPoint());
-			// Distance from destination realm gate to destination
-			result += Point.distanceBetween(gate2.getPoint(), y.getPoint());
-		} else {
+//		if(x.getRealm() != y.getRealm()) {
+//			Place gate1 = x.getRealm().getGate();
+//			Place gate2 = y.getRealm().getGate();
+//			// Distance to this realm gate
+//			result += Point.distanceBetween(x.getPoint(), gate1.getPoint());
+//			// Distance between gates
+//			result += Point.distanceBetween(gate1.getPoint(), gate2.getPoint());
+//			// Distance from destination realm gate to destination
+//			result += Point.distanceBetween(gate2.getPoint(), y.getPoint());
+//		} else {
 			result += Point.distanceBetween(x.getPoint(), y.getPoint());
-		}
+//		}
 		return result;
 	}
 
@@ -142,5 +142,23 @@ public class Place {
 			}
 		}
 		return result;
+	}
+
+	/**
+	 * Returns 0 if it is the same Place based on name and realm, -1 if not. 
+	 */
+	@Override
+	public int compareTo(Place o) {
+		if(this.name.equals(o.name) && this.realm == o.realm) return 0;
+		return -1;
+	}
+	
+	/**
+	 * Adds the given connection to the connection array
+	 * @param c Connection to add
+	 */
+	public void addConection(Connection c) {
+		if(connections == null) connections = new ArrayList<Connection>();
+		connections.add(c);
 	}
 }
