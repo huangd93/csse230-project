@@ -34,12 +34,11 @@ public class PlacesDaoTesting {
 				2,
 				yggdrasil.t.getFastestRoute(
 						yggdrasil.t.getPlace("Valhalla", "Asgard"),
-						yggdrasil.t.getPlace("Sea Of Marmora", "Asgard"))
+						yggdrasil.t.getPlace("Sea of Marmora", "Asgard"))
 						.size());
 
-		//null pointer exception
 		assertEquals(
-				4,
+				3,
 				yggdrasil.t.getFastestRoute(
 						yggdrasil.t.getPlace("Valhalla", "Asgard"),
 						yggdrasil.t.getPlace("The Mountain Thrymheim",
@@ -76,17 +75,13 @@ public class PlacesDaoTesting {
 						yggdrasil.t.getPlace("The Home Of Njord", "Vanaheim"),
 						yggdrasil.t.getPlace("The Pictish Wilderness", "Vanaheim"))
 						.size());
-		
-		//inter-realm shortest route
-		
-		// This test gives us an infinite loop <<<<<<<<<<<<
-		
-		// assertEquals(
-		// 4,
-		// yggdrasil.t.getFastestRoute(
-		// yggdrasil.t.getPlace("Valhalla", "Asgard"),
-		// yggdrasil.t.getPlace("The Mountain Thrymheim",
-		// "Jotunheim")).size());
+
+		assertEquals(
+				3,
+				yggdrasil.t.getShortestRoute(
+						yggdrasil.t.getPlace("Valhalla", "Asgard"),
+						yggdrasil.t.getPlace("The Mountain Thrymheim",
+								"Jotunheim")).size());
 
 	}
 
