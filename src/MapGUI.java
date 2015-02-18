@@ -159,7 +159,8 @@ public class MapGUI {
 				Color.gray));
 
 //		String imageLoc = "C:/EclipseWorkspaces/csse230/csse230-project/yggdrasil.jpg";
-//		mapPanel.add(new JLabel(new ImageIcon(imageLoc)));
+//		JLabel pic = new JLabel(new ImageIcon(imageLoc));
+//		mapPanel.add(pic);
 
 		direcsPanel.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1,
 				Color.gray));

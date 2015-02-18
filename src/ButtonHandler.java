@@ -186,13 +186,11 @@ public class ButtonHandler implements ActionListener {
 				}
 				ArrayList<Point> points = r.getPoints();
 				for (Point p : points) {
-					double x = p.getXValue();
-					double y = p.getYValue();
-					this.mapPanel.setXandY(x, y);
-					this.mapPanel.bool = true;
-					this.mapPanel.revalidate();
-					this.mapPanel.repaint();
+					this.mapPanel.collectPoint(p);
 				}
+				this.mapPanel.bool = true;
+				this.mapPanel.revalidate();
+				this.mapPanel.repaint();
 			}
 
 			JTextArea directions = new JTextArea(41, 29);
