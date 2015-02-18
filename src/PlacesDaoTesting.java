@@ -1,7 +1,5 @@
 import static org.junit.Assert.*;
 
-import java.util.ArrayList;
-
 import org.junit.Test;
 
 public class PlacesDaoTesting {
@@ -11,7 +9,7 @@ public class PlacesDaoTesting {
 	public PlacesDaoTesting() {
 		yggdrasil.createAsgard();
 		yggdrasil.createAlfheim();
-		yggdrasil.createJotunheim(); // aka Utgard
+		yggdrasil.createJotunheim();
 		yggdrasil.createMidgard();
 		yggdrasil.createMuspelheim();
 		yggdrasil.createNidavellir();
@@ -22,14 +20,16 @@ public class PlacesDaoTesting {
 
 	@Test
 	public void getPlacesTest() {
-		assertEquals(41, yggdrasil.t.getPlaces().size()); // makes sure it gets
-															// all the places
-		assertEquals(5, yggdrasil.asgardPlaces.size());
-		assertEquals(3, yggdrasil.muspelheimPlaces.size());
+		assertEquals(41, yggdrasil.t.getPlaces().size());
+		// this line is to make sure we get a new ArrayList, and it doesn't just
+		// add on top of the old one
+		assertEquals(41, yggdrasil.t.getPlaces().size());
+
 	}
 
 	@Test
 	public void getFastestRouteTest() {
+		// Illegal argument exception
 		assertEquals(
 				2,
 				yggdrasil.t.getFastestRoute(
@@ -37,7 +37,7 @@ public class PlacesDaoTesting {
 						yggdrasil.t.getPlace("Sea Of Marmora", "Asgard"))
 						.size());
 
-		// null pointer exception...
+		//null pointer exception
 		assertEquals(
 				4,
 				yggdrasil.t.getFastestRoute(
@@ -49,11 +49,19 @@ public class PlacesDaoTesting {
 
 	@Test
 	public void getShortestRouteTest() {
+		//intra-realm shortest routes
 		assertEquals(
 				1,
 				yggdrasil.t.getShortestRoute(
 						yggdrasil.t.getPlace("Valhalla", "Asgard"),
 						yggdrasil.t.getPlace("Odin's Fortress", "Asgard"))
+						.size());
+		
+		assertEquals(
+				2,
+				yggdrasil.t.getShortestRoute(
+						yggdrasil.t.getPlace("The River Iving", "Jotunheim"),
+						yggdrasil.t.getPlace("The Mountain Thrymheim", "Jotunheim"))
 						.size());
 
 		assertEquals(
@@ -61,8 +69,18 @@ public class PlacesDaoTesting {
 				yggdrasil.t.getShortestRoute(
 						yggdrasil.t.getPlace("Valhalla", "Asgard"),
 						yggdrasil.t.getPlace("Lake Logur", "Asgard")).size());
-
-		// This gives us an infinite loop <<<<<<<<<<<<
+		
+		assertEquals(
+				3,
+				yggdrasil.t.getShortestRoute(
+						yggdrasil.t.getPlace("The Home Of Njord", "Vanaheim"),
+						yggdrasil.t.getPlace("The Pictish Wilderness", "Vanaheim"))
+						.size());
+		
+		//inter-realm shortest route
+		
+		// This test gives us an infinite loop <<<<<<<<<<<<
+		
 		// assertEquals(
 		// 4,
 		// yggdrasil.t.getFastestRoute(
@@ -70,32 +88,6 @@ public class PlacesDaoTesting {
 		// yggdrasil.t.getPlace("The Mountain Thrymheim",
 		// "Jotunheim")).size());
 
-	}
-
-	@Test
-	public void insertIntoRatingTreeTest() {
-		// finish by creating a new place and then see if the tree grew by one
-		ArrayList<Connection> otherConnect = new ArrayList<Connection>();
-		Point otherPoint = new Point(500, 500);
-		Place otherPlace = new Place("Other New Place", otherConnect,
-				otherPoint, 4, Realm.Midgard);
-		ArrayList<Connection> randomConnect = new ArrayList<Connection>();
-		Point randomPoint = new Point(500, 500);
-		ArrayList<Point> connectPoints = new ArrayList<Point>();
-		connectPoints.add(randomPoint);
-		connectPoints.add(otherPoint);
-		Route randomRoute = new Route();
-		randomRoute.addPoint(randomPoint);
-		randomRoute.addPoint(otherPoint);
-		randomConnect.add(new Connection(otherPlace, randomRoute, 45));
-		Place randomPlace = new Place("Random New Place", randomConnect,
-				randomPoint, 4, Realm.Midgard);
-		randomPlace.setConnections(randomConnect);
-		yggdrasil.t.insertIntoRatingTree(randomPlace, "Random New Place",
-				randomRoute, randomConnect, randomPoint, 4, Realm.Midgard);
-		assertEquals(42, yggdrasil.t.getPlaces().size());
-		yggdrasil.t.clear();
-		assertEquals(0, yggdrasil.t.getPlaces().size());
 	}
 
 }

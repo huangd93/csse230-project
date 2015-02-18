@@ -4,7 +4,7 @@ import java.util.Stack;
 public class PlacesDao implements PlacesDaoInterface {
 	// Places grouped by rating
 	private PlacesHashMap[] places = new PlacesHashMap[10];
-	PlacesTree t = new PlacesTree();
+	private int size = 0;
 
 	protected PlacesDao() {}
 
@@ -77,18 +77,17 @@ public class PlacesDao implements PlacesDaoInterface {
 		}
 		return result;
 	}
-
-	public boolean insertIntoRatingTree(Place place, String name, Route route,
-			ArrayList<Connection> connections, Point point, Integer rating,
-			Realm realm) {
-		Place newPlace = new Place(name, connections, point, rating, realm);
-		t.insert(newPlace);
-		
-		return false;
-	}
 	
 	public void clear(){
-		t.clear();
+		for(int i = 0; i < places.length; i++) {
+			places[i] = new PlacesHashMap();
+		}
+		size = 0;
+	}
+	
+	public int getSize() {
+		// TODO Auto-generated method stub
+		return size;
 	}
 	
 	/**
@@ -155,7 +154,11 @@ public class PlacesDao implements PlacesDaoInterface {
 	public boolean insert(Place place) {
 		int rating = place.getRating();
 		if(places[rating-1] == null) places[rating-1] = new PlacesHashMap();
-		return places[rating-1].insert(place);
+		if(places[rating-1].insert(place)) {
+			size++;
+			return true;
+		}
+		return false;
 	}
 
 	public ArrayList<Place> getPlacesWithin(Place start, double distance,
@@ -220,4 +223,5 @@ public class PlacesDao implements PlacesDaoInterface {
 		}
 		return result;
 	}
+
 }
