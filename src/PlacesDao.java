@@ -4,6 +4,7 @@ import java.util.Stack;
 public class PlacesDao implements PlacesDaoInterface {
 	// Places grouped by rating
 	private PlacesHashMap[] places = new PlacesHashMap[10];
+	private int size = 0;
 
 	protected PlacesDao() {}
 
@@ -81,13 +82,12 @@ public class PlacesDao implements PlacesDaoInterface {
 		for(int i = 0; i < places.length; i++) {
 			places[i] = new PlacesHashMap();
 		}
+		size = 0;
 	}
 	
-
-	@Override
 	public int getSize() {
 		// TODO Auto-generated method stub
-		return t.size;
+		return size;
 	}
 	
 	/**
@@ -154,7 +154,11 @@ public class PlacesDao implements PlacesDaoInterface {
 	public boolean insert(Place place) {
 		int rating = place.getRating();
 		if(places[rating-1] == null) places[rating-1] = new PlacesHashMap();
-		return places[rating-1].insert(place);
+		if(places[rating-1].insert(place)) {
+			size++;
+			return true;
+		}
+		return false;
 	}
 
 	public ArrayList<Place> getPlacesWithin(Place start, double distance,
