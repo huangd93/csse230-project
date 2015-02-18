@@ -81,4 +81,6 @@ public interface PlacesDaoInterface {
 	 * Clears all stored nodes from the Dao
 	 */
 	public void clear();
+
+	public int getSize();
 }
