@@ -30,6 +30,7 @@ public class PlacesDaoTesting {
 
 	@Test
 	public void getFastestRouteTest() {
+		//null pointer exception
 		assertEquals(
 				2,
 				yggdrasil.t.getFastestRoute(
@@ -37,7 +38,6 @@ public class PlacesDaoTesting {
 						yggdrasil.t.getPlace("Sea Of Marmora", "Asgard"))
 						.size());
 
-		// null pointer exception...
 		assertEquals(
 				4,
 				yggdrasil.t.getFastestRoute(
@@ -74,25 +74,29 @@ public class PlacesDaoTesting {
 
 	@Test
 	public void insertIntoRatingTreeTest() {
-		// finish by creating a new place and then see if the tree grew by one
 		ArrayList<Connection> otherConnect = new ArrayList<Connection>();
-		Point otherPoint = new Point(500, 500);
-		Place otherPlace = new Place("Other New Place", otherConnect,
-				otherPoint, 4, Realm.Midgard);
 		ArrayList<Connection> randomConnect = new ArrayList<Connection>();
 		Point randomPoint = new Point(500, 500);
+		Point otherPoint = new Point(400, 500);
+		Place otherPlace = new Place("Other New Place", otherConnect,
+				otherPoint, 4, Realm.Midgard);
+		Place randomPlace = new Place("Random New Place", randomConnect,
+				randomPoint, 4, Realm.Midgard);
+		
 		ArrayList<Point> connectPoints = new ArrayList<Point>();
 		connectPoints.add(randomPoint);
 		connectPoints.add(otherPoint);
+		
 		Route randomRoute = new Route();
 		randomRoute.addPoint(randomPoint);
 		randomRoute.addPoint(otherPoint);
-		randomConnect.add(new Connection(otherPlace, randomRoute, 45));
-		Place randomPlace = new Place("Random New Place", randomConnect,
-				randomPoint, 4, Realm.Midgard);
+		
+		randomConnect.add(new Connection(otherPlace, randomRoute, 45));	
 		randomPlace.setConnections(randomConnect);
+		
 		yggdrasil.t.insertIntoRatingTree(randomPlace, "Random New Place",
 				randomRoute, randomConnect, randomPoint, 4, Realm.Midgard);
+		
 		assertEquals(42, yggdrasil.t.getPlaces().size());
 		yggdrasil.t.clear();
 		assertEquals(0, yggdrasil.t.getPlaces().size());

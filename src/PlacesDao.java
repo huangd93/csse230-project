@@ -90,6 +90,13 @@ public class PlacesDao implements PlacesDaoInterface {
 		t.clear();
 	}
 	
+
+	@Override
+	public int getSize() {
+		// TODO Auto-generated method stub
+		return t.size;
+	}
+	
 	/**
 	 * A Node used for Routing purposes
 	 * @author huangd
@@ -219,4 +226,5 @@ public class PlacesDao implements PlacesDaoInterface {
 		}
 		return result;
 	}
+
 }

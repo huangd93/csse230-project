@@ -67,5 +67,10 @@ public class PlacesTree {
 	public void clear(){
 		this.root = null;
 	}
+	
+	public int getSize(){
+		this.size = 0;
+		return this.size;
+	}
 
 }

@@ -87,4 +87,6 @@ public interface PlacesDaoInterface {
 			Realm realm);
 	
 	public void clear();
+
+	public int getSize();
 }
