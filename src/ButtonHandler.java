@@ -76,7 +76,7 @@ public class ButtonHandler implements ActionListener {
 					temp = button.getText();
 				}
 			}
-			String[] tempArr = temp.split(", ");
+			String[] tempArr = temp.split("; ");
 			endPlace = tempArr[0];
 			endRealm = tempArr[1];
 			new MapGUI(this.mainframe, startPlace, startRealm, endPlace,
@@ -117,7 +117,7 @@ public class ButtonHandler implements ActionListener {
 
 			ButtonGroup group = new ButtonGroup();
 			for (Place dest : routeList) {
-				JRadioButton r = new JRadioButton(dest.getName() + ", "
+				JRadioButton r = new JRadioButton(dest.getName() + "; "
 						+ dest.getRealm().toString());
 				group.add(r);
 				this.panel.add(r);

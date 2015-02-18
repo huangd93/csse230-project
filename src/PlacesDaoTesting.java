@@ -20,6 +20,7 @@ public class PlacesDaoTesting {
 
 	@Test
 	public void getPlacesTest() {
+		//test size of tree (should equal # of places in our universe)
 		assertEquals(41, yggdrasil.t.getPlaces().size());
 		// this line is to make sure we get a new ArrayList, and it doesn't just
 		// add on top of the old one
