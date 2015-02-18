@@ -1,5 +1,6 @@
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 
@@ -139,35 +141,48 @@ public class ButtonHandler implements ActionListener {
 	    	 Place sp = this.pdi.getPlace(startPlace, startRealm);
 	    	 Place ep = this.pdi.getPlace(endPlace, endRealm);
 	    	 
-	    	 String fastString = "<html>";
-	    	 fastString += "Here is the fastest route: "+"<br/>";
+	    	 String fastString = "";
+	    	 fastString += "Here is the fastest route: "+"\n" + "Travel from " + startPlace + " to ";
 	    	 ArrayList<Connection> fastRoute = this.pdi.getFastestRoute(sp, ep);
 	    	 for(Connection c : fastRoute){
-	    		 Place nextPlace = c.getDestination();
 	    		 Route r = c.getRoute();
+	    		 Place nextPlace = c.getDestination();
 	    		 double distance = r.getDistance();
-	    		 fastString += ". Travel from ";
+	    		 String nextPlaceName = nextPlace.getName();
+	    		 if(fastRoute.get(fastRoute.size() - 1).equals(c)){
+	    			 fastString += nextPlaceName + " for " + Math.floor(distance) + " miles.\n\n";
+	    		 }else{
+	    			 fastString += nextPlaceName + " for " + Math.floor(distance) + " miles\nthen to ";	    			 
+	    		 }
 	    		 ArrayList<Point> points = r.getPoints();
 	    		 for(Point p : points){
-	    			 fastString += p.getXValue() + ", " + p.getYValue() + " to ";
+	    			 p.getXValue();
+	    			 p.getYValue();
 	    		 }
-	    		 fastString += "<br/>";
 	    	 }
 	    	 
-	    	 String shortString = "Here is the shortest route: "+"<br/>";
+	    	 String shortString = "Here is the shortest route: "+"\n" + "Travel from " + startPlace + " to ";
 	    	 ArrayList<Connection> shortRoute = this.pdi.getShortestRoute(sp, ep);
 	    	 for(Connection c : shortRoute){
 	    		 Route r = c.getRoute();
-	    		 shortString += ". Travel from ";
+	    		 double distance = r.getDistance();
+	    		 Place nextPlace = c.getDestination();
+	    		 String nextPlaceName = nextPlace.getName();
+	    		 if(shortRoute.get(shortRoute.size() - 1).equals(c)){
+	    			 shortString += nextPlaceName + " for " + Math.floor(distance) + " miles.\n";
+	    		 }else{
+	    			 shortString += nextPlaceName + " for " + Math.floor(distance) + " miles\nthen to ";	    			 
+	    		 }
 	    		 ArrayList<Point> points = r.getPoints();
 	    		 for(Point p : points){
-	    			 shortString += p.getXValue() + ", " + p.getYValue() + " to ";
+	    			 p.getXValue();
+	    			 p.getYValue();
 	    		 }
-	    		 shortString += "<br/>";
 	    	 }
-	    	 shortString += "</html>";
 	    	 
-			 JLabel directions = new JLabel(fastString + shortString );
+			 JTextArea directions = new JTextArea(41, 29);
+			 directions.setLineWrap(true);
+			 directions.setText(fastString + shortString);
 	     	 
 			 this.panel.add(directions);
 	     }
