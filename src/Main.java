@@ -21,6 +21,7 @@ public class Main {
 		yggdrasil.createNiflheim();
 		yggdrasil.createSvartalfheim();
 		yggdrasil.createVanaheim();
+		yggdrasil.linkGates();
 		
 
 		new StartUpGUI();
