@@ -143,6 +143,7 @@ public class ButtonHandler implements ActionListener {
 	    	 fastString += "Here is the fastest route: "+"<br/>";
 	    	 ArrayList<Connection> fastRoute = this.pdi.getFastestRoute(sp, ep);
 	    	 for(Connection c : fastRoute){
+	    		 Place nextPlace = c.getDestination();
 	    		 Route r = c.getRoute();
 	    		 double distance = r.getDistance();
 	    		 fastString += ". Travel from ";
