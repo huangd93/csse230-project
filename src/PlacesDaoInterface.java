@@ -103,4 +103,15 @@ public interface PlacesDaoInterface {
 	 * @return
 	 */
 	public boolean insert(Place place);
+	
+	/**
+	 * Clears all nodes in the Dao
+	 */
+	public void clear();
+	
+	/**
+	 * Returns the number of nodes in the Dao
+	 * @return Number of nodes in the Dao
+	 */
+	public int getSize();
 }

@@ -14,6 +14,82 @@ public class PlacesDao implements PlacesDaoInterface {
 		}
 		return result;
 	}
+
+	public ArrayList<Realm> getRealms() {
+		return Realm.toArrayList();
+	}
+
+	public ArrayList<Place> getPlacesInRealm(Realm realm) {
+		ArrayList<Place> result = new ArrayList<Place>();
+		for(PlacesHashMap i : places) {
+			if(i != null) {
+				for(Place j : i.toArrayList()) {
+					if(j.getRealm() == realm) result.add(j);
+				}
+			}
+		}
+		return result;
+	}
+	
+	public Place getPlace(String name, String realm) {
+		Place result = null;
+		for(PlacesHashMap i : places) {
+			if(i != null && i.containsName(name)) {
+				result = i.getPlace(name, realm);
+				if(result != null) return result;
+			}
+		}
+		return null;
+	}
+
+//	public ArrayList<Place> getPlacesWithin2(Place start, double distance, double time) 
+//			throws IllegalArgumentException{
+//		if(start == null) throw new IllegalArgumentException();
+//		return removeDuplicates(start.getPlacesWithin(distance, time, 0, 0), start);
+//	}
+	
+	// A* inspired search for nodes within a set travel distance and time
+	public ArrayList<Place> getPlacesWithin(Place start, double distance, double time) 
+			throws IllegalArgumentException {
+		if(start == null) throw new IllegalArgumentException();
+		DistanceNodeStack openList = new DistanceNodeStack();
+		openList.push(start, 0, 0);
+		PlacesHashMap closedList = new PlacesHashMap();
+		ArrayList<Place> result = new ArrayList<Place>();
+		
+		DistanceNode current = null;
+		while(!openList.isEmpty()) {
+			current = openList.pop();
+			closedList.insert(current.getPlace());
+			for(Connection i : current.getPlace().getConnections()) {
+				double d = current.cost + i.getDistance();
+				double t = current.time + i.getTime();
+				if(d < distance && t < time && !closedList.contains(i.getDestination())) {
+					result.add(i.getDestination());
+					openList.push(i.getDestination(), d, t);
+				}
+			}
+		}
+		
+		return removeDuplicates(result, start);
+	}
+	
+	public ArrayList<Place> getPlacesWithin(String name, String realm, double distance, double time) {
+		return getPlacesWithin(getPlace(name, realm), distance, time);
+	}
+
+	@Override
+	public ArrayList<Place> getPlacesWithin(Place start, double distance,
+			double time, int rating) throws IllegalArgumentException{
+			if(start == null) throw new IllegalArgumentException();
+			return removeByRating(getPlacesWithin(start, distance, time), rating);
+	}
+
+	@Override
+	public ArrayList<Place> getPlacesWithin(String name, String realm,
+			double distance, double time, int rating) {
+			return getPlacesWithin(getPlace(name, realm), distance, time, rating);
+	}
 	
 	public ArrayList<Connection> getFastestRoute(Place place1, Place place2) throws IllegalArgumentException {
 		if(place1 == null || place2 == null) throw new IllegalArgumentException();
@@ -76,6 +152,16 @@ public class PlacesDao implements PlacesDaoInterface {
 		}
 		return result;
 	}
+
+	public boolean insert(Place place) {
+		int rating = place.getRating();
+		if(places[rating-1] == null) places[rating-1] = new PlacesHashMap();
+		if(places[rating-1].insert(place)) {
+			size++;
+			return true;
+		}
+		return false;
+	}
 	
 	public void clear(){
 		for(int i = 0; i < places.length; i++) {
@@ -86,6 +172,31 @@ public class PlacesDao implements PlacesDaoInterface {
 	
 	public int getSize() {
 		return size;
+	}
+
+	private ArrayList<Place> removeDuplicates(ArrayList<Place> p, Place start) {
+		for(int i = 0; i < p.size(); i++) {
+			Place initial = p.get(i);
+			for(int j = i + 1; j < p.size(); j++) {
+				if(p.get(j).equals(initial) || p.get(j).equals(start)) {
+					p.remove(j);
+					j--;
+				}
+			}
+		}
+		return p;
+	}
+	
+	private ArrayList<Place> removeByRating(ArrayList<Place> p, int rating) {
+		for(int i = 0; i < p.size(); i++) {
+			for(int j = i + 1; j < p.size(); j++) {
+				if(p.get(j).getRating() < rating) {
+					p.remove(j);
+					j--;
+				}
+			}
+		}
+		return p;
 	}
 	
 	/**
@@ -146,106 +257,78 @@ public class PlacesDao implements PlacesDaoInterface {
 			}
 			return 0;
 		}
+	}
+	
+	private class DistanceNode {
+		private Place place;
+		private double cost;
+		private double time;
+		
+		@SuppressWarnings("unused")
+		private DistanceNode() {}
+		
+		public DistanceNode(Place p, double c, double t) {
+			place = p;
+			cost = c;
+			time = t;
+		}
+		
+		public Place getPlace() {
+			return place;
+		}
 		
 	}
 
-	public boolean insert(Place place) {
-		int rating = place.getRating();
-		if(places[rating-1] == null) places[rating-1] = new PlacesHashMap();
-		if(places[rating-1].insert(place)) {
-			size++;
-			return true;
+	/**
+	 * A stack of places implemented via LinkedList
+	 * @author huangd
+	 *
+	 */
+	private class DistanceNodeStack extends LinkedList<DistanceNode> {
+		/**
+		 * Creates an empty PlaceStack
+		 */
+		public DistanceNodeStack() {
+			super.root = null;
+			super.tail = null;
 		}
-		return false;
-	}
-
-	public ArrayList<Place> getPlacesWithin(Place start, double distance,
-			double time) throws IllegalArgumentException{
-		if(start == null) throw new IllegalArgumentException();
-		return removeDuplicates(start.getPlacesWithin(distance, time, 0, 0));
-	}
-	
-	public ArrayList<Place> getPlacesWithin(String name, String realm, double distance, double time) {
-		return getPlacesWithin(getPlace(name, realm), distance, time);
-	}
-	
-//	public ArrayList<Place> getPlacesWithin(String name, String realm, double distance, double time) {
-//		Stack<Place> openList = new Stack<Place>();
-//		openList.add(getPlace(name, realm));
-//		ArrayList<Place> result = new ArrayList<Place>();
-//		Place current;
-//		while(!openList.isEmpty()) {
-//			current = openList.pop();
-//			for(Connection i : current.getConnections()) {
-//				if(i.getDistance())openList.push(i.getDestination());
-//			}
-//		}
-//	}
-
-	private ArrayList<Place> removeDuplicates(ArrayList<Place> p) {
-		for(int i = 0; i < p.size(); i++) {
-			Place initial = p.get(i);
-			for(int j = i + 1; j < p.size(); j++) {
-				if(p.get(j).equals(initial)) {
-					p.remove(j);
-					j--;
-				}
-			}
+		
+		/**
+		 * Pushes the given place to the top of the stack
+		 * @param p Place to insert
+		 * @param cost Cost of travel so far to that point
+		 */
+		public void push(Place p, double cost, double time) {
+			super.root = new Node(new DistanceNode(p, cost, time), super.root);
 		}
-		return p;
-	}
-	
-	private ArrayList<Place> removeByRating(ArrayList<Place> p, int rating) {
-		for(int i = 0; i < p.size(); i++) {
-			Place initial = p.get(i);
-			for(int j = i + 1; j < p.size(); j++) {
-				if(p.get(j).getRating() < rating) {
-					p.remove(j);
-					j--;
-				}
-			}
+		
+		/**
+		 * Pushes the given DistanceNode to the top of the stack
+		 * @param n DistanceNode to insert
+		 */
+		public void push(DistanceNode n) {
+			super.root = new Node(n, super.root);;
 		}
-		return p;
-	}
-	
-	public Place getPlace(String name, String realm) {
-		Place result = null;
-		for(PlacesHashMap i : places) {
-			if(i != null && i.containsName(name)) {
-				result = i.getPlace(name, realm);
-				if(result != null) return result;
-			}
+		
+		/**
+		 * Pops the top Place off of the stack. 
+		 * @return The top Place. 
+		 */
+		public DistanceNode pop() {
+			if(super.root == null) return null;
+			DistanceNode result = super.root.getElement();
+			super.root = super.root.getChild();
+			if(super.root == null) super.tail = null;
+			return result;
 		}
-		return null;
-	}
-
-	public ArrayList<Realm> getRealms() {
-		return Realm.toArrayList();
-	}
-
-	public ArrayList<Place> getPlacesInRealm(Realm realm) {
-		ArrayList<Place> result = new ArrayList<Place>();
-		for(PlacesHashMap i : places) {
-			if(i != null) {
-				for(Place j : i.toArrayList()) {
-					if(j.getRealm() == realm) result.add(j);
-				}
-			}
+		
+		/**
+		 * Returns whether or not the stack is empty
+		 * @return True if empty
+		 */
+		public boolean isEmpty() {
+			if(super.root == null) return true;
+			return false;
 		}
-		return result;
 	}
-
-	@Override
-	public ArrayList<Place> getPlacesWithin(Place start, double distance,
-			double time, int rating) throws IllegalArgumentException{
-			if(start == null) throw new IllegalArgumentException();
-			return removeByRating(getPlacesWithin(start, distance, time), rating);
-	}
-
-	@Override
-	public ArrayList<Place> getPlacesWithin(String name, String realm,
-			double distance, double time, int rating) {
-			return getPlacesWithin(getPlace(name, realm), distance, time, rating);
-	}
-
 }
