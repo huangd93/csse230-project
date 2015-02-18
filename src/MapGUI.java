@@ -35,17 +35,17 @@ public class MapGUI {
 		fastString += "Here is the fastest route: " + "\n" + "Travel from "
 				+ start + " to ";
 		ArrayList<Connection> fastRoute = this.pdi.getFastestRoute(sp, ep);
-		for (Connection c : fastRoute) {
-			Route r = c.getRoute();
-			Place nextPlace = c.getDestination();
+		for (int i = fastRoute.size() - 1; i > -1; i--) {
+			Route r = fastRoute.get(i).getRoute();
+			Place nextPlace = fastRoute.get(i).getDestination();
 			double distance = r.getDistance();
 			String nextPlaceName = nextPlace.getName();
-			if (fastRoute.get(fastRoute.size() - 1).equals(c)) {
-				fastString += nextPlaceName + " for " + Math.floor(distance)
-						+ " miles.\n\n";
+			if (fastRoute.get(0).equals(fastRoute.get(i))) {
+				fastString += nextPlaceName + " for "
+						+ Math.floor(distance) + " miles.\n\n";
 			} else {
-				fastString += nextPlaceName + " for " + Math.floor(distance)
-						+ " miles\nthen to ";
+				fastString += nextPlaceName + " for "
+						+ Math.floor(distance) + " miles\nthen to ";
 			}
 			ArrayList<Point> points = r.getPoints();
 			for (Point p : points) {
@@ -56,23 +56,25 @@ public class MapGUI {
 
 		String shortString = "Here is the shortest route: " + "\n"
 				+ "Travel from " + start + " to ";
-		ArrayList<Connection> shortRoute = this.pdi.getShortestRoute(sp, ep);
-		for (Connection c : shortRoute) {
-			Route r = c.getRoute();
+		ArrayList<Connection> shortRoute = this.pdi
+				.getShortestRoute(sp, ep);
+		for (int i = shortRoute.size() - 1; i > -1; i--) {
+			Route r = shortRoute.get(i).getRoute();
 			double distance = r.getDistance();
-			Place nextPlace = c.getDestination();
+			Place nextPlace = shortRoute.get(i).getDestination();
 			String nextPlaceName = nextPlace.getName();
-			if (shortRoute.get(shortRoute.size() - 1).equals(c)) {
-				shortString += nextPlaceName + " for " + Math.floor(distance)
-						+ " miles.\n";
+			if (shortRoute.get(0).equals(shortRoute.get(i))) {
+				shortString += nextPlaceName + " for "
+						+ Math.floor(distance) + " miles.\n";
 			} else {
-				shortString += nextPlaceName + " for " + Math.floor(distance)
-						+ " miles\nthen to ";
+				shortString += nextPlaceName + " for "
+						+ Math.floor(distance) + " miles\nthen to ";
 			}
 			ArrayList<Point> points = r.getPoints();
 			for (Point p : points) {
-				p.getXValue();
-				p.getYValue();
+				Integer x = p.getXValue();
+				Integer y = p.getYValue();
+//				Point2D p = new Point2D();
 			}
 		}
 
