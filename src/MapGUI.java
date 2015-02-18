@@ -15,6 +15,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 
 import net.miginfocom.swing.MigLayout;
 
@@ -30,34 +31,49 @@ public class MapGUI {
 		//  differencess
 		Place sp = this.pdi.getPlace(start, startRealm);
 		Place ep = this.pdi.getPlace(dest, destRealm);
-		String fastString = "<html>";
-	   	fastString += "Here is the fastest route: "+"<br/>";
-	   	ArrayList<Connection> fastRoute = this.pdi.getFastestRoute(sp, ep);
-	   	for(Connection c : fastRoute){
-	   		 Route r = c.getRoute();
-	   		 double distance = r.getDistance();
-	   		 fastString += ". Travel from ";
-	   		 ArrayList<Point> points = r.getPoints();
-	   		 for(Point p : points){
-	   			 fastString += p.getXValue() + ", " + p.getYValue() + " to ";
-	   		 }
-	   		 fastString += "<br/>";
-	   	}
-	   	 
-	   	String shortString = "Here is the shortest route: "+"<br/>";
-	   	ArrayList<Connection> shortRoute = this.pdi.getShortestRoute(sp, ep);
-	   	for(Connection c : shortRoute){
-	   		 Route r = c.getRoute();
-	   		 shortString += ". Travel from ";
-	   		 ArrayList<Point> points = r.getPoints();
-	   		 for(Point p : points){
-	   			 shortString += p.getXValue() + ", " + p.getYValue() + " to ";
-	   		 }
-	   		 shortString += "<br/>";
-	   	}
-	   	shortString += "</html>";
-		JLabel direcsLabel = new JLabel(fastString + shortString);
-		direcsPanel.add(direcsLabel);
+		String fastString = "";
+   	 fastString += "Here is the fastest route: "+"\n" + "Travel from " + start + " to ";
+   	 ArrayList<Connection> fastRoute = this.pdi.getFastestRoute(sp, ep);
+   	 for(Connection c : fastRoute){
+   		 Route r = c.getRoute();
+   		 Place nextPlace = c.getDestination();
+   		 double distance = r.getDistance();
+   		 String nextPlaceName = nextPlace.getName();
+   		 if(fastRoute.get(fastRoute.size() - 1).equals(c)){
+   			 fastString += nextPlaceName + " for " + Math.floor(distance) + " miles.\n\n";
+   		 }else{
+   			 fastString += nextPlaceName + " for " + Math.floor(distance) + " miles\nthen to ";	    			 
+   		 }
+   		 ArrayList<Point> points = r.getPoints();
+   		 for(Point p : points){
+   			 p.getXValue();
+   			 p.getYValue();
+   		 }
+   	 }
+   	 
+   	 String shortString = "Here is the shortest route: "+"\n" + "Travel from " + start + " to ";
+   	 ArrayList<Connection> shortRoute = this.pdi.getShortestRoute(sp, ep);
+   	 for(Connection c : shortRoute){
+   		 Route r = c.getRoute();
+   		 double distance = r.getDistance();
+   		 Place nextPlace = c.getDestination();
+   		 String nextPlaceName = nextPlace.getName();
+   		 if(shortRoute.get(shortRoute.size() - 1).equals(c)){
+   			 shortString += nextPlaceName + " for " + Math.floor(distance) + " miles.\n";
+   		 }else{
+   			 shortString += nextPlaceName + " for " + Math.floor(distance) + " miles\nthen to ";	    			 
+   		 }
+   		 ArrayList<Point> points = r.getPoints();
+   		 for(Point p : points){
+   			 p.getXValue();
+   			 p.getYValue();
+   		 }
+   	 }
+   	 
+		 JTextArea directions = new JTextArea(41, 29);
+		 directions.setLineWrap(true);
+		 directions.setText(fastString + shortString);
+		direcsPanel.add(directions);
 		///////////////////////////////////////////////////////////////////////////////////
 		setup(frame, direcsPanel);
 		
