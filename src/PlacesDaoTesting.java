@@ -72,33 +72,33 @@ public class PlacesDaoTesting {
 		// "Jotunheim")).size());
 
 	}
-
-	@Test
-	public void insertIntoRatingTreeTest() {
-		ArrayList<Connection> otherConnect = new ArrayList<Connection>();
-		ArrayList<Connection> randomConnect = new ArrayList<Connection>();
-		Point randomPoint = new Point(500, 500);
-		Point otherPoint = new Point(400, 500);
-		Place otherPlace = new Place("Other New Place", otherConnect,
-				otherPoint, 4, Realm.Midgard);
-		Place randomPlace = new Place("Random New Place", randomConnect,
-				randomPoint, 4, Realm.Midgard);
-
-		ArrayList<Point> connectPoints = new ArrayList<Point>();
-		connectPoints.add(randomPoint);
-		connectPoints.add(otherPoint);
-
-		Route randomRoute = new Route();
-		randomRoute.addPoint(randomPoint);
-		randomRoute.addPoint(otherPoint);
-
-		randomConnect.add(new Connection(otherPlace, randomRoute, 45));
-		randomPlace.setConnections(randomConnect);
-
-		yggdrasil.t.insertIntoRatingTree(randomPlace, "Random New Place",
-				randomRoute, randomConnect, randomPoint, 4, Realm.Midgard);
-		assertEquals(42, yggdrasil.t.getPlaces().size());
-	}
+//
+//	@Test
+//	public void insertIntoRatingTreeTest() {
+//		ArrayList<Connection> otherConnect = new ArrayList<Connection>();
+//		ArrayList<Connection> randomConnect = new ArrayList<Connection>();
+//		Point randomPoint = new Point(500, 500);
+//		Point otherPoint = new Point(400, 500);
+//		Place otherPlace = new Place("Other New Place", otherConnect,
+//				otherPoint, 4, Realm.Midgard);
+//		Place randomPlace = new Place("Random New Place", randomConnect,
+//				randomPoint, 4, Realm.Midgard);
+//
+//		ArrayList<Point> connectPoints = new ArrayList<Point>();
+//		connectPoints.add(randomPoint);
+//		connectPoints.add(otherPoint);
+//
+//		Route randomRoute = new Route();
+//		randomRoute.addPoint(randomPoint);
+//		randomRoute.addPoint(otherPoint);
+//
+//		randomConnect.add(new Connection(otherPlace, randomRoute, 45));
+//		randomPlace.setConnections(randomConnect);
+//
+//		yggdrasil.t.insertIntoRatingTree(randomPlace, "Random New Place",
+//				randomRoute, randomConnect, randomPoint, 4, Realm.Midgard);
+//		assertEquals(42, yggdrasil.t.getPlaces().size());
+//	}
 
 
 }
