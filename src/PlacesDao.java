@@ -16,7 +16,8 @@ public class PlacesDao implements PlacesDaoInterface {
 		return result;
 	}
 	
-	public ArrayList<Connection> getFastestRoute(Place place1, Place place2) {
+	public ArrayList<Connection> getFastestRoute(Place place1, Place place2) throws IllegalArgumentException {
+		if(place1 == null || place2 == null) throw new IllegalArgumentException();
 		PriorityQueue<RouteNode> openList = new PriorityQueue<RouteNode>();
 		LinkedList<RouteNode> closedList = new LinkedList<RouteNode>();
 		

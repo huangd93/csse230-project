@@ -39,7 +39,8 @@ public class Place {
 	 * @param y
 	 * @return
 	 */
-	public static double estimatedDistance(Place x, Place y) {
+	public static double estimatedDistance(Place x, Place y) throws IllegalArgumentException {
+		if(x == null || y == null) throw new IllegalArgumentException();
 		double result = 0;
 		if(x.getRealm() != y.getRealm()) {
 			Place gate1 = x.getRealm().getGate();
