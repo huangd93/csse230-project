@@ -87,16 +87,6 @@ public class PlacesDao implements PlacesDaoInterface {
 		return false;
 	}
 	
-	public void clear(){
-		t.clear();
-	}
-	
-
-	@Override
-	public int getSize() {
-		// TODO Auto-generated method stub
-		return t.size;
-	}
 	
 	/**
 	 * A Node used for Routing purposes

@@ -86,7 +86,5 @@ public interface PlacesDaoInterface {
 			ArrayList<Connection> connections, Point point, Integer rating,
 			Realm realm);
 	
-	public void clear();
 
-	public int getSize();
 }
