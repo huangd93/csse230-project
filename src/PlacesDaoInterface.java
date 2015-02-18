@@ -76,15 +76,4 @@ public interface PlacesDaoInterface {
 	 * @return
 	 */
 	public boolean insert(Place place);
-	
-	/**
-	 * Inserts into existing rating tree.
-	 * @param place
-	 * @return
-	 */
-	public boolean insertIntoRatingTree(Place place, String name, Route route,
-			ArrayList<Connection> connections, Point point, Integer rating,
-			Realm realm);
-	
-
 }
