@@ -27,7 +27,7 @@ public class MapGUI {
 			String destRealm) {
 		this.pdi = PlacesDaoFactory.getPlacesDaoSingleton();
 		JPanel direcsPanel = new JPanel();
-		// /////////////////////////////////////////////////////////////////////////////////////////////
+		// ////////////////////////////////////////////////////////////////////////////////
 		// differencess
 		Place sp = this.pdi.getPlace(start, startRealm);
 		Place ep = this.pdi.getPlace(dest, destRealm);

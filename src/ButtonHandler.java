@@ -188,9 +188,10 @@ public class ButtonHandler implements ActionListener {
 				for (Point p : points) {
 					double x = p.getXValue();
 					double y = p.getYValue();
-					this.mapPanel.drawPointsandLines(x, y);
-					this.mapPanel.repaint();
+					this.mapPanel.setXandY(x, y);
+					this.mapPanel.bool = true;
 					this.mapPanel.revalidate();
+					this.mapPanel.repaint();
 				}
 			}
 
