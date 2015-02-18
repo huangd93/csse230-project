@@ -21,6 +21,7 @@ import javax.swing.JTextField;
 public class ButtonHandler implements ActionListener {
 	JFrame mainframe;
 	JPanel panel;
+	MapPanel mapPanel;
 	JTextField distance;
 	JTextField time;
 	JComboBox startRealmCombo;
@@ -35,12 +36,13 @@ public class ButtonHandler implements ActionListener {
 	private String sr;
 	private String dr;
 
-	public ButtonHandler(JFrame frame, JPanel pan, JTextField distanceInput,
+	public ButtonHandler(JFrame frame, JPanel mainPan, MapPanel mapPan, JTextField distanceInput,
 			JTextField timeInput, JComboBox startPlaceCombo,
 			JComboBox startRealmCombo, JComboBox endPlaceCombo,
 			JComboBox endRealmCombo, ButtonGroup buttonGroup) {
 		this.mainframe = frame;
-		this.panel = pan;
+		this.panel = mainPan;
+		this.mapPanel = mapPan;
 		this.distance = distanceInput;
 		this.time = timeInput;
 		this.startRealmCombo = startRealmCombo;
@@ -123,7 +125,7 @@ public class ButtonHandler implements ActionListener {
 				this.panel.add(r);
 			}
 			JButton get = new JButton("Get Your Directions");
-			get.addActionListener(new ButtonHandler(this.mainframe, this.panel,
+			get.addActionListener(new ButtonHandler(this.mainframe, this.panel, this.mapPanel,
 					null, null, this.startPlaceCombo, this.startRealmCombo,
 					null, null, group));
 			this.panel.add(get);
@@ -160,8 +162,9 @@ public class ButtonHandler implements ActionListener {
 				}
 				ArrayList<Point> points = r.getPoints();
 				for (Point p : points) {
-					p.getXValue();
-					p.getYValue();
+					int x = p.getXValue();
+					int y = p.getYValue();
+					
 				}
 			}
 
@@ -183,9 +186,11 @@ public class ButtonHandler implements ActionListener {
 				}
 				ArrayList<Point> points = r.getPoints();
 				for (Point p : points) {
-					Integer x = p.getXValue();
-					Integer y = p.getYValue();
-//					Point2D p = new Point2D();
+					double x = p.getXValue();
+					double y = p.getYValue();
+					this.mapPanel.drawPointsandLines(x, y);
+					this.mapPanel.repaint();
+					this.mapPanel.revalidate();
 				}
 			}
 

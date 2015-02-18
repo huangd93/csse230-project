@@ -107,7 +107,7 @@ public class MapGUI {
 		mainPanel.setSize(1366, 768);
 
 		JPanel controlPanel = new JPanel();
-		JPanel mapPanel = new JPanel();
+		MapPanel mapPanel = new MapPanel();
 
 		JLabel startChoice = new JLabel("Choose your starting point: ");
 
@@ -116,7 +116,7 @@ public class MapGUI {
 		ArrayList<String> realmsStringArray = new ArrayList<String>();
 		realmsStringArray.add("(Choose a Realm)");
 
-		for (int i = 1; i < realmsArray.size(); i++) {
+		for (int i = 1; i < realmsArray.size() + 1; i++) {
 			realmsStringArray.add(i, realmsArray.get(i - 1).toString());
 		}
 		Object[] realms = realmsStringArray.toArray();
@@ -140,12 +140,12 @@ public class MapGUI {
 
 		JButton createButton = new JButton("Create");
 		createButton.addActionListener(new ButtonHandler(this.mainframe,
-				direcsPanel, null, null, startList, realmList1,
+				direcsPanel, mapPanel, null, null, startList, realmList1,
 				destinationList, realmList2, null));
 
 		JButton planButton = new JButton("Plan an adventure");
 		planButton.addActionListener(new ButtonHandler(this.mainframe,
-				mainPanel, null, null, null, null, null, null, null));
+				mainPanel, null, null, null, null, null, null, null, null));
 		controlPanel.add(startChoice);
 		controlPanel.add(realmList1);
 		controlPanel.add(startList);
@@ -158,8 +158,8 @@ public class MapGUI {
 		controlPanel.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1,
 				Color.gray));
 
-		String imageLoc = "C:/EclipseWorkspaces/csse230/csse230-project/yggdrasil.jpg";
-		mapPanel.add(new JLabel(new ImageIcon(imageLoc)));
+//		String imageLoc = "C:/EclipseWorkspaces/csse230/csse230-project/yggdrasil.jpg";
+//		mapPanel.add(new JLabel(new ImageIcon(imageLoc)));
 
 		direcsPanel.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1,
 				Color.gray));

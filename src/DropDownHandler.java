@@ -44,49 +44,41 @@ public class DropDownHandler implements ActionListener {
 	    	 this.controlPanel.revalidate();
 	     }
 	     else if(current.equals("Jotunheim")){
-//	    	String[] utgardStrings = {"The River Iving","Mimir’s Well of Wisdom","Utgard-Loki’s Throne","Griotunagardar","The Mountain Thrymheim"};
 	    	DefaultComboBoxModel model = new DefaultComboBoxModel(placesStrings);
 	    	this.list.setModel(model);
 	    	this.controlPanel.revalidate();
 	     }
 	     else if(current.equals("Niflheim")){
-//	    	String[] niflheimStrings = {"The Spring Hvergelmir","The Plains of Ginnungagap","The Rivers Elivagar","Helheim (Hel’s Throne)","Fimbulthul"};
 	    	DefaultComboBoxModel model = new DefaultComboBoxModel(placesStrings);
 	    	this.list.setModel(model);
 	    	this.controlPanel.revalidate();
 	     }
 	     else if(current.equals("Vanaheim")){
-//	    	String[] vanaheimStrings = {"The Forests of the Vanir","Don River","The Home of Njord","Eiglopian Mountains","Pictish Wilderness"};
 	    	DefaultComboBoxModel model = new DefaultComboBoxModel(placesStrings);
 	    	this.list.setModel(model);
 	    	this.controlPanel.revalidate();
 	     }
 	     else if(current.equals("Alfheim")){
-//	    	String[] vanaheimStrings = {"Freyr’s Throne","Geffen","Canolbarth Forest"};
 	    	DefaultComboBoxModel model = new DefaultComboBoxModel(placesStrings);
 	    	this.list.setModel(model);
 	    	this.controlPanel.revalidate();
 		 }
 	     else if(current.equals("Midgard")){
-//	    	String[] midgardStrings = {"New York City","Washington D.C.","Puente Antiguo, New Mexico","London, England","Wheaton, New Jersey"};
 	    	DefaultComboBoxModel model = new DefaultComboBoxModel(placesStrings);
 	    	this.list.setModel(model);
 	    	this.controlPanel.revalidate();
 		 }
 	     else if(current.equals("Svartalfheim")){
-//	    	String[] svartalfheimStrings = {"The Domain of Malekith","The Black Forest","The Unseelie Court","Aurvangar","Byrgir"};
 	    	DefaultComboBoxModel model = new DefaultComboBoxModel(placesStrings);
 	    	this.list.setModel(model);
 	    	this.controlPanel.revalidate();
 		 }
 	     else if(current.equals("Nidavellir")){
-//	    	String[] nidavellirStrings = {"Hreidmar’s Kingdom","The Dark Fields","The Furnaces of Nidavellir","Durin’s Hall","Dvalin’s Hall"};
 	    	DefaultComboBoxModel model = new DefaultComboBoxModel(placesStrings);
 	    	this.list.setModel(model);
 	    	this.controlPanel.revalidate();
 		 }
 	     else if(current.equals("Muspelheim")){
-//	    	String[] muspelheimStrings = {"The Burning Plains of Surt","Sinmore Hall","Surtur’s Kingdom"};
 	    	DefaultComboBoxModel model = new DefaultComboBoxModel(placesStrings);
 	    	this.list.setModel(model);
 	    	this.controlPanel.revalidate();
