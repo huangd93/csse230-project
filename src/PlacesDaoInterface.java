@@ -78,9 +78,13 @@ public interface PlacesDaoInterface {
 	public boolean insert(Place place);
 	
 	/**
-	 * Clears all stored nodes from the Dao
+	 * Inserts into existing rating tree.
+	 * @param place
+	 * @return
 	 */
-	public void clear();
+	public boolean insertIntoRatingTree(Place place, String name, Route route,
+			ArrayList<Connection> connections, Point point, Integer rating,
+			Realm realm);
+	
 
-	public int getSize();
 }

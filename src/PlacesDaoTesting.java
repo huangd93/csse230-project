@@ -11,7 +11,7 @@ public class PlacesDaoTesting {
 	public PlacesDaoTesting() {
 		yggdrasil.createAsgard();
 		yggdrasil.createAlfheim();
-		yggdrasil.createJotunheim(); // aka Utgard
+		yggdrasil.createJotunheim();
 		yggdrasil.createMidgard();
 		yggdrasil.createMuspelheim();
 		yggdrasil.createNidavellir();
@@ -22,15 +22,16 @@ public class PlacesDaoTesting {
 
 	@Test
 	public void getPlacesTest() {
-		assertEquals(41, yggdrasil.t.getPlaces().size()); // makes sure it gets
-															// all the places
-		assertEquals(5, yggdrasil.asgardPlaces.size());
-		assertEquals(3, yggdrasil.muspelheimPlaces.size());
+		assertEquals(41, yggdrasil.t.getPlaces().size());
+		// this line is to make sure we get a new ArrayList, and it doesn't just
+		// add on top of the old one
+		assertEquals(41, yggdrasil.t.getPlaces().size());
+
 	}
 
 	@Test
 	public void getFastestRouteTest() {
-		//null pointer exception
+		// null pointer exception
 		assertEquals(
 				2,
 				yggdrasil.t.getFastestRoute(
@@ -82,24 +83,22 @@ public class PlacesDaoTesting {
 				otherPoint, 4, Realm.Midgard);
 		Place randomPlace = new Place("Random New Place", randomConnect,
 				randomPoint, 4, Realm.Midgard);
-		
+
 		ArrayList<Point> connectPoints = new ArrayList<Point>();
 		connectPoints.add(randomPoint);
 		connectPoints.add(otherPoint);
-		
+
 		Route randomRoute = new Route();
 		randomRoute.addPoint(randomPoint);
 		randomRoute.addPoint(otherPoint);
-		
-		randomConnect.add(new Connection(otherPlace, randomRoute, 45));	
+
+		randomConnect.add(new Connection(otherPlace, randomRoute, 45));
 		randomPlace.setConnections(randomConnect);
-		
+
 		yggdrasil.t.insertIntoRatingTree(randomPlace, "Random New Place",
 				randomRoute, randomConnect, randomPoint, 4, Realm.Midgard);
-		
 		assertEquals(42, yggdrasil.t.getPlaces().size());
-		yggdrasil.t.clear();
-		assertEquals(0, yggdrasil.t.getPlaces().size());
 	}
+
 
 }
