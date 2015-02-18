@@ -132,7 +132,7 @@ public class LinkedList<T> implements Iterable<T> {
 		 * @return True if the element is found
 		 */
 		public boolean contains(T e) {
-			if(element.equals((Object)e)) return true;
+			if(element.equals(e)) return true;
 			if(child == null) return false;
 			return child.contains(e);
 		}

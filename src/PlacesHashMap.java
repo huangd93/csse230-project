@@ -47,18 +47,6 @@ public class PlacesHashMap {
 	}
 	
 	/**
-	 * Returns true if this PlacesHashMap has the input place
-	 * @param place Place to check for
-	 * @return True if contains that Place
-	 */
-	public boolean contains(Place place) {
-		if(getPlace(place.getName(), place.getRealm().toString()) != null) {
-			return true;
-		}
-		return false;
-	}
-	
-	/**
 	 * Returns the Place asked for.
 	 * @param name Name of place to retrieve
 	 * @param realm Name of realm the place is located
