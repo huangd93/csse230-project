@@ -55,21 +55,20 @@ public class PlacesDaoTesting {
 						yggdrasil.t.getPlace("Valhalla", "Asgard"),
 						yggdrasil.t.getPlace("Odin's Fortress", "Asgard"))
 						.size());
-		
+
 		assertEquals(
 				2,
 				yggdrasil.t.getShortestRoute(
 						yggdrasil.t.getPlace("Valhalla", "Asgard"),
-						yggdrasil.t.getPlace("Lake Logur", "Asgard"))
-						.size());
-		
+						yggdrasil.t.getPlace("Lake Logur", "Asgard")).size());
+
 		// This gives us an infinite loop <<<<<<<<<<<<
-//		assertEquals(
-//				4,
-//				yggdrasil.t.getFastestRoute(
-//						yggdrasil.t.getPlace("Valhalla", "Asgard"),
-//						yggdrasil.t.getPlace("The Mountain Thrymheim",
-//								"Jotunheim")).size());
+		// assertEquals(
+		// 4,
+		// yggdrasil.t.getFastestRoute(
+		// yggdrasil.t.getPlace("Valhalla", "Asgard"),
+		// yggdrasil.t.getPlace("The Mountain Thrymheim",
+		// "Jotunheim")).size());
 
 	}
 
@@ -85,13 +84,18 @@ public class PlacesDaoTesting {
 		ArrayList<Point> connectPoints = new ArrayList<Point>();
 		connectPoints.add(randomPoint);
 		connectPoints.add(otherPoint);
-		randomConnect.add(new Connection(otherPlace, new Route(connectPoints),
-				45));
+		Route randomRoute = new Route();
+		randomRoute.addPoint(randomPoint);
+		randomRoute.addPoint(otherPoint);
+		randomConnect.add(new Connection(otherPlace, randomRoute, 45));
 		Place randomPlace = new Place("Random New Place", randomConnect,
 				randomPoint, 4, Realm.Midgard);
 		randomPlace.setConnections(randomConnect);
-		yggdrasil.t.insert(randomPlace);
+		yggdrasil.t.insertIntoRatingTree(randomPlace, "Random New Place",
+				randomRoute, randomConnect, randomPoint, 4, Realm.Midgard);
 		assertEquals(42, yggdrasil.t.getPlaces().size());
+		yggdrasil.t.clear();
+		assertEquals(0, yggdrasil.t.getPlaces().size());
 	}
 
 }

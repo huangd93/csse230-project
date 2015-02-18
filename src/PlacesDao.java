@@ -86,6 +86,10 @@ public class PlacesDao implements PlacesDaoInterface {
 		return false;
 	}
 	
+	public void clear(){
+		t.clear();
+	}
+	
 	/**
 	 * A Node used for Routing purposes
 	 * @author huangd

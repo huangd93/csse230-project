@@ -63,5 +63,9 @@ public class PlacesTree {
 		}
 		return false;
 	}
+	
+	public void clear(){
+		this.root = null;
+	}
 
 }
