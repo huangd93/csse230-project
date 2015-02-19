@@ -271,16 +271,16 @@ public class Creation {
 		Point plainPoint = new Point(480, 510);
 
 		ArrayList<Connection> fimbulthulConnect = new ArrayList<Connection>();
-		Point fimbulthulPoint = new Point(530, 671);
+		Point fimbulthulPoint = new Point(480, 610);
 
 		ArrayList<Connection> riverEliyagarConnect = new ArrayList<Connection>();
 		Point riverEliyagarPoint = new Point(560, 505);
 
 		ArrayList<Connection> hvergelmirConnect = new ArrayList<Connection>();
-		Point hvergelmirPoint = new Point(460, 690);
+		Point hvergelmirPoint = new Point(460, 570);
 
 		ArrayList<Connection> helheimConnect = new ArrayList<Connection>();
-		Point helheimPoint = new Point(510, 720);
+		Point helheimPoint = new Point(530, 580);
 
 		Place plainsOfGin = new Place("The Plains of Ginnungagap",
 				plainsConnect, plainPoint, 3, Realm.Niflheim);
@@ -568,13 +568,13 @@ public class Creation {
 	public void createMidgard() {
 
 		ArrayList<Connection> nycConnect = new ArrayList<Connection>();
-		Point nycPoint = new Point(240, 280);
+		Point nycPoint = new Point(240, 300);
 
 		ArrayList<Connection> dcConnect = new ArrayList<Connection>();
-		Point dcPoint = new Point(235, 265);
+		Point dcPoint = new Point(235, 330);
 
 		ArrayList<Connection> wheatonConnect = new ArrayList<Connection>();
-		Point wheatonPoint = new Point(215, 220);
+		Point wheatonPoint = new Point(215, 280);
 
 		ArrayList<Connection> antiguoConnect = new ArrayList<Connection>();
 		Point antiguoPoint = new Point(200, 310);
