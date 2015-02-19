@@ -13,6 +13,10 @@ public class Place {
 	private Integer rating;
 	private Realm realm;
 	
+	//the next two are only used within the PlacesTree
+	public Place leftChild = null;
+	public Place rightChild = null;
+	
 	/**
 	 * Creates a place with these set parameters
 	 * @param n Name
