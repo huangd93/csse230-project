@@ -41,14 +41,7 @@ public class PlacesDao implements PlacesDaoInterface {
 		}
 		return null;
 	}
-
-//	public ArrayList<Place> getPlacesWithin2(Place start, double distance, double time) 
-//			throws IllegalArgumentException{
-//		if(start == null) throw new IllegalArgumentException();
-//		return removeDuplicates(start.getPlacesWithin(distance, time, 0, 0), start);
-//	}
 	
-	// A* inspired search for nodes within a set travel distance and time
 	public ArrayList<Place> getPlacesWithin(Place start, double distance, double time) 
 			throws IllegalArgumentException {
 		if(start == null) throw new IllegalArgumentException();
@@ -123,7 +116,8 @@ public class PlacesDao implements PlacesDaoInterface {
 		return result;
 	}
 
-	public ArrayList<Connection> getShortestRoute(Place place1, Place place2) {
+	public ArrayList<Connection> getShortestRoute(Place place1, Place place2) throws IllegalArgumentException {
+		if(place1 == null || place2 == null) throw new IllegalArgumentException();
 		PriorityQueue<RouteNode> openList = new PriorityQueue<RouteNode>();
 		PlacesHashMap closedList = new PlacesHashMap();
 		
@@ -153,7 +147,8 @@ public class PlacesDao implements PlacesDaoInterface {
 		return result;
 	}
 
-	public boolean insert(Place place) {
+	public boolean insert(Place place) throws IllegalArgumentException {
+		if(place == null) throw new IllegalArgumentException();
 		int rating = place.getRating();
 		if(places[rating-1] == null) places[rating-1] = new PlacesHashMap();
 		if(places[rating-1].insert(place)) {
@@ -174,7 +169,16 @@ public class PlacesDao implements PlacesDaoInterface {
 		return size;
 	}
 
-	private ArrayList<Place> removeDuplicates(ArrayList<Place> p, Place start) {
+	/**
+	 * Removes duplicate places and the starting point from a places ArrayList. 
+	 * Used in getPlacesWithin
+	 * @param p ArrayList<Place> to check for duplicates
+	 * @param start Starting place, to be removed as well
+	 * @return ArrayList<Place> with all duplicate elements removed
+	 */
+	private ArrayList<Place> removeDuplicates(ArrayList<Place> p, Place start) 
+			throws IllegalArgumentException {
+		if(p == null) throw new IllegalArgumentException();
 		for(int i = 0; i < p.size(); i++) {
 			Place initial = p.get(i);
 			for(int j = i + 1; j < p.size(); j++) {
@@ -187,7 +191,15 @@ public class PlacesDao implements PlacesDaoInterface {
 		return p;
 	}
 	
-	private ArrayList<Place> removeByRating(ArrayList<Place> p, int rating) {
+	/**
+	 * Removes places with a rating lower than the specified rating from the input ArrayList
+	 * @param p ArrayList<Place> to check
+	 * @param rating Minimum rating to keep
+	 * @return ArrayList<Place> with all places below the specified rating removed
+	 */
+	private ArrayList<Place> removeByRating(ArrayList<Place> p, int rating) 
+			throws IllegalArgumentException {
+		if(p == null) throw new IllegalArgumentException();
 		for(int i = 0; i < p.size(); i++) {
 			for(int j = i + 1; j < p.size(); j++) {
 				if(p.get(j).getRating() < rating) {
@@ -240,6 +252,7 @@ public class PlacesDao implements PlacesDaoInterface {
 		 * @param o RouteNode to compare to
 		 * @return
 		 */
+		@SuppressWarnings("unused")
 		public boolean equals(RouteNode o) {
 			if(place.equals(o.getPlace())) return true;
 			return false;
@@ -259,14 +272,29 @@ public class PlacesDao implements PlacesDaoInterface {
 		}
 	}
 	
+	/**
+	 * Node used for getPlacesWithin A* type search
+	 * Stores a place and the distance and time costs to travel there
+	 * @author huangd
+	 *
+	 */
 	private class DistanceNode {
 		private Place place;
 		private double cost;
 		private double time;
 		
+		/**
+		 * Do not allow creation
+		 */
 		@SuppressWarnings("unused")
 		private DistanceNode() {}
 		
+		/**
+		 * Constructs a DistanceNode with the specified parameters
+		 * @param p Place
+		 * @param c Cost so far
+		 * @param t Time cost so far
+		 */
 		public DistanceNode(Place p, double c, double t) {
 			place = p;
 			cost = c;
@@ -299,7 +327,7 @@ public class PlacesDao implements PlacesDaoInterface {
 		 * @param cost Cost of travel so far to that point
 		 */
 		public void push(Place p, double cost, double time) {
-			super.root = new Node(new DistanceNode(p, cost, time), super.root);
+			push(new DistanceNode(p, cost, time));
 		}
 		
 		/**

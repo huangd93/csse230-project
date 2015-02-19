@@ -97,6 +97,11 @@ public class PlacesHashMap {
 		placesArray = temp;
 	}
 	
+	/**
+	 * Returns an ArrayList<Place> containing all the points in this PlacesHashMap
+	 * In bucket order then insertion order within each bucket.
+	 * @return
+	 */
 	public ArrayList<Place> toArrayList() {
 		ArrayList<Place> result = new ArrayList<Place>();
 		for(PlacesList i : placesArray) {
@@ -109,6 +114,10 @@ public class PlacesHashMap {
 		return result;
 	}
 	
+	/**
+	 * Prints every item in this PlacesHashMap
+	 * In bucket order then insertion order within each bucket.
+	 */
 	protected void print() {
 		for(int i = 0; i < placesArray.length; i++) {
 			System.out.print(i + ": ");
@@ -175,6 +184,11 @@ public class PlacesHashMap {
 			}
 		}
 		
+		/**
+		 * Returns true if this LinkedList contains a Place with the given name
+		 * @param name Name to check for
+		 * @return True if name is found
+		 */
 		public boolean containsName(String name) {
 			Iterator<Place> t = iterator();
 			while(t.hasNext()) {
@@ -183,6 +197,12 @@ public class PlacesHashMap {
 			return false;
 		}
 		
+		/**
+		 * Checks if all the Places in the LinkedList have the same name
+		 * Used to prevent useless rebalancing of the HashMap if there 
+		 * wll be the same number of items in this bucket anyway
+		 * @return
+		 */
 		private boolean sameName() {
 			String name = places.root.getElement().getName();
 			for(Place p : places) {
@@ -191,10 +211,17 @@ public class PlacesHashMap {
 			return true;
 		}
 		
+		/**
+		 * Returns the LinkedList with all the places
+		 * @return
+		 */
 		public LinkedList<Place> getPlaces() {
 			return places;
 		}
 
+		/**
+		 * Returns an iterator through the underlying LinkedList
+		 */
 		public Iterator<Place> iterator() {
 			return places.iterator();
 		}

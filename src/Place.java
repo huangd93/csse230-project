@@ -118,28 +118,6 @@ public class Place {
 		return shortest;
 	}
 	
-//	/**
-//	 * Recursively finds places within a set distance of the original point.
-//	 * @param distance 
-//	 * @param time
-//	 * @param distanceTraveled
-//	 * @param timeUsed
-//	 * @return
-//	 */
-//	public ArrayList<Place> getPlacesWithin(double distance, double time, 
-//			double distanceTraveled, double timeUsed) {
-//		ArrayList<Place> result = new ArrayList<Place>();
-//		for(Connection i : connections) {
-//			double connectionDistance = i.getDistance() + distanceTraveled; 
-//			double connectionTime = i.getTime() + timeUsed;
-//			if(connectionDistance < distance && connectionTime < time) {
-//				result.add(i.getDestination());
-//				result.addAll(i.getDestination().getPlacesWithin(distance, time, connectionDistance, connectionTime));
-//			}
-//		}
-//		return result;
-//	}
-	
 	/**
 	 * Adds the given connection to the connection array
 	 * @param c Connection to add

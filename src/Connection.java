@@ -12,7 +12,6 @@ public class Connection {
 	private double distance;
 	private double time;
 	
-	//destination, new route object (two points, beginning and end), speed
 	/**
 	 * Creates a connection with the specified values
 	 * @param d Destination Place

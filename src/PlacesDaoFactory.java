@@ -1,8 +1,16 @@
 
+/**
+ * A Singleton factory pattern to make sure all access is to the same DAO
+ * @author huangd
+ *
+ */
 public class PlacesDaoFactory {
 	
 	private static PlacesDao placesDaoSingleton;
 	
+	/**
+	 * Made to prevent initialization
+	 */
 	private PlacesDaoFactory() {}
 	
 	/**

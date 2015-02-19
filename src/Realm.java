@@ -2,6 +2,8 @@ import java.util.ArrayList;
 
 /**
  * Realm enum containing all nine realms. Each realm also stores a gate Place that connects it to other realms.
+ * Since this is in the world of the Nine Realms, these will always be all nine realms and remains static, thus
+ * it can be implemented as an enum. Each enum also stores the location of its gate to other realms
  * @author huangd
  *
  */

@@ -1,5 +1,10 @@
 import java.util.ArrayList;
 
+/**
+ * A Data Access Object used to interface with the backend of the program.
+ * @author huangd
+ *
+ */
 public interface PlacesDaoInterface {
 
 	/**

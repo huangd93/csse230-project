@@ -199,7 +199,6 @@ public class PriorityQueue<T extends Comparable<T>> extends ArrayList<T>{
 	 * @return The index of the parent
 	 */
 	public int parentIndex(int index) {
-		// Find the parent index
 		return ((index + 1) / 2) - 1;
 	}
 	

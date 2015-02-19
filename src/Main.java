@@ -10,7 +10,7 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 
-		// begin creation
+		// Begin creation
 		Creation yggdrasil = new Creation();
 		yggdrasil.createAsgard();
 		yggdrasil.createAlfheim();
@@ -21,6 +21,7 @@ public class Main {
 		yggdrasil.createNiflheim();
 		yggdrasil.createSvartalfheim();
 		yggdrasil.createVanaheim();
+		// This has to occur after the realm gates have been set
 		yggdrasil.linkGates();
 		
 
