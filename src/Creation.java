@@ -23,7 +23,7 @@ public class Creation {
 
 	public void createAsgard() {
 		ArrayList<Connection> valhallaConnect = new ArrayList<Connection>();
-		Point valhallaPoint = new Point(760, 70);
+		Point valhallaPoint = new Point(790, 70);
 
 		ArrayList<Connection> odinConnect = new ArrayList<Connection>();
 		Point odinPoint = new Point(729, 89);
@@ -158,7 +158,7 @@ public class Creation {
 		Point grioPoint = new Point(565, 365);
 
 		ArrayList<Connection> mtTConnect = new ArrayList<Connection>();
-		Point mtTPoint = new Point(630, 480);
+		Point mtTPoint = new Point(635, 460);
 
 		Place riverIving = new Place("The River Iving", riverIvingConnect,
 				riverIvingPoint, 4, Realm.Jotunheim);
@@ -382,19 +382,19 @@ public class Creation {
 	public void createVanaheim() {
 
 		ArrayList<Connection> njordConnect = new ArrayList<Connection>();
-		Point njordPoint = new Point(250, 50);
+		Point njordPoint = new Point(250, 80);
 
 		ArrayList<Connection> donRiverConnect = new ArrayList<Connection>();
-		Point donPoint = new Point(110, 80);
+		Point donPoint = new Point(140, 80);
 
 		ArrayList<Connection> eigMtnConnect = new ArrayList<Connection>();
-		Point eigMtnPoint = new Point(220, 130);
+		Point eigMtnPoint = new Point(260, 130);
 
 		ArrayList<Connection> pictishConnect = new ArrayList<Connection>();
-		Point pictishPoint = new Point(250, 160);
+		Point pictishPoint = new Point(270, 160);
 
 		ArrayList<Connection> forestVanirConnect = new ArrayList<Connection>();
-		Point forestPoint = new Point(90, 180);
+		Point forestPoint = new Point(110, 140);
 
 		Place njord = new Place("The Home Of Njord", njordConnect, njordPoint,
 				7, Realm.Vanaheim);
@@ -512,7 +512,7 @@ public class Creation {
 		Point geffenPoint = new Point(670, 270);
 
 		ArrayList<Connection> canolbarthConnect = new ArrayList<Connection>();
-		Point canolbarthPoint = new Point(550, 290);
+		Point canolbarthPoint = new Point(550, 230);
 
 		Place freyr = new Place("Freyr's Throne", freyrConnect, freyrPoint, 8,
 				Realm.Alfheim);
@@ -714,7 +714,7 @@ public class Creation {
 		Point blackPoint = new Point(300, 620);
 
 		ArrayList<Connection> aurvangarConnect = new ArrayList<Connection>();
-		Point aurvangarPoint = new Point(140, 580);
+		Point aurvangarPoint = new Point(140, 570);
 
 		Place malekith = new Place("The Domain of Malekith", malekithConnect,
 				malekithPoint, 9, Realm.Svartalfheim);
@@ -816,19 +816,19 @@ public class Creation {
 	public void createNidavellir() {
 
 		ArrayList<Connection> hreidmarConnect = new ArrayList<Connection>();
-		Point hreidmarPoint = new Point(770, 380);
+		Point hreidmarPoint = new Point(770, 340);
 
 		ArrayList<Connection> durinConnect = new ArrayList<Connection>();
-		Point durinPoint = new Point(880, 410);
+		Point durinPoint = new Point(880, 360);
 
 		ArrayList<Connection> dvalinConnect = new ArrayList<Connection>();
-		Point dvalinPoint = new Point(870, 450);
+		Point dvalinPoint = new Point(870, 390);
 
 		ArrayList<Connection> darkFieldConnect = new ArrayList<Connection>();
-		Point darkFieldPoint = new Point(750, 520);
+		Point darkFieldPoint = new Point(750, 330);
 
 		ArrayList<Connection> furnaceConnect = new ArrayList<Connection>();
-		Point furnacePoint = new Point(840, 590);
+		Point furnacePoint = new Point(840, 280);
 
 		Place hreidmar = new Place("Hreidmar's Kingdom", hreidmarConnect,
 				hreidmarPoint, 9, Realm.Nidavellir); // this is where the realms connect to Nidavellir
