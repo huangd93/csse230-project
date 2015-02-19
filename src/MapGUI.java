@@ -27,6 +27,7 @@ public class MapGUI {
 			String destRealm) {
 		this.pdi = PlacesDaoFactory.getPlacesDaoSingleton();
 		JPanel direcsPanel = new JPanel();
+		MapPanel mapPanel = new MapPanel();
 		// ////////////////////////////////////////////////////////////////////////////////
 		// differencess
 		Place sp = this.pdi.getPlace(start, startRealm);
@@ -35,10 +36,13 @@ public class MapGUI {
 		fastString += "Here is the fastest route: " + "\n" + "Travel from "
 				+ start + " to ";
 		ArrayList<Connection> fastRoute = this.pdi.getFastestRoute(sp, ep);
+		String totalFastDistanceString = "The total distance is: ";
+		double totalFastDistance = 0;
 		for (int i = fastRoute.size() - 1; i > -1; i--) {
 			Route r = fastRoute.get(i).getRoute();
 			Place nextPlace = fastRoute.get(i).getDestination();
 			double distance = r.getDistance();
+			totalFastDistance += distance;
 			String nextPlaceName = nextPlace.getName();
 			if (fastRoute.get(0).equals(fastRoute.get(i))) {
 				fastString += nextPlaceName + " for "
@@ -49,18 +53,24 @@ public class MapGUI {
 			}
 			ArrayList<Point> points = r.getPoints();
 			for (Point p : points) {
-				p.getXValue();
-				p.getYValue();
+				mapPanel.collectPoint(p);
 			}
+			mapPanel.bool = true;
+			mapPanel.revalidate();
+			mapPanel.repaint();
 		}
+		totalFastDistanceString += Math.floor(totalFastDistance) + " miles\n\n\n";
 
 		String shortString = "Here is the shortest route: " + "\n"
 				+ "Travel from " + start + " to ";
 		ArrayList<Connection> shortRoute = this.pdi
 				.getShortestRoute(sp, ep);
+		String totalShortDistanceString = "The total distance is: ";
+		double totalShortDistance = 0;
 		for (int i = shortRoute.size() - 1; i > -1; i--) {
 			Route r = shortRoute.get(i).getRoute();
 			double distance = r.getDistance();
+			totalShortDistance += distance;
 			Place nextPlace = shortRoute.get(i).getDestination();
 			String nextPlaceName = nextPlace.getName();
 			if (shortRoute.get(0).equals(shortRoute.get(i))) {
@@ -70,29 +80,25 @@ public class MapGUI {
 				shortString += nextPlaceName + " for "
 						+ Math.floor(distance) + " miles\nthen to ";
 			}
-			ArrayList<Point> points = r.getPoints();
-			for (Point p : points) {
-				Integer x = p.getXValue();
-				Integer y = p.getYValue();
-//				Point2D p = new Point2D();
-			}
 		}
+		totalShortDistanceString += Math.floor(totalShortDistance) + " miles\n\n";
 
 		JTextArea directions = new JTextArea(41, 29);
 		directions.setLineWrap(true);
-		directions.setText(fastString + shortString);
+		directions.setText(fastString + totalFastDistanceString + shortString + "\n" + totalShortDistanceString);
 		direcsPanel.add(directions);
 		// /////////////////////////////////////////////////////////////////////////////////
-		setup(frame, direcsPanel);
+		setup(frame, direcsPanel, mapPanel);
 
 	}
 
 	public MapGUI(JFrame frame) {
 		JPanel direcsPanel = new JPanel();
-		setup(frame, direcsPanel);
+		MapPanel mapPanel = new MapPanel();
+		setup(frame, direcsPanel, mapPanel);
 	}
 
-	public void setup(JFrame frame, JPanel direcsP) {
+	public void setup(JFrame frame, JPanel direcsP, MapPanel mapPanel) {
 		JPanel direcsPanel = direcsP;
 		this.pdi = PlacesDaoFactory.getPlacesDaoSingleton();
 		this.mainframe = frame;
@@ -107,7 +113,6 @@ public class MapGUI {
 		mainPanel.setSize(1366, 768);
 
 		JPanel controlPanel = new JPanel();
-		MapPanel mapPanel = new MapPanel();
 
 		JLabel startChoice = new JLabel("Choose your starting point: ");
 
@@ -157,10 +162,6 @@ public class MapGUI {
 		controlPanel.add(planButton);
 		controlPanel.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1,
 				Color.gray));
-
-//		String imageLoc = "C:/EclipseWorkspaces/csse230/csse230-project/yggdrasil.jpg";
-//		JLabel pic = new JLabel(new ImageIcon(imageLoc));
-//		mapPanel.add(pic);
 
 		direcsPanel.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1,
 				Color.gray));
