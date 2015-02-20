@@ -35,7 +35,8 @@ public class MapPanel extends JPanel {
 			drawPointsandLines(this.points, g2);
 		}
 	}
-	public void drawPointsandLines(ArrayList<Point> points, Graphics2D g2){
+	public void drawPointsandLines(ArrayList<Point> points, Graphics2D g2) throws IllegalArgumentException {
+		if(points == null || points.size() == 0) throw new IllegalArgumentException();
 		double offset = 5;
 		for(int i = 0; i < points.size(); i++){
 			if(i == 0){

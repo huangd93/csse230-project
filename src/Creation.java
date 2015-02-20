@@ -273,8 +273,9 @@ public class Creation {
 		ArrayList<Point> connectPointsThrymheim = new ArrayList<Point>();
 		connectPointsThrymheim.add(mtTPoint);
 		connectPointsThrymheim.add(utgardLokiPoint);
-		utgardLokiConnect.add(new Connection(utgardLokisThrone, new Route(
+		mtTConnect.add(new Connection(utgardLokisThrone, new Route(
 				connectPointsThrymheim), 55));
+		mountThrymheim.setConnections(mtTConnect);
 	}
 
 	
