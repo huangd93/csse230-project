@@ -68,7 +68,9 @@ public class Creation {
 
 		// connections from valhalla
 		ArrayList<Point> connectPointsValToOdin = new ArrayList<Point>();
-		connectPointsValToOdin.add(valhallaPoint);
+		connectPointsValToOdin.add(valhallaPoint); 
+		connectPointsValToOdin.add(new Point(790, 80));
+		connectPointsValToOdin.add(new Point(810, 70));
 		connectPointsValToOdin.add(odinPoint);
 		ArrayList<Point> connectPointsValToMnts = new ArrayList<Point>();
 		connectPointsValToMnts.add(valhallaPoint);
@@ -82,6 +84,7 @@ public class Creation {
 		// connections from lake logur
 		ArrayList<Point> connectPointsLakeLogur = new ArrayList<Point>();
 		connectPointsLakeLogur.add(lakePoint);
+		connectPointsLakeLogur.add(new Point(650, 80));
 		connectPointsLakeLogur.add(mntnPoint);
 		lakeConnect.add(new Connection(asgardMnts, new Route(
 				connectPointsLakeLogur), 40));
@@ -115,6 +118,8 @@ public class Creation {
 		ArrayList<Point> connectPointsOdinToMnts = new ArrayList<Point>();
 		ArrayList<Point> connectPointsOdinToSea = new ArrayList<Point>();
 		connectPointsOdinToVal.add(odinPoint);
+		connectPointsOdinToVal.add(new Point(790, 80));
+		connectPointsOdinToVal.add(new Point(810, 70));
 		connectPointsOdinToMnts.add(odinPoint);
 		connectPointsOdinToSea.add(odinPoint);
 		connectPointsOdinToVal.add(valhallaPoint);
@@ -194,6 +199,8 @@ public class Creation {
 		ArrayList<Point> connectPointsIvingToLoki = new ArrayList<Point>();
 		ArrayList<Point> connectPointsIvingToMimir = new ArrayList<Point>();
 		connectPointsIvingToGrio.add(riverIvingPoint);
+		connectPointsIvingToGrio.add(new Point(580, 355));
+		connectPointsIvingToGrio.add(new Point(600, 320));
 		connectPointsIvingToLoki.add(riverIvingPoint);
 		connectPointsIvingToMimir.add(riverIvingPoint);
 		connectPointsIvingToGrio.add(grioPoint);
@@ -212,6 +219,8 @@ public class Creation {
 		ArrayList<Point> connectPointsGrioToRiver = new ArrayList<Point>();
 		connectPointsGrioToLoki.add(grioPoint);
 		connectPointsGrioToRiver.add(grioPoint);
+		connectPointsGrioToRiver.add(new Point(580, 355));
+		connectPointsGrioToRiver.add(new Point(600, 320));
 		connectPointsGrioToLoki.add(utgardLokiPoint);
 		connectPointsGrioToRiver.add(riverIvingPoint);
 		grioConnect.add(new Connection(utgardLokisThrone, new Route(
@@ -575,7 +584,7 @@ public class Creation {
 
 		ArrayList<Connection> wheatonConnect = new ArrayList<Connection>();
 		Point wheatonPoint = new Point(215, 280);
-
+		
 		ArrayList<Connection> antiguoConnect = new ArrayList<Connection>();
 		Point antiguoPoint = new Point(200, 310);
 
@@ -620,6 +629,8 @@ public class Creation {
 		connectNYCtoNJ.add(nycPoint);
 		connectNYCtoDC.add(nycPoint);
 		connectNYCtoNM.add(nycPoint);
+		connectNYCtoNM.add(new Point(220, 290));
+		connectNYCtoNM.add(new Point(230, 320));
 		connectNYCtoLondon.add(londonPoint);
 		connectNYCtoNJ.add(wheatonPoint);
 		connectNYCtoDC.add(dcPoint);
@@ -637,6 +648,8 @@ public class Creation {
 		ArrayList<Point> connectNJtoNM = new ArrayList<Point>();
 		connectNJtoNYC.add(wheatonPoint);
 		connectNJtoDC.add(wheatonPoint);
+		connectNJtoDC.add(new Point(220, 350));
+		connectNJtoDC.add(new Point(200, 320));
 		connectNJtoNM.add(wheatonPoint);
 		connectNJtoNYC.add(nycPoint);
 		connectNJtoDC.add(dcPoint);
@@ -654,6 +667,8 @@ public class Creation {
 		ArrayList<Point> connectDCtoLondon = new ArrayList<Point>();
 		connectDCtoNYC.add(dcPoint);
 		connectDCtoNJ.add(dcPoint);
+		connectDCtoNJ.add(new Point(220, 350));
+		connectDCtoNJ.add(new Point(200, 320));
 		connectDCtoNM.add(dcPoint);
 		connectDCtoLondon.add(dcPoint);
 		connectDCtoNYC.add(nycPoint);
@@ -672,6 +687,8 @@ public class Creation {
 		ArrayList<Point> connectNMtoNJ = new ArrayList<Point>();
 		ArrayList<Point> connectNMtoDC = new ArrayList<Point>();
 		connectNMtoNYC.add(antiguoPoint);
+		connectNMtoNYC.add(new Point(220, 290));
+		connectNMtoNYC.add(new Point(230, 320));
 		connectNMtoNJ.add(antiguoPoint);
 		connectNMtoDC.add(antiguoPoint);
 		connectNMtoNYC.add(nycPoint);
