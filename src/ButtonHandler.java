@@ -165,7 +165,10 @@ public class ButtonHandler implements ActionListener {
 				String totalFastDistanceString = "The total distance is: ";
 				ArrayList<Connection> fastRoute = this.pdi.getFastestRoute(sp, ep);
 				double totalFastDistance = 0;
+				double totalFastTime = 0;
 				for (int i = fastRoute.size() - 1; i > -1; i--) {
+					double time = Math.floor(fastRoute.get(i).getTime());
+					totalFastTime += time;
 					Route r = fastRoute.get(i).getRoute();
 					Place nextPlace = fastRoute.get(i).getDestination();
 					double distance = r.getDistance();
@@ -173,13 +176,14 @@ public class ButtonHandler implements ActionListener {
 					String nextPlaceName = nextPlace.getName();
 					if (fastRoute.get(0).equals(fastRoute.get(i))) {
 						fastString += nextPlaceName + " for "
-								+ Math.floor(distance) + " miles.\n\n";
+								+ Math.floor(distance) + " Richardsons.\n\n";
 					} else {
 						fastString += nextPlaceName + " for "
-								+ Math.floor(distance) + " miles\nthen to ";
+								+ Math.floor(distance) + " Richardsons\nthen to ";
 					}
 				}
-				totalFastDistanceString += Math.floor(totalFastDistance) + " miles\n\n\n";
+				totalFastDistanceString += Math.floor(totalFastDistance) + " Richardsons\n";
+				String totalFastTimeString = "The total time is: " + totalFastTime + " minutes\n\n\n";
 				
 				String shortString = "Here is the shortest route: " + "\n"
 						+ "Travel from " + startPlace + " to ";
@@ -187,7 +191,10 @@ public class ButtonHandler implements ActionListener {
 				ArrayList<Connection> shortRoute = this.pdi
 						.getShortestRoute(sp, ep);
 				double totalShortDistance = 0;
+				double totalShortTime = 0;
 				for (int i = shortRoute.size() - 1; i > -1; i--) {
+					double time = Math.floor(shortRoute.get(i).getTime());
+					totalShortTime += time;
 					Route r = shortRoute.get(i).getRoute();
 					double distance = r.getDistance();
 					totalShortDistance += distance;
@@ -195,10 +202,10 @@ public class ButtonHandler implements ActionListener {
 					String nextPlaceName = nextPlace.getName();
 					if (shortRoute.get(0).equals(shortRoute.get(i))) {
 						shortString += nextPlaceName + " for "
-								+ Math.floor(distance) + " miles.\n";
+								+ Math.floor(distance) + " Richardsons.\n";
 					} else {
 						shortString += nextPlaceName + " for "
-								+ Math.floor(distance) + " miles\nthen to ";
+								+ Math.floor(distance) + " Richardsons\nthen to ";
 					}
 					ArrayList<Point> points = r.getPoints();
 					for (Point p : points) {
@@ -208,11 +215,13 @@ public class ButtonHandler implements ActionListener {
 					this.mapPanel.revalidate();
 					this.mapPanel.repaint();
 				}
-				totalShortDistanceString += Math.floor(totalShortDistance) + " miles\n\n";
+				totalShortDistanceString += Math.floor(totalShortDistance) + " Richardsons\n";
+				String totalShortTimeString = "The total time is: " + totalShortTime + " minutes";
 				
 				JTextArea directions = new JTextArea(41, 29);
 				directions.setLineWrap(true);
-				directions.setText(fastString + totalFastDistanceString + shortString + "\n" + totalShortDistanceString);
+				directions.setText(fastString + totalFastDistanceString + totalFastTimeString +
+						shortString + "\n" + totalShortDistanceString + totalShortTimeString);
 				
 				this.panel.add(directions);
 			}

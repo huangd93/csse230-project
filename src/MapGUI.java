@@ -35,10 +35,13 @@ public class MapGUI {
 		String fastString = "";
 		fastString += "Here is the fastest route: " + "\n" + "Travel from "
 				+ start + " to ";
-		ArrayList<Connection> fastRoute = this.pdi.getFastestRoute(sp, ep);
 		String totalFastDistanceString = "The total distance is: ";
+		ArrayList<Connection> fastRoute = this.pdi.getFastestRoute(sp, ep);
 		double totalFastDistance = 0;
+		double totalFastTime = 0;
 		for (int i = fastRoute.size() - 1; i > -1; i--) {
+			double time = Math.floor(fastRoute.get(i).getTime());
+			totalFastTime += time;
 			Route r = fastRoute.get(i).getRoute();
 			Place nextPlace = fastRoute.get(i).getDestination();
 			double distance = r.getDistance();
@@ -46,10 +49,36 @@ public class MapGUI {
 			String nextPlaceName = nextPlace.getName();
 			if (fastRoute.get(0).equals(fastRoute.get(i))) {
 				fastString += nextPlaceName + " for "
-						+ Math.floor(distance) + " miles.\n\n";
+						+ Math.floor(distance) + " Richardsons.\n\n";
 			} else {
 				fastString += nextPlaceName + " for "
-						+ Math.floor(distance) + " miles\nthen to ";
+						+ Math.floor(distance) + " Richardsons\nthen to ";
+			}
+		}
+		totalFastDistanceString += Math.floor(totalFastDistance) + " Richardsons\n";
+		String totalFastTimeString = "The total time is: " + totalFastTime + " minutes\n\n\n";
+		
+		String shortString = "Here is the shortest route: " + "\n"
+				+ "Travel from " + start + " to ";
+		String totalShortDistanceString = "The total distance is: ";
+		ArrayList<Connection> shortRoute = this.pdi
+				.getShortestRoute(sp, ep);
+		double totalShortDistance = 0;
+		double totalShortTime = 0;
+		for (int i = shortRoute.size() - 1; i > -1; i--) {
+			double time = Math.floor(shortRoute.get(i).getTime());
+			totalShortTime += time;
+			Route r = shortRoute.get(i).getRoute();
+			double distance = r.getDistance();
+			totalShortDistance += distance;
+			Place nextPlace = shortRoute.get(i).getDestination();
+			String nextPlaceName = nextPlace.getName();
+			if (shortRoute.get(0).equals(shortRoute.get(i))) {
+				shortString += nextPlaceName + " for "
+						+ Math.floor(distance) + " Richardsons.\n";
+			} else {
+				shortString += nextPlaceName + " for "
+						+ Math.floor(distance) + " Richardsons\nthen to ";
 			}
 			ArrayList<Point> points = r.getPoints();
 			for (Point p : points) {
@@ -59,33 +88,14 @@ public class MapGUI {
 			mapPanel.revalidate();
 			mapPanel.repaint();
 		}
-		totalFastDistanceString += Math.floor(totalFastDistance) + " miles\n\n\n";
-
-		String shortString = "Here is the shortest route: " + "\n"
-				+ "Travel from " + start + " to ";
-		ArrayList<Connection> shortRoute = this.pdi
-				.getShortestRoute(sp, ep);
-		String totalShortDistanceString = "The total distance is: ";
-		double totalShortDistance = 0;
-		for (int i = shortRoute.size() - 1; i > -1; i--) {
-			Route r = shortRoute.get(i).getRoute();
-			double distance = r.getDistance();
-			totalShortDistance += distance;
-			Place nextPlace = shortRoute.get(i).getDestination();
-			String nextPlaceName = nextPlace.getName();
-			if (shortRoute.get(0).equals(shortRoute.get(i))) {
-				shortString += nextPlaceName + " for "
-						+ Math.floor(distance) + " miles.\n";
-			} else {
-				shortString += nextPlaceName + " for "
-						+ Math.floor(distance) + " miles\nthen to ";
-			}
-		}
-		totalShortDistanceString += Math.floor(totalShortDistance) + " miles\n\n";
-
+		totalShortDistanceString += Math.floor(totalShortDistance) + " Richardsons\n";
+		String totalShortTimeString = "The total time is: " + totalShortTime + " minutes";
+		
 		JTextArea directions = new JTextArea(41, 29);
 		directions.setLineWrap(true);
-		directions.setText(fastString + totalFastDistanceString + shortString + "\n" + totalShortDistanceString);
+		directions.setText(fastString + totalFastDistanceString + totalFastTimeString +
+				shortString + "\n" + totalShortDistanceString + totalShortTimeString);
+
 		direcsPanel.add(directions);
 		// /////////////////////////////////////////////////////////////////////////////////
 		setup(frame, direcsPanel, mapPanel);
