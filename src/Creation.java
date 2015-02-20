@@ -781,6 +781,7 @@ public class Creation {
 		// malekith connections
 		ArrayList<Point> connectMalekithToUnseelie = new ArrayList<Point>();
 		connectMalekithToUnseelie.add(malekithPoint);
+		connectMalekithToUnseelie.add(new Point(130, 480));
 		connectMalekithToUnseelie.add(unseeliePoint);
 		malekithConnect.add(new Connection(unseelieCourt, new Route(
 				connectMalekithToUnseelie), 20));
@@ -791,6 +792,7 @@ public class Creation {
 		ArrayList<Point> connectUnseelieToBrygir = new ArrayList<Point>();
 		ArrayList<Point> connectUnseelieToAurvangar = new ArrayList<Point>();
 		connectUnseelieToMalekith.add(unseeliePoint);
+		connectUnseelieToMalekith.add(new Point(130, 480));
 		connectUnseelieToBrygir.add(unseeliePoint);
 		connectUnseelieToAurvangar.add(unseeliePoint);
 		connectUnseelieToMalekith.add(malekithPoint);
@@ -809,6 +811,7 @@ public class Creation {
 		ArrayList<Point> connectByrgirToForest = new ArrayList<Point>();
 		connectByrgirToUnseelie.add(byrgirPoint);
 		connectByrgirToForest.add(byrgirPoint);
+		connectByrgirToForest.add(new Point(250, 580));
 		connectByrgirToUnseelie.add(unseeliePoint);
 		connectByrgirToForest.add(blackPoint);
 		byrgirConnect.add(new Connection(unseelieCourt, new Route(
@@ -821,6 +824,7 @@ public class Creation {
 		ArrayList<Point> connectForestToByrgir = new ArrayList<Point>();
 		ArrayList<Point> connectForestToAurvangar = new ArrayList<Point>();
 		connectForestToByrgir.add(blackPoint);
+		connectForestToByrgir.add(new Point(250, 580));
 		connectForestToAurvangar.add(blackPoint);
 		connectForestToByrgir.add(byrgirPoint);
 		connectForestToAurvangar.add(aurvangarPoint);
@@ -896,6 +900,7 @@ public class Creation {
 		ArrayList<Point> connectHreidmarToDurin = new ArrayList<Point>();
 		ArrayList<Point> connectHreidmarToFields = new ArrayList<Point>();
 		connectHreidmarToDurin.add(hreidmarPoint);
+		connectHreidmarToDurin.add(new Point(820, 350));
 		connectHreidmarToFields.add(hreidmarPoint);
 		connectHreidmarToDurin.add(durinPoint);
 		connectHreidmarToFields.add(darkFieldPoint);
@@ -910,6 +915,7 @@ public class Creation {
 		ArrayList<Point> connectDurinToDvalin = new ArrayList<Point>();
 		ArrayList<Point> connectDurinToFields = new ArrayList<Point>();
 		connectDurinToHreidmar.add(durinPoint);
+		connectDurinToHreidmar.add(new Point(820, 350));
 		connectDurinToDvalin.add(durinPoint);
 		connectDurinToFields.add(durinPoint);
 		connectDurinToHreidmar.add(hreidmarPoint);
@@ -945,6 +951,9 @@ public class Creation {
 		connectFieldsToDurin.add(darkFieldPoint);
 		connectFieldsToDvalin.add(darkFieldPoint);
 		connectFieldsToFurnaces.add(darkFieldPoint);
+		connectFieldsToFurnaces.add(new Point(820, 320));
+		connectFieldsToFurnaces.add(new Point(800, 300));
+		connectFieldsToFurnaces.add(new Point(770, 290));
 		connectFieldsToHreidmar.add(hreidmarPoint);
 		connectFieldsToDurin.add(durinPoint);
 		connectFieldsToDvalin.add(dvalinPoint);
@@ -962,6 +971,9 @@ public class Creation {
 		// furnaces connections
 		ArrayList<Point> connectFurnacesToFields = new ArrayList<Point>();
 		connectFurnacesToFields.add(furnacePoint);
+		connectFurnacesToFields.add(new Point(770, 290));
+		connectFurnacesToFields.add(new Point(800, 300));
+		connectFurnacesToFields.add(new Point(820, 320));
 		connectFurnacesToFields.add(darkFieldPoint);
 		furnaceConnect.add(new Connection(darkFields, new Route(
 				connectFurnacesToFields), 55));
@@ -1003,6 +1015,8 @@ public class Creation {
 		//burning plains connections
 		ArrayList<Point> connectPlainsToSurtur = new ArrayList<Point>();
 		connectPlainsToSurtur.add(plainsPoint);
+		connectPlainsToSurtur.add(new Point(710, 615));
+		connectPlainsToSurtur.add(new Point(700, 600));
 		connectPlainsToSurtur.add(surturPoint);
 		plainsConnect.add(new Connection(surtursKingdom, new Route(
 				connectPlainsToSurtur), 90));
@@ -1012,6 +1026,8 @@ public class Creation {
 		ArrayList<Point> connectSurtToPlains = new ArrayList<Point>();
 		ArrayList<Point> connectSurtToSinmore = new ArrayList<Point>();
 		connectSurtToPlains.add(surturPoint);
+		connectPlainsToSurtur.add(new Point(700, 600));
+		connectPlainsToSurtur.add(new Point(710, 615));
 		connectSurtToSinmore.add(surturPoint);
 		connectSurtToPlains.add(plainsPoint);
 		connectSurtToSinmore.add(sinmorePoint);
