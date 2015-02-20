@@ -118,8 +118,8 @@ public class Creation {
 		ArrayList<Point> connectPointsOdinToMnts = new ArrayList<Point>();
 		ArrayList<Point> connectPointsOdinToSea = new ArrayList<Point>();
 		connectPointsOdinToVal.add(odinPoint);
-		connectPointsOdinToVal.add(new Point(790, 80));
 		connectPointsOdinToVal.add(new Point(810, 70));
+		connectPointsOdinToVal.add(new Point(790, 80));
 		connectPointsOdinToMnts.add(odinPoint);
 		connectPointsOdinToSea.add(odinPoint);
 		connectPointsOdinToVal.add(valhallaPoint);
@@ -199,8 +199,8 @@ public class Creation {
 		ArrayList<Point> connectPointsIvingToLoki = new ArrayList<Point>();
 		ArrayList<Point> connectPointsIvingToMimir = new ArrayList<Point>();
 		connectPointsIvingToGrio.add(riverIvingPoint);
-		connectPointsIvingToGrio.add(new Point(580, 355));
 		connectPointsIvingToGrio.add(new Point(600, 320));
+		connectPointsIvingToGrio.add(new Point(580, 355));
 		connectPointsIvingToLoki.add(riverIvingPoint);
 		connectPointsIvingToMimir.add(riverIvingPoint);
 		connectPointsIvingToGrio.add(grioPoint);
@@ -236,6 +236,8 @@ public class Creation {
 		ArrayList<Point> connectPointsLokiToGrio = new ArrayList<Point>();
 		connectPointsLokiToThrymheim.add(utgardLokiPoint);
 		connectPointsLokiToMimir.add(utgardLokiPoint);
+		connectPointsLokiToMimir.add(new Point(670, 400));
+		connectPointsLokiToMimir.add(new Point(660, 380));
 		connectPointsLokiToRiver.add(utgardLokiPoint);
 		connectPointsLokiToGrio.add(utgardLokiPoint);
 		connectPointsLokiToThrymheim.add(mtTPoint);
@@ -256,6 +258,8 @@ public class Creation {
 		ArrayList<Point> connectPointsMimirToLoki = new ArrayList<Point>();
 		ArrayList<Point> connectPointsMimirToRiver = new ArrayList<Point>();
 		connectPointsMimirToLoki.add(mimirPoint);
+		connectPointsMimirToLoki.add(new Point(660, 380));
+		connectPointsMimirToLoki.add(new Point(670, 400));
 		connectPointsMimirToRiver.add(mimirPoint);
 		connectPointsMimirToLoki.add(utgardLokiPoint);
 		connectPointsMimirToRiver.add(riverIvingPoint);
@@ -369,6 +373,8 @@ public class Creation {
 		ArrayList<Point> connectHverToHelheim = new ArrayList<Point>();
 		connectHverToPlains.add(hvergelmirPoint);
 		connectHverToHelheim.add(hvergelmirPoint);
+		connectHverToHelheim.add(new Point(500, 575));
+		connectHverToHelheim.add(new Point(505, 560));
 		connectHverToPlains.add(plainPoint);
 		connectHverToHelheim.add(helheimPoint);
 		hvergelmirConnect.add(new Connection(plainsOfGin, new Route(
@@ -380,6 +386,8 @@ public class Creation {
 		// helheim connections
 		ArrayList<Point> connectHelheimToHver = new ArrayList<Point>();
 		connectHelheimToHver.add(helheimPoint);
+		connectHelheimToHver.add(new Point(505, 560));
+		connectHelheimToHver.add(new Point(500, 575));
 		connectHelheimToHver.add(hvergelmirPoint);
 		helheimConnect.add(new Connection(hvergelmir, new Route(
 				connectHelheimToHver), 60));
@@ -437,6 +445,7 @@ public class Creation {
 		// njord connections
 		ArrayList<Point> connectNjordToDonRiver = new ArrayList<Point>();
 		connectNjordToDonRiver.add(njordPoint);
+		connectNjordToDonRiver.add(new Point(200, 90));
 		connectNjordToDonRiver.add(donPoint);
 		njordConnect.add(new Connection(donRiver, new Route(
 				connectNjordToDonRiver), 50));
@@ -447,6 +456,7 @@ public class Creation {
 		ArrayList<Point> connectRiverToMtn = new ArrayList<Point>();
 		ArrayList<Point> connectRiverToForest = new ArrayList<Point>();
 		connectRiverToNjord.add(donPoint);
+		connectNjordToDonRiver.add(new Point(200, 90));
 		connectRiverToMtn.add(donPoint);
 		connectRiverToForest.add(donPoint);
 		connectRiverToNjord.add(njordPoint);
@@ -482,6 +492,8 @@ public class Creation {
 		ArrayList<Point> connectWildToForest = new ArrayList<Point>();
 		ArrayList<Point> connectWildToMtn = new ArrayList<Point>();
 		connectWildToForest.add(pictishPoint);
+		connectWildToForest.add(new Point(200, 150));
+		connectWildToForest.add(new Point(180, 170));
 		connectWildToMtn.add(pictishPoint);
 		connectWildToForest.add(forestPoint);
 		connectWildToMtn.add(eigMtnPoint);
@@ -498,6 +510,8 @@ public class Creation {
 		connectForestToRiver.add(forestPoint);
 		connectForestToMtn.add(forestPoint);
 		connectForestToWild.add(forestPoint);
+		connectForestToWild.add(new Point(180, 170));
+		connectForestToWild.add(new Point(200, 150));
 		connectForestToRiver.add(donPoint);
 		connectForestToMtn.add(eigMtnPoint);
 		connectForestToWild.add(pictishPoint);
@@ -546,6 +560,7 @@ public class Creation {
 		ArrayList<Point> connectFreyrToGeffen = new ArrayList<Point>();
 		ArrayList<Point> connectFreyrToForest = new ArrayList<Point>();
 		connectFreyrToGeffen.add(freyrPoint);
+		connectFreyrToGeffen.add(new Point(650, 250));
 		connectFreyrToForest.add(freyrPoint);
 		connectFreyrToGeffen.add(geffenPoint);
 		connectFreyrToForest.add(canolbarthPoint);
@@ -558,6 +573,7 @@ public class Creation {
 		// geffen connections
 		ArrayList<Point> connectGeffenToFreyr = new ArrayList<Point>();
 		connectGeffenToFreyr.add(geffenPoint);
+		connectGeffenToFreyr.add(new Point(650, 250));
 		connectGeffenToFreyr.add(freyrPoint);
 		geffenConnect.add(new Connection(freyr,
 				new Route(connectGeffenToFreyr), 50));
