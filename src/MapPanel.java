@@ -17,7 +17,6 @@ import javax.swing.JPanel;
 public class MapPanel extends JPanel {
 	public boolean bool;
 	public ArrayList<Point> points = new ArrayList<Point>();
-	public int index = 0;
 	public BufferedImage img;
 	public File file;
 	
@@ -44,23 +43,28 @@ public class MapPanel extends JPanel {
 				double thisY = points.get(i).getYValue();
 				Point2D thisPoint = new Point2D.Double(thisX, thisY);
 				Ellipse2D marker = new Ellipse2D.Double(thisPoint.getX(), thisPoint.getY(), 10, 10);
-				double nextX = points.get(i + 1).getXValue();
-				double nextY = points.get(i + 1).getXValue();
+				double nextX = points.get(i + 1).getXValue() + offset;
+				double nextY = points.get(i + 1).getYValue() + offset;
 				Point2D nextPoint = new Point2D.Double(nextX, nextY);
-				Line2D line = new Line2D.Double(thisPoint, nextPoint);
+				Point2D thisPointOffset = new Point2D.Double(thisX + offset, thisY + offset);
+				Line2D line = new Line2D.Double(thisPointOffset, nextPoint);
 				g2.setColor(Color.GREEN);
 				g2.fill(marker);
+				g2.setColor(Color.BLUE);
+				g2.draw(line);
 			}else if(i > 0 && i < points.size() - 1){
 				double thisX = points.get(i).getXValue();
 				double thisY = points.get(i).getYValue();
-				double nextX = points.get(i + 1).getXValue();
-				double nextY = points.get(i + 1).getXValue();
+				double nextX = points.get(i + 1).getXValue() + offset;
+				double nextY = points.get(i + 1).getYValue() + offset;
 				Point2D thisPoint = new Point2D.Double(thisX, thisY);
-				Point2D nextPoint = new Point2D.Double(nextX, nextY);
 				Ellipse2D marker = new Ellipse2D.Double(thisPoint.getX(), thisPoint.getY(), 10, 10);
-				Line2D line = new Line2D.Double(thisPoint, nextPoint);
+				Point2D nextPoint = new Point2D.Double(nextX, nextY);
+				Point2D thisPointOffset = new Point2D.Double(thisX + offset, thisY + offset);
+				Line2D line = new Line2D.Double(thisPointOffset, nextPoint);
 				g2.setColor(Color.BLUE);
 				g2.fill(marker);
+				g2.draw(line);
 				
 			}else if(i == points.size() - 1){
 				double thisX = points.get(i).getXValue();
@@ -72,13 +76,11 @@ public class MapPanel extends JPanel {
 			}
 		}
 		this.bool = false;
-		this.index = 0;
 		this.points.clear();
 	}
 	
 	public void collectPoint(Point p){
-		this.points.add(this.index, p);
-		this.index++;
+		this.points.add(p);
 	}
 
 }
