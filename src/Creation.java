@@ -1050,6 +1050,11 @@ public class Creation {
 		VanaheimToAsgardRoute.add(Realm.Vanaheim.getGate().getPoint());
 		VanaheimToAsgardRoute.add(Realm.Asgard.getGate().getPoint());
 		Realm.Vanaheim.getGate().addConection(new Connection(Realm.Asgard.getGate(), new Route(VanaheimToAsgardRoute), 200));
+
+		ArrayList<Point> VanaheimToMidgardRoute = new ArrayList<Point>();
+		VanaheimToMidgardRoute.add(Realm.Vanaheim.getGate().getPoint());
+		VanaheimToMidgardRoute.add(Realm.Midgard.getGate().getPoint());
+		Realm.Vanaheim.getGate().addConection(new Connection(Realm.Midgard.getGate(), new Route(VanaheimToMidgardRoute), 200));
 		
 		// Asgard
 		ArrayList<Point> AsgardToVanaheimRoute = new ArrayList<Point>();
@@ -1057,27 +1062,47 @@ public class Creation {
 		AsgardToVanaheimRoute.add(Realm.Vanaheim.getGate().getPoint());
 		Realm.Asgard.getGate().addConection(new Connection(Realm.Vanaheim.getGate(), new Route(AsgardToVanaheimRoute), 200));
 
-		ArrayList<Point> AsgardToSvartalfheimRoute = new ArrayList<Point>();
-		AsgardToSvartalfheimRoute.add(Realm.Asgard.getGate().getPoint());
-		AsgardToSvartalfheimRoute.add(Realm.Svartalfheim.getGate().getPoint());
-		Realm.Asgard.getGate().addConection(new Connection(Realm.Svartalfheim.getGate(), new Route(AsgardToSvartalfheimRoute), 200));
+		ArrayList<Point> AsgardToAlfheimRoute = new ArrayList<Point>();
+		AsgardToAlfheimRoute.add(Realm.Asgard.getGate().getPoint());
+		AsgardToAlfheimRoute.add(Realm.Alfheim.getGate().getPoint());
+		Realm.Asgard.getGate().addConection(new Connection(Realm.Alfheim.getGate(), new Route(AsgardToAlfheimRoute), 200));
 
 		ArrayList<Point> AsgardToMidgardRoute = new ArrayList<Point>();
 		AsgardToMidgardRoute.add(Realm.Asgard.getGate().getPoint());
 		AsgardToMidgardRoute.add(Realm.Midgard.getGate().getPoint());
 		Realm.Asgard.getGate().addConection(new Connection(Realm.Midgard.getGate(), new Route(AsgardToMidgardRoute), 200));
+
+		ArrayList<Point> AsgardToJotunheimRoute = new ArrayList<Point>();
+		AsgardToJotunheimRoute.add(Realm.Asgard.getGate().getPoint());
+		AsgardToJotunheimRoute.add(Realm.Jotunheim.getGate().getPoint());
+		Realm.Asgard.getGate().addConection(new Connection(Realm.Jotunheim.getGate(), new Route(AsgardToJotunheimRoute), 200));
+
+		ArrayList<Point> AsgardToNidavellirRoute = new ArrayList<Point>();
+		AsgardToNidavellirRoute.add(Realm.Asgard.getGate().getPoint());
+		AsgardToNidavellirRoute.add(Realm.Nidavellir.getGate().getPoint());
+		Realm.Asgard.getGate().addConection(new Connection(Realm.Nidavellir.getGate(), new Route(AsgardToNidavellirRoute), 200));
 		
 		// Svartalfheim
-		ArrayList<Point> SvartalfheimToAsgard = new ArrayList<Point>();
-		SvartalfheimToAsgard.add(Realm.Svartalfheim.getGate().getPoint());
-		SvartalfheimToAsgard.add(Realm.Asgard.getGate().getPoint());
-		Realm.Svartalfheim.getGate().addConection(new Connection(Realm.Asgard.getGate(), new Route(SvartalfheimToAsgard), 200));
+		ArrayList<Point> SvartalfheimToMidgard = new ArrayList<Point>();
+		SvartalfheimToMidgard.add(Realm.Svartalfheim.getGate().getPoint());
+		SvartalfheimToMidgard.add(Realm.Midgard.getGate().getPoint());
+		Realm.Svartalfheim.getGate().addConection(new Connection(Realm.Midgard.getGate(), new Route(SvartalfheimToMidgard), 200));
+
+		ArrayList<Point> SvartalfheimToNiffleheim = new ArrayList<Point>();
+		SvartalfheimToNiffleheim.add(Realm.Svartalfheim.getGate().getPoint());
+		SvartalfheimToNiffleheim.add(Realm.Niflheim.getGate().getPoint());
+		Realm.Svartalfheim.getGate().addConection(new Connection(Realm.Niflheim.getGate(), new Route(SvartalfheimToNiffleheim), 200));
 		
 		// Alfheim
-		ArrayList<Point> AlfheimToMidgard = new ArrayList<Point>();
-		AlfheimToMidgard.add(Realm.Alfheim.getGate().getPoint());
-		AlfheimToMidgard.add(Realm.Midgard.getGate().getPoint());
-		Realm.Alfheim.getGate().addConection(new Connection(Realm.Midgard.getGate(), new Route(AlfheimToMidgard), 200));
+		ArrayList<Point> AlfheimToAsgard = new ArrayList<Point>();
+		AlfheimToAsgard.add(Realm.Alfheim.getGate().getPoint());
+		AlfheimToAsgard.add(Realm.Asgard.getGate().getPoint());
+		Realm.Alfheim.getGate().addConection(new Connection(Realm.Asgard.getGate(), new Route(AlfheimToAsgard), 200));
+
+		ArrayList<Point> AlfheimToJotunheim = new ArrayList<Point>();
+		AlfheimToJotunheim.add(Realm.Alfheim.getGate().getPoint());
+		AlfheimToJotunheim.add(Realm.Jotunheim.getGate().getPoint());
+		Realm.Alfheim.getGate().addConection(new Connection(Realm.Jotunheim.getGate(), new Route(AlfheimToJotunheim), 200));
 		
 		// Midgard
 		ArrayList<Point> MidgardToAsgard = new ArrayList<Point>();
@@ -1085,15 +1110,15 @@ public class Creation {
 		MidgardToAsgard.add(Realm.Asgard.getGate().getPoint());
 		Realm.Midgard.getGate().addConection(new Connection(Realm.Asgard.getGate(), new Route(MidgardToAsgard), 200));
 
-		ArrayList<Point> MidgardToAlfheim = new ArrayList<Point>();
-		MidgardToAlfheim.add(Realm.Midgard.getGate().getPoint());
-		MidgardToAlfheim.add(Realm.Alfheim.getGate().getPoint());
-		Realm.Midgard.getGate().addConection(new Connection(Realm.Alfheim.getGate(), new Route(MidgardToAlfheim), 200));
+		ArrayList<Point> MidgardToVanaheim = new ArrayList<Point>();
+		MidgardToVanaheim.add(Realm.Midgard.getGate().getPoint());
+		MidgardToVanaheim.add(Realm.Vanaheim.getGate().getPoint());
+		Realm.Midgard.getGate().addConection(new Connection(Realm.Vanaheim.getGate(), new Route(MidgardToVanaheim), 200));
 
-		ArrayList<Point> MidgardToJotunheim = new ArrayList<Point>();
-		MidgardToJotunheim.add(Realm.Midgard.getGate().getPoint());
-		MidgardToJotunheim.add(Realm.Jotunheim.getGate().getPoint());
-		Realm.Midgard.getGate().addConection(new Connection(Realm.Jotunheim.getGate(), new Route(MidgardToJotunheim), 200));
+		ArrayList<Point> MidgardToSvartalfheim = new ArrayList<Point>();
+		MidgardToSvartalfheim.add(Realm.Midgard.getGate().getPoint());
+		MidgardToSvartalfheim.add(Realm.Svartalfheim.getGate().getPoint());
+		Realm.Midgard.getGate().addConection(new Connection(Realm.Svartalfheim.getGate(), new Route(MidgardToSvartalfheim), 200));
 
 		ArrayList<Point> MidgardToNiflheim = new ArrayList<Point>();
 		MidgardToNiflheim.add(Realm.Midgard.getGate().getPoint());
@@ -1101,27 +1126,47 @@ public class Creation {
 		Realm.Midgard.getGate().addConection(new Connection(Realm.Niflheim.getGate(), new Route(MidgardToNiflheim), 200));
 		
 		// Jotunheim
-		ArrayList<Point> JotunheimToMidgard = new ArrayList<Point>();
-		JotunheimToMidgard.add(Realm.Jotunheim.getGate().getPoint());
-		JotunheimToMidgard.add(Realm.Midgard.getGate().getPoint());
-		Realm.Jotunheim.getGate().addConection(new Connection(Realm.Midgard.getGate(), new Route(JotunheimToMidgard), 200));
+		ArrayList<Point> JotunheimToAlfheim = new ArrayList<Point>();
+		JotunheimToAlfheim.add(Realm.Jotunheim.getGate().getPoint());
+		JotunheimToAlfheim.add(Realm.Alfheim.getGate().getPoint());
+		Realm.Jotunheim.getGate().addConection(new Connection(Realm.Alfheim.getGate(), new Route(JotunheimToAlfheim), 200));
+
+		ArrayList<Point> JotunheimToAsgard = new ArrayList<Point>();
+		JotunheimToAsgard.add(Realm.Jotunheim.getGate().getPoint());
+		JotunheimToAsgard.add(Realm.Asgard.getGate().getPoint());
+		Realm.Jotunheim.getGate().addConection(new Connection(Realm.Asgard.getGate(), new Route(JotunheimToAsgard), 200));
+
+		ArrayList<Point> JotunheimToNidavellir = new ArrayList<Point>();
+		JotunheimToNidavellir.add(Realm.Jotunheim.getGate().getPoint());
+		JotunheimToNidavellir.add(Realm.Nidavellir.getGate().getPoint());
+		Realm.Jotunheim.getGate().addConection(new Connection(Realm.Nidavellir.getGate(), new Route(JotunheimToNidavellir), 200));
+
+		ArrayList<Point> JotunheimToMuspelheim = new ArrayList<Point>();
+		JotunheimToMuspelheim.add(Realm.Jotunheim.getGate().getPoint());
+		JotunheimToMuspelheim.add(Realm.Muspelheim.getGate().getPoint());
+		Realm.Jotunheim.getGate().addConection(new Connection(Realm.Muspelheim.getGate(), new Route(JotunheimToMuspelheim), 200));
 		
 		// Nidavellir
-		ArrayList<Point> NidavellirToNiflheim = new ArrayList<Point>();
-		NidavellirToNiflheim.add(Realm.Nidavellir.getGate().getPoint());
-		NidavellirToNiflheim.add(Realm.Niflheim.getGate().getPoint());
-		Realm.Nidavellir.getGate().addConection(new Connection(Realm.Niflheim.getGate(), new Route(NidavellirToNiflheim), 200));
+		ArrayList<Point> NidavellirToAsgard = new ArrayList<Point>();
+		NidavellirToAsgard.add(Realm.Nidavellir.getGate().getPoint());
+		NidavellirToAsgard.add(Realm.Asgard.getGate().getPoint());
+		Realm.Nidavellir.getGate().addConection(new Connection(Realm.Asgard.getGate(), new Route(NidavellirToAsgard), 200));
+
+		ArrayList<Point> NidavellirToJotunheim = new ArrayList<Point>();
+		NidavellirToJotunheim.add(Realm.Nidavellir.getGate().getPoint());
+		NidavellirToJotunheim.add(Realm.Jotunheim.getGate().getPoint());
+		Realm.Nidavellir.getGate().addConection(new Connection(Realm.Jotunheim.getGate(), new Route(NidavellirToJotunheim), 200));
+
+		ArrayList<Point> NidavellirToMuspelheim = new ArrayList<Point>();
+		NidavellirToMuspelheim.add(Realm.Nidavellir.getGate().getPoint());
+		NidavellirToMuspelheim.add(Realm.Muspelheim.getGate().getPoint());
+		Realm.Nidavellir.getGate().addConection(new Connection(Realm.Muspelheim.getGate(), new Route(NidavellirToMuspelheim), 200));
 		
 		// Niflheim
-		ArrayList<Point> NiflheimToMuspelheim = new ArrayList<Point>();
-		NiflheimToMuspelheim.add(Realm.Niflheim.getGate().getPoint());
-		NiflheimToMuspelheim.add(Realm.Muspelheim.getGate().getPoint());
-		Realm.Niflheim.getGate().addConection(new Connection(Realm.Muspelheim.getGate(), new Route(NiflheimToMuspelheim), 200));
-
-		ArrayList<Point> NiflheimToNidavellir = new ArrayList<Point>();
-		NiflheimToNidavellir.add(Realm.Niflheim.getGate().getPoint());
-		NiflheimToNidavellir.add(Realm.Nidavellir.getGate().getPoint());
-		Realm.Niflheim.getGate().addConection(new Connection(Realm.Nidavellir.getGate(), new Route(NiflheimToNidavellir), 200));
+		ArrayList<Point> NiflheimToSvartalfheim = new ArrayList<Point>();
+		NiflheimToSvartalfheim.add(Realm.Niflheim.getGate().getPoint());
+		NiflheimToSvartalfheim.add(Realm.Svartalfheim.getGate().getPoint());
+		Realm.Niflheim.getGate().addConection(new Connection(Realm.Svartalfheim.getGate(), new Route(NiflheimToSvartalfheim), 200));
 
 		ArrayList<Point> NiflheimToMidgard = new ArrayList<Point>();
 		NiflheimToMidgard.add(Realm.Niflheim.getGate().getPoint());
@@ -1133,5 +1178,15 @@ public class Creation {
 		MuspelheimToNiflheim.add(Realm.Muspelheim.getGate().getPoint());
 		MuspelheimToNiflheim.add(Realm.Niflheim.getGate().getPoint());
 		Realm.Muspelheim.getGate().addConection(new Connection(Realm.Niflheim.getGate(), new Route(MuspelheimToNiflheim), 200));
+
+		ArrayList<Point> MuspelheimToJotunheim = new ArrayList<Point>();
+		MuspelheimToJotunheim.add(Realm.Muspelheim.getGate().getPoint());
+		MuspelheimToJotunheim.add(Realm.Jotunheim.getGate().getPoint());
+		Realm.Muspelheim.getGate().addConection(new Connection(Realm.Jotunheim.getGate(), new Route(MuspelheimToJotunheim), 200));
+
+		ArrayList<Point> MuspelheimToNidavellir = new ArrayList<Point>();
+		MuspelheimToNidavellir.add(Realm.Muspelheim.getGate().getPoint());
+		MuspelheimToNidavellir.add(Realm.Nidavellir.getGate().getPoint());
+		Realm.Muspelheim.getGate().addConection(new Connection(Realm.Nidavellir.getGate(), new Route(MuspelheimToNidavellir), 200));
 	}
 }
