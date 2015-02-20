@@ -38,18 +38,18 @@ public class Place {
 	public static double estimatedDistance(Place x, Place y) throws IllegalArgumentException {
 		if(x == null || y == null) throw new IllegalArgumentException();
 		double result = 0;
-		if(x.getRealm() != y.getRealm()) {
-			Place gate1 = x.getRealm().getGate();
-			Place gate2 = y.getRealm().getGate();
-			// Distance to this realm gate
-			result += Point.distanceBetween(x.getPoint(), gate1.getPoint());
-			// Distance between gates
-			result += Point.distanceBetween(gate1.getPoint(), gate2.getPoint());
-			// Distance from destination realm gate to destination
-			result += Point.distanceBetween(gate2.getPoint(), y.getPoint());
-		} else {
+//		if(x.getRealm() != y.getRealm()) {
+//			Place gate1 = x.getRealm().getGate();
+//			Place gate2 = y.getRealm().getGate();
+//			// Distance to this realm gate
+//			result += Point.distanceBetween(x.getPoint(), gate1.getPoint());
+//			// Distance between gates
+//			result += Point.distanceBetween(gate1.getPoint(), gate2.getPoint());
+//			// Distance from destination realm gate to destination
+//			result += Point.distanceBetween(gate2.getPoint(), y.getPoint());
+//		} else {
 			result += Point.distanceBetween(x.getPoint(), y.getPoint());
-		}
+//		}
 		return result;
 	}
 
