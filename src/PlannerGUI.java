@@ -10,6 +10,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import net.miginfocom.swing.MigLayout;
+
 public class PlannerGUI{
 	/**
      * Mainframe.
@@ -26,7 +28,8 @@ public class PlannerGUI{
     	 this.mainframe.setBackground(Color.GREEN);
     	 this.mainframe.setTitle("Yggdrasil (The World Tree): Plan Adventure");
     	 
-	     JPanel mainPanel = new JPanel();
+    	 MigLayout layout = new MigLayout();
+	     JPanel mainPanel = new JPanel(layout);
 	     
 	     JLabel startChoice = new JLabel("Where is your starting location?");
 	     String[] realms = {"(Choose a Realm)","Asgard","Jotunheim","Niflheim","Vanaheim","Alfheim","Midgard","Svartalfheim","Nidavellir","Muspelheim"};
@@ -50,19 +53,31 @@ public class PlannerGUI{
 	     timeInput.setPreferredSize(size);
 	     timeInput.setSize(size);
 	     
+	     JLabel ratingChoice = new JLabel("What is the min rating you would like for your adventure?");
+	     JTextField ratingInput = new JTextField();
+	     ratingInput.setMaximumSize(size);
+	     ratingInput.setPreferredSize(size);
+	     ratingInput.setSize(size);
+	     
 	     JButton optionsButton = new JButton("Get Options");
-	     optionsButton.addActionListener(new ButtonHandler(this.mainframe, mainPanel, null, distanceInput, timeInput, startList, realmList, null, null, null));
+	     optionsButton.addActionListener(new ButtonHandler(this.mainframe, mainPanel, null, distanceInput, timeInput, ratingInput, startList, realmList, null, null, null));
 	     
-	     mainPanel.setBounds(433, 115, 500, 550);
+	     mainPanel.setBounds(433, 115, 800, 550);
 	     
-	     mainPanel.add(startChoice);
-	     mainPanel.add(realmList);
-	     mainPanel.add(startList);
-	     mainPanel.add(distanceChoice);
-	     mainPanel.add(distanceInput);
-	     mainPanel.add(timeChoice);
-	     mainPanel.add(timeInput);
-	     mainPanel.add(optionsButton);
+	     mainPanel.add(startChoice, "cell 0 0");
+	     mainPanel.add(realmList, "cell 1 0");
+	     mainPanel.add(startList, "cell 2 0");
+	     
+	     mainPanel.add(distanceChoice, "cell 0 1");
+	     mainPanel.add(distanceInput, "cell 1 1");
+	     
+	     mainPanel.add(timeChoice, "cell 0 2");
+	     mainPanel.add(timeInput, "cell 1 2");
+	     
+	     mainPanel.add(ratingChoice, "cell 0 3");
+	     mainPanel.add(ratingInput, "cell 1 3");
+	     
+	     mainPanel.add(optionsButton, "cell 0 4");
 	      
 	     this.mainframe.setLayout(null);
 	     this.mainframe.add(mainPanel);
@@ -78,7 +93,8 @@ public class PlannerGUI{
      	 this.mainframe.setBackground(Color.GREEN);
      	 this.mainframe.setTitle("Yggdrasil (The World Tree): Plan Adventure");
      	 
- 	     JPanel mainPanel = new JPanel();
+     	 MigLayout layout = new MigLayout();
+	     JPanel mainPanel = new JPanel(layout);
  	     
  	     JLabel startChoice = new JLabel("Where is your starting location?");
  	     String[] realms = {"(Choose a Realm)","Asgard","Jotunheim","Niflheim","Vanaheim","Alfheim","Midgard","Svartalfheim","Nidavellir","Muspelheim"};
@@ -102,20 +118,32 @@ public class PlannerGUI{
  	     timeInput.setPreferredSize(size);
  	     timeInput.setSize(size);
  	     
- 	     JButton optionsButton = new JButton("Get Options");
- 	     optionsButton.addActionListener(new ButtonHandler(this.mainframe, mainPanel, null, distanceInput, timeInput, startList, realmList, null, null, null));
+ 	     JLabel ratingChoice = new JLabel("What is the min rating you would like for your adventure?");
+	     JTextField ratingInput = new JTextField();
+	     ratingInput.setMaximumSize(size);
+	     ratingInput.setPreferredSize(size);
+	     ratingInput.setSize(size);
  	     
- 	     mainPanel.setBounds(433, 115, 500, 550);
+ 	     JButton optionsButton = new JButton("Get Options");
+ 	     optionsButton.addActionListener(new ButtonHandler(this.mainframe, mainPanel, null, distanceInput, timeInput, ratingInput, startList, realmList, null, null, null));
+ 	     
+ 	     mainPanel.setBounds(433, 115, 800, 550);
  	     
  	     mainPanel.add(error);
- 	     mainPanel.add(startChoice);
- 	     mainPanel.add(realmList);
- 	     mainPanel.add(startList);
- 	     mainPanel.add(distanceChoice);
- 	     mainPanel.add(distanceInput);
- 	     mainPanel.add(timeChoice);
- 	     mainPanel.add(timeInput);
- 	     mainPanel.add(optionsButton);
+ 	     mainPanel.add(startChoice, "cell 0 0");
+	     mainPanel.add(realmList, "cell 1 0");
+	     mainPanel.add(startList, "cell 2 0");
+	     
+	     mainPanel.add(distanceChoice, "cell 0 1");
+	     mainPanel.add(distanceInput, "cell 1 1");
+	     
+	     mainPanel.add(timeChoice, "cell 0 2");
+	     mainPanel.add(timeInput, "cell 1 2");
+	     
+	     mainPanel.add(ratingChoice, "cell 0 3");
+	     mainPanel.add(ratingInput, "cell 1 3");
+	     
+	     mainPanel.add(optionsButton, "cell 0 4");
  	      
  	     this.mainframe.setLayout(null);
  	     this.mainframe.add(mainPanel);
