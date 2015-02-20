@@ -54,6 +54,11 @@ public class MapGUI {
 				fastString += nextPlaceName + " for "
 						+ Math.floor(distance) + " Richardsons\nthen to ";
 			}
+			
+			ArrayList<Point> points = r.getPoints();
+			for (Point p : points) {
+				mapPanel.collectFastPoint(p);
+			}
 		}
 		totalFastDistanceString += Math.floor(totalFastDistance) + " Richardsons\n";
 		String totalFastTimeString = "The total time is: " + totalFastTime + " minutes\n\n\n";
@@ -82,12 +87,12 @@ public class MapGUI {
 			}
 			ArrayList<Point> points = r.getPoints();
 			for (Point p : points) {
-				mapPanel.collectPoint(p);
+				mapPanel.collectShortPoint(p);
 			}
-			mapPanel.bool = true;
-			mapPanel.revalidate();
-			mapPanel.repaint();
 		}
+		mapPanel.bool = true;
+		mapPanel.revalidate();
+		mapPanel.repaint();
 		totalShortDistanceString += Math.floor(totalShortDistance) + " Richardsons\n";
 		String totalShortTimeString = "The total time is: " + totalShortTime + " minutes";
 		
@@ -161,6 +166,9 @@ public class MapGUI {
 		JButton planButton = new JButton("Plan an adventure");
 		planButton.addActionListener(new ButtonHandler(this.mainframe,
 				mainPanel, null, null, null, null, null, null, null, null));
+		
+		
+		
 		controlPanel.add(startChoice);
 		controlPanel.add(realmList1);
 		controlPanel.add(startList);
@@ -176,7 +184,7 @@ public class MapGUI {
 		direcsPanel.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1,
 				Color.gray));
 
-		mainPanel.add(controlPanel, "dock north, h 55!, w 1354!");
+		mainPanel.add(controlPanel, "dock north, h 55!, w 1354!, span 1 1");
 		mainPanel.add(direcsPanel, "cell 0 1, h 670!, w 350!");
 		mainPanel.add(mapPanel, "cell 1 1, h 670!, w 1000!");
 

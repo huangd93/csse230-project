@@ -101,8 +101,11 @@ public class ButtonHandler implements ActionListener {
 			double d = 0;
 			double t = 0;
 			if((!dist.isEmpty() && !time.isEmpty())){
+				try{
 				d = Double.parseDouble(dist);
 				t = Double.parseDouble(time);				
+				}catch (NumberFormatException ex){
+				}
 			}
 			
 
@@ -181,6 +184,11 @@ public class ButtonHandler implements ActionListener {
 						fastString += nextPlaceName + " for "
 								+ Math.floor(distance) + " Richardsons\nthen to ";
 					}
+					
+					ArrayList<Point> points = r.getPoints();
+					for (Point p : points) {
+						this.mapPanel.collectFastPoint(p);
+					}
 				}
 				totalFastDistanceString += Math.floor(totalFastDistance) + " Richardsons\n";
 				String totalFastTimeString = "The total time is: " + totalFastTime + " minutes\n\n\n";
@@ -207,14 +215,15 @@ public class ButtonHandler implements ActionListener {
 						shortString += nextPlaceName + " for "
 								+ Math.floor(distance) + " Richardsons\nthen to ";
 					}
+					
 					ArrayList<Point> points = r.getPoints();
 					for (Point p : points) {
-						this.mapPanel.collectPoint(p);
+						this.mapPanel.collectShortPoint(p);
 					}
-					this.mapPanel.bool = true;
-					this.mapPanel.revalidate();
-					this.mapPanel.repaint();
 				}
+				this.mapPanel.bool = true;
+				this.mapPanel.revalidate();
+				this.mapPanel.repaint();
 				totalShortDistanceString += Math.floor(totalShortDistance) + " Richardsons\n";
 				String totalShortTimeString = "The total time is: " + totalShortTime + " minutes";
 				
