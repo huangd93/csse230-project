@@ -109,8 +109,8 @@ public class PlacesDao implements PlacesDaoInterface {
 			closedList.insert(current.getPlace());
 			for(Connection i : current.place.getConnections()) {
 				// The time heuristic used is simply the shortest connection available to the next Place.
-				RouteNode next = new RouteNode(current, i, i.getDestination(), current.g + i.getDistance(), 
-						i.getDestination().getShortestTime());
+				RouteNode next = new RouteNode(current, i, i.getDestination(), current.g + i.getTime(), 0);
+						//i.getDestination().getShortestTime());
 				if(!closedList.contains(next.getPlace())) openList.add(next);
 			}
 		}

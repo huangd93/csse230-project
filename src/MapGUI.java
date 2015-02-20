@@ -40,7 +40,7 @@ public class MapGUI {
 		double totalFastDistance = 0;
 		double totalFastTime = 0;
 		for (int i = fastRoute.size() - 1; i > -1; i--) {
-			double time = Math.floor(fastRoute.get(i).getTime());
+			double time = fastRoute.get(i).getTime();
 			totalFastTime += time;
 			Route r = fastRoute.get(i).getRoute();
 			Place nextPlace = fastRoute.get(i).getDestination();
@@ -61,7 +61,7 @@ public class MapGUI {
 			}
 		}
 		totalFastDistanceString += Math.floor(totalFastDistance) + " Richardsons\n";
-		String totalFastTimeString = "The total time is: " + totalFastTime + " Smiths\n\n\n";
+		String totalFastTimeString = "The total time is: " + Math.floor(totalFastTime) + " Smiths\n\n\n";
 		
 		String shortString = "Here is the shortest route: " + "\n"
 				+ "Travel from " + start + " to ";
@@ -71,7 +71,7 @@ public class MapGUI {
 		double totalShortDistance = 0;
 		double totalShortTime = 0;
 		for (int i = shortRoute.size() - 1; i > -1; i--) {
-			double time = Math.floor(shortRoute.get(i).getTime());
+			double time = shortRoute.get(i).getTime();
 			totalShortTime += time;
 			Route r = shortRoute.get(i).getRoute();
 			double distance = r.getDistance();
@@ -94,7 +94,7 @@ public class MapGUI {
 		mapPanel.revalidate();
 		mapPanel.repaint();
 		totalShortDistanceString += Math.floor(totalShortDistance) + " Richardsons\n";
-		String totalShortTimeString = "The total time is: " + totalShortTime + " Smiths";
+		String totalShortTimeString = "The total time is: " + Math.floor(totalShortTime) + " Smiths";
 		
 		JTextArea directions = new JTextArea(41, 29);
 		directions.setLineWrap(true);

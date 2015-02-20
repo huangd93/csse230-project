@@ -1,3 +1,4 @@
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
@@ -15,6 +16,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -24,6 +26,7 @@ public class ButtonHandler implements ActionListener {
 	MapPanel mapPanel;
 	JTextField distance;
 	JTextField time;
+	JTextField rating;
 	JComboBox startRealmCombo;
 	JComboBox startPlaceCombo;
 	JComboBox endRealmCombo;
@@ -37,7 +40,7 @@ public class ButtonHandler implements ActionListener {
 	private String dr;
 
 	public ButtonHandler(JFrame frame, JPanel mainPan, MapPanel mapPan, JTextField distanceInput,
-			JTextField timeInput, JComboBox startPlaceCombo,
+			JTextField timeInput, JTextField ratingInput, JComboBox startPlaceCombo,
 			JComboBox startRealmCombo, JComboBox endPlaceCombo,
 			JComboBox endRealmCombo, ButtonGroup buttonGroup) {
 		this.mainframe = frame;
@@ -45,6 +48,7 @@ public class ButtonHandler implements ActionListener {
 		this.mapPanel = mapPan;
 		this.distance = distanceInput;
 		this.time = timeInput;
+		this.rating = ratingInput;
 		this.startRealmCombo = startRealmCombo;
 		this.startPlaceCombo = startPlaceCombo;
 		this.endRealmCombo = endRealmCombo;
@@ -71,18 +75,25 @@ public class ButtonHandler implements ActionListener {
 			String endRealm = "";
 			String temp = "";
 			this.group.getElements();
-			for (Enumeration<AbstractButton> buttons = this.group.getElements(); buttons
-					.hasMoreElements();) {
-				AbstractButton button = buttons.nextElement();
-				if (button.isSelected()) {
-					temp = button.getText();
+			if(this.group.getSelection() == null){
+				JLabel errorMessage = new JLabel("You must choose a starting location");
+				errorMessage.setForeground(Color.RED);
+				this.panel.add(errorMessage);
+				this.panel.revalidate();
+			}else{
+				for (Enumeration<AbstractButton> buttons = this.group.getElements(); buttons
+						.hasMoreElements();) {
+					AbstractButton button = buttons.nextElement();
+					if (button.isSelected()) {
+						temp = button.getText();
+					}
 				}
+				String[] tempArr = temp.split("; ");
+				endPlace = tempArr[0];
+				endRealm = tempArr[1];
+				new MapGUI(this.mainframe, startPlace, startRealm, endPlace,
+						endRealm);				
 			}
-			String[] tempArr = temp.split("; ");
-			endPlace = tempArr[0];
-			endRealm = tempArr[1];
-			new MapGUI(this.mainframe, startPlace, startRealm, endPlace,
-					endRealm);
 		}
 
 		else if (action.equals("Get Options")) {
@@ -98,11 +109,17 @@ public class ButtonHandler implements ActionListener {
 			String place = (String) this.startPlaceCombo.getSelectedItem();
 			String dist = this.distance.getText();
 			String time = this.time.getText();
+			String rating = this.rating.getText();
 			double d = 0;
 			double t = 0;
-			if((!dist.isEmpty() && !time.isEmpty())){
+			int r = 0;
+			if(!dist.isEmpty() && !time.isEmpty() && !rating.isEmpty()){
+				try{
 				d = Double.parseDouble(dist);
-				t = Double.parseDouble(time);				
+				t = Double.parseDouble(time);
+				r = Integer.parseInt(rating);
+				}catch (NumberFormatException ex){
+				}
 			}
 			
 
@@ -112,17 +129,19 @@ public class ButtonHandler implements ActionListener {
 				errorMessage.setForeground(Color.RED);
 				new PlannerGUI(this.mainframe, errorMessage);
 			} else{
-				ArrayList<Place> routeList = this.pdi.getPlacesWithin(p, d, t);
+				ArrayList<Place> routeList = this.pdi.getPlacesWithin(p, d, t, r);
 				String temp = "Adventure options: ";
 				JLabel text = new JLabel(temp);
-				this.panel.add(text);
+				this.panel.add(text, "cell 0 0");
 				
 				ButtonGroup group = new ButtonGroup();
-				for (Place dest : routeList) {
-					JRadioButton r = new JRadioButton(dest.getName() + "; "
-							+ dest.getRealm().toString());
-					group.add(r);
-					this.panel.add(r);
+				for(int i = 0; i < routeList.size(); i++){
+					if(i <= 10){
+						JRadioButton rb = new JRadioButton(routeList.get(i).getName() + "; "
+								+ routeList.get(i).getRealm().toString());
+						group.add(rb);
+						this.panel.add(rb, "wrap");						
+					}
 				}
 				if(group.getButtonCount() == 0){
 					JLabel errorMessage = new JLabel("There were no options generated for the given restraints");
@@ -131,12 +150,11 @@ public class ButtonHandler implements ActionListener {
 				}else{
 					JButton get = new JButton("Get Your Directions");
 					get.addActionListener(new ButtonHandler(this.mainframe, this.panel, this.mapPanel,
-							null, null, this.startPlaceCombo, this.startRealmCombo,
+							null, null, null, this.startPlaceCombo, this.startRealmCombo,
 							null, null, group));
 					this.panel.add(get);				
 				}
 			}
-
 
 		}
 
@@ -167,7 +185,7 @@ public class ButtonHandler implements ActionListener {
 				double totalFastDistance = 0;
 				double totalFastTime = 0;
 				for (int i = fastRoute.size() - 1; i > -1; i--) {
-					double time = Math.floor(fastRoute.get(i).getTime());
+					double time = fastRoute.get(i).getTime();
 					totalFastTime += time;
 					Route r = fastRoute.get(i).getRoute();
 					Place nextPlace = fastRoute.get(i).getDestination();
@@ -181,9 +199,14 @@ public class ButtonHandler implements ActionListener {
 						fastString += nextPlaceName + " for "
 								+ Math.floor(distance) + " Richardsons\nthen to ";
 					}
+					
+					ArrayList<Point> points = r.getPoints();
+					for (Point p : points) {
+						this.mapPanel.collectFastPoint(p);
+					}
 				}
 				totalFastDistanceString += Math.floor(totalFastDistance) + " Richardsons\n";
-				String totalFastTimeString = "The total time is: " + totalFastTime + " minutes\n\n\n";
+				String totalFastTimeString = "The total time is: " + Math.floor(totalFastTime) + " Smiths\n\n\n";
 				
 				String shortString = "Here is the shortest route: " + "\n"
 						+ "Travel from " + startPlace + " to ";
@@ -207,16 +230,17 @@ public class ButtonHandler implements ActionListener {
 						shortString += nextPlaceName + " for "
 								+ Math.floor(distance) + " Richardsons\nthen to ";
 					}
+					
 					ArrayList<Point> points = r.getPoints();
 					for (Point p : points) {
-						this.mapPanel.collectPoint(p);
+						this.mapPanel.collectShortPoint(p);
 					}
-					this.mapPanel.bool = true;
-					this.mapPanel.revalidate();
-					this.mapPanel.repaint();
 				}
+				this.mapPanel.bool = true;
+				this.mapPanel.revalidate();
+				this.mapPanel.repaint();
 				totalShortDistanceString += Math.floor(totalShortDistance) + " Richardsons\n";
-				String totalShortTimeString = "The total time is: " + totalShortTime + " minutes";
+				String totalShortTimeString = "The total time is: " + totalShortTime + " Smiths";
 				
 				JTextArea directions = new JTextArea(41, 29);
 				directions.setLineWrap(true);
