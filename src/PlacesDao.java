@@ -71,17 +71,27 @@ public class PlacesDao implements PlacesDaoInterface {
 		return getPlacesWithin(getPlace(name, realm), distance, time);
 	}
 
-	@Override
 	public ArrayList<Place> getPlacesWithin(Place start, double distance,
 			double time, int rating) throws IllegalArgumentException{
 			if(start == null) throw new IllegalArgumentException();
 			return removeByRating(getPlacesWithin(start, distance, time), rating);
 	}
 
-	@Override
 	public ArrayList<Place> getPlacesWithin(String name, String realm,
 			double distance, double time, int rating) {
 			return getPlacesWithin(getPlace(name, realm), distance, time, rating);
+	}
+	
+	public ArrayList<Place> getPlacesWithRating(int rating) {
+		return places[rating].toArrayList();
+	}
+	
+	public ArrayList<Place> getPlacesWithMinRating(int rating) {
+		ArrayList<Place> result = new ArrayList<Place>();
+		for(int i = rating; i < places.length; i++) {
+			result.addAll(places[i].toArrayList());
+		}
+		return result;
 	}
 	
 	public ArrayList<Connection> getFastestRoute(Place place1, Place place2) throws IllegalArgumentException {

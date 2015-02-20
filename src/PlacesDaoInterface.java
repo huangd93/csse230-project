@@ -83,6 +83,20 @@ public interface PlacesDaoInterface {
 	 * @return
 	 */
 	public ArrayList<Place> getPlacesWithin(String name, String realm, double distance, double time, int rating);
+	
+	/**
+	 * Returns all places with the given rating
+	 * @param rating 
+	 * @return
+	 */
+	public ArrayList<Place> getPlacesWithRating(int rating);
+	
+	/**
+	 * Returns all places with at least the given rating
+	 * @param rating
+	 * @return
+	 */
+	public ArrayList<Place> getPlacesWithMinRating(int rating);
 
 	/**
 	 * Returns the fastest set of Routes going from place1 to place2
