@@ -167,7 +167,7 @@ public class ButtonHandler implements ActionListener {
 				double totalFastDistance = 0;
 				double totalFastTime = 0;
 				for (int i = fastRoute.size() - 1; i > -1; i--) {
-					double time = Math.floor(fastRoute.get(i).getTime());
+					double time = fastRoute.get(i).getTime();
 					totalFastTime += time;
 					Route r = fastRoute.get(i).getRoute();
 					Place nextPlace = fastRoute.get(i).getDestination();
@@ -183,7 +183,7 @@ public class ButtonHandler implements ActionListener {
 					}
 				}
 				totalFastDistanceString += Math.floor(totalFastDistance) + " Richardsons\n";
-				String totalFastTimeString = "The total time is: " + totalFastTime + " minutes\n\n\n";
+				String totalFastTimeString = "The total time is: " + Math.floor(totalFastTime) + " minutes\n\n\n";
 				
 				String shortString = "Here is the shortest route: " + "\n"
 						+ "Travel from " + startPlace + " to ";
@@ -193,7 +193,7 @@ public class ButtonHandler implements ActionListener {
 				double totalShortDistance = 0;
 				double totalShortTime = 0;
 				for (int i = shortRoute.size() - 1; i > -1; i--) {
-					double time = Math.floor(shortRoute.get(i).getTime());
+					double time = shortRoute.get(i).getTime();
 					totalShortTime += time;
 					Route r = shortRoute.get(i).getRoute();
 					double distance = r.getDistance();
@@ -216,7 +216,7 @@ public class ButtonHandler implements ActionListener {
 					this.mapPanel.repaint();
 				}
 				totalShortDistanceString += Math.floor(totalShortDistance) + " Richardsons\n";
-				String totalShortTimeString = "The total time is: " + totalShortTime + " minutes";
+				String totalShortTimeString = "The total time is: " + Math.floor(totalShortTime) + " minutes";
 				
 				JTextArea directions = new JTextArea(41, 29);
 				directions.setLineWrap(true);
