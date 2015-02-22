@@ -1,5 +1,5 @@
 /**
- * @author Isaiah Smith
+ * @author Isaiah Smith, Emily Richardson and David Huang
  */
 public class Main {
 
